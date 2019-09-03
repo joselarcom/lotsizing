@@ -1,0 +1,351 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+
+<p><th> Costo unitario de inventario = S/. 5</th></p>
+<p><th> Costo de Set-up = S/.1500</th></p>
+<p><th> Costo venta perdida = S/. 10</th></p>
+<p><th> Capacidad maxima entre las dos producciones = 1500 unidades </th></p>
+
+{% endblock %}
+
+{% block content %}
+
+
+    <p><tr>  Tabla de costos   </tr></p>
+    <table class=table>
+        <thead>
+        <tr>
+            <th>DATOS</th>
+            <th>HILO AZUL</th>
+            <th>HILO ROJO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Inventario Final</th>
+            <td> {{ InvAzul}} </td>
+            <td> {{ InvRojo}} </td>
+        </tr>
+        <tr>
+            <th>Ventas Perdidas</th>
+            <td> {{VentaPerdidaAzul}} </td>
+            <td> {{VentaPerdidaRojo}} </td>
+        </tr>
+        <tr>
+            <th>Costo de Almacenamiento [S/.]</th>
+            <td> {{AlmacenamientoAzul}} </td>
+            <td> {{AlmacenamientoRojo}} </td>
+        </tr>
+        <tr>
+            <th>Costo de Ventas Perdidas [S/.]</th>
+            <td> {{CostoPerdidasAzul}} </td>
+            <td> {{CostoPerdidasRojo}} </td>
+        </tr>
+        <tr>
+            <th>Costo de Set - Up [S/.]</th>
+            <td> {{SetupAzul}} </td>
+            <td> {{SetupRojo}} </td>
+        </tr>
+        <tr>
+            <th>COSTOS TOTALES [S/.]</th>
+            <td> {{TotalesAzul}} </td>
+            <td> {{TotalesRojo}} </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+    <table class=table>
+        <thead>
+        <tr>
+            <th>DATOS</th>
+            <th>HILO AZUL</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <th>HILO ROJO</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Periodos</th>
+            <td> Periodo 1-7 </td>
+            <td> Periodo 1-8 </td>
+            <td> Periodo 1-9 </td>
+            <td> Periodo 1-10 </td>
+            <td> Periodo 1-11 </td>
+            <td> Periodo 1-12 </td>
+            <td> Periodo 1-7 </td>
+            <td> Periodo 1-8 </td>
+            <td> Periodo 1-9 </td>
+            <td> Periodo 1-10 </td>
+            <td> Periodo 1-11 </td>
+            <td> Periodo 1-12 </td>
+        </tr>
+        <tr>
+            <th>Inventario Final</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Ventas Perdidas</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Costo de Almacenamiento [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Costo de Ventas Perdidas [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Costo de Set - Up [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>COSTOS TOTALES [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <table class=table>
+        <thead>
+        <tr>
+            <th>DATOS</th>
+            <th>HILO AZUL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Periodos</th>
+            <td> Periodo 1-7 </td>
+            <td> Periodo 1-8 </td>
+            <td> Periodo 1-9 </td>
+            <td> Periodo 1-10 </td>
+            <td> Periodo 1-11 </td>
+            <td> Periodo 1-12 </td>
+        </tr>
+        <tr>
+            <th>Inventario Inicial</th>
+            <td> {{ inventario1 }} </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <<th>Demanda</th>
+            <td>{{Constants.JaponDemanda7}}</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Cantidad a producir</th>
+            <td>{% formfield player.ProduccionJapon7 %}</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class=table>
+        <thead>
+        <tr>
+            <th>DATOS</th>
+            <th>HILO ROJO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Periodos</th>
+            <td> Periodo 1-7 </td>
+            <td> Periodo 1-8 </td>
+            <td> Periodo 1-9 </td>
+            <td> Periodo 1-10 </td>
+            <td> Periodo 1-11 </td>
+            <td> Periodo 1-12 </td>
+        </tr>
+        <tr>
+            <th>Inventario Inicial</th>
+            <td> {{ rojoinventario1 }} </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Demanda</th>
+            <td>{{Constants.rojoJaponDemanda7}}</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Cantidad a producir</th>
+            <td>{% formfield player.RojoProduccionJapon7 %}</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+<div style="width: 50px; float:left; height:60px; background:gray">
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Periodo', 'Demanda Hilo Azul','Inventario inicial Hilo Azul'],
+          ['1', {{Constants.JaponDemanda7}},{{inventario1}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Demanda e Inventario durante periodos',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="columnchart_material" style="width: 800px; height: 500px; margin:10px"></div>
+  </body>
+</div>
+
+<div style="width: 50px; float:right; height:60px; background:yellow">
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Periodo', 'Demanda Hilo Rojo','Inventario inicial Hilo Rojo'],
+          ['1', {{Constants.rojoJaponDemanda7}},{{rojoinventario1}}]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Demanda e Inventario durante periodos',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="columnchart_material2" style="width: 800px; height: 500px; margin:10px"></div>
+  </body>
+</div>
+
+<div id="tabla11" style="width:500; height:200;margin:600px">
+</div>
+{% formfield player.tabla1 %}
+
+<div>
+{% next_button %}
+</div>
+{% endblock %}
