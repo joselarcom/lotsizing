@@ -8,51 +8,6 @@
 <p><th> Costo venta perdida = S/. 10</th></p>
 <p><th> Capacidad maxima entre las dos producciones = 1500 unidades </th></p>
 
-<p><tr>  Tabla de costos   </tr></p>
-    <table class=table>
-        <thead>
-        <tr>
-            <th>DATOS</th>
-            <th>HILO AZUL</th>
-            <th>HILO ROJO</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th>Inventario Final</th>
-            <td> {{ InvAzul}} </td>
-            <td> {{ InvRojo}} </td>
-        </tr>
-        <tr>
-            <th>Ventas Perdidas</th>
-            <td> {{VentaPerdidaAzul}} </td>
-            <td> {{VentaPerdidaRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Almacenamiento [S/.]</th>
-            <td> {{AlmacenamientoAzul}} </td>
-            <td> {{AlmacenamientoRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Ventas Perdidas [S/.]</th>
-            <td> {{CostoPerdidasAzul}} </td>
-            <td> {{CostoPerdidasRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Set - Up [S/.]</th>
-            <td> {{SetupAzul}} </td>
-            <td> {{SetupRojo}} </td>
-        </tr>
-        <tr>
-            <th>COSTOS TOTALES [S/.]</th>
-            <td> {{TotalesAzul}} </td>
-            <td> {{TotalesRojo}} </td>
-        </tr>
-
-        </tbody>
-    </table>
-
-
  <table class=table>
         <thead>
         <tr>
@@ -212,7 +167,7 @@
             <td>{{Constants.HanoiDemanda2}}</td>
             <td>{{Constants.HanoiDemanda3}} </td>
             <td>{{Constants.HanoiDemanda4}} </td>
-            <td>{{Constants.HanoiDemanda5}} </td>
+            <td> - </td>
             <td> - </td>
         </tr>
         <tr>
@@ -259,7 +214,7 @@
             <td>{{Constants.rojoHanoiDemanda2}}</td>
             <td>{{Constants.rojoHanoiDemanda3}} </td>
             <td>{{Constants.rojoHanoiDemanda4}} </td>
-            <td>{{Constants.rojoHanoiDemanda5}} </td>
+            <td> - </td>
             <td> - </td>
         </tr>
         <tr>
@@ -288,8 +243,7 @@
           ['1', {{Constants.HanoiDemanda1}},{{Constants.inventario_inicial3}}],
           ['2', {{Constants.HanoiDemanda2}},{{inventario2}}],
           ['3', {{Constants.HanoiDemanda3}},{{inventario3}}],
-          ['4', {{Constants.HanoiDemanda4}},{{inventario4}}],
-          ['5', {{Constants.HanoiDemanda5}},{{inventario5}}]
+          ['4', {{Constants.HanoiDemanda4}},{{inventario4}}]
         ]);
 
         var options = {
@@ -323,8 +277,7 @@
           ['1', {{Constants.rojoHanoiDemanda1}},{{Constants.inventario_inicialR3}}],
           ['2', {{Constants.rojoHanoiDemanda2}},{{Rojoinventario2}}],
           ['3', {{Constants.rojoHanoiDemanda3}},{{Rojoinventario3}}],
-          ['4', {{Constants.rojoHanoiDemanda4}},{{Rojoinventario4}}],
-          ['5', {{Constants.rojoHanoiDemanda5}},{{Rojoinventario5}}]
+          ['4', {{Constants.rojoHanoiDemanda4}},{{Rojoinventario4}}]
         ]);
 
         var options = {

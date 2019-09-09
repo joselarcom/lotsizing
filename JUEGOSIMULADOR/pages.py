@@ -34,10 +34,12 @@ class Inicio7LIMA(Page):
 
 class Lima1(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima1','RojoProduccionLima1','tabla1']
+    form_fields = ['ProduccionLima1','RojoProduccionLima1']
+
 
     def error_message(self, values):
-        global inventariofinal1, rojoinventariofinal1,ventasperdidas1,rojoventasperdidas1,setup1,rojosetup1
+
+        global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
 
         inventariofinal1 = max(values['ProduccionLima1']+Constants.inventario_inicial-Constants.LimaDemanda1, 0)
         rojoinventariofinal1 = max(values['RojoProduccionLima1']+Constants.inventario_inicialR-Constants.rojoLimaDemanda1, 0)
@@ -57,10 +59,6 @@ class Lima1(Page):
 
         if values["ProduccionLima1"] + values["RojoProduccionLima1"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1']== True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return{
@@ -81,7 +79,7 @@ class Lima1(Page):
 
 class Lima2(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima2','RojoProduccionLima2','tabla1']
+    form_fields = ['ProduccionLima2','RojoProduccionLima2']
     global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
     inventariofinal2 = 0
     rojoinventariofinal2 = 0
@@ -110,11 +108,6 @@ class Lima2(Page):
             rojosetup2 = 1500
         else:
             rojosetup2 = 0
-
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -148,7 +141,7 @@ class Lima2(Page):
 
 class Lima3(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima3','RojoProduccionLima3','tabla1']
+    form_fields = ['ProduccionLima3','RojoProduccionLima3']
     global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
     inventariofinal3 = 0
     rojoinventariofinal3 = 0
@@ -178,10 +171,6 @@ class Lima3(Page):
         else:
             rojosetup3 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
 
     def vars_for_template(self):
@@ -229,7 +218,7 @@ class Lima3(Page):
 
 class Lima4(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima4','RojoProduccionLima4','tabla1']
+    form_fields = ['ProduccionLima4','RojoProduccionLima4']
     global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
     inventariofinal4 = 0
     rojoinventariofinal4 = 0
@@ -261,10 +250,7 @@ class Lima4(Page):
 
         if values["ProduccionLima4"] + values["RojoProduccionLima4"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
+
 
     def vars_for_template(self):
         return{
@@ -325,7 +311,7 @@ class Lima4(Page):
 
 class Lima5(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima5','RojoProduccionLima5','tabla1']
+    form_fields = ['ProduccionLima5','RojoProduccionLima5']
     global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
     inventariofinal5 = 0
     rojoinventariofinal5 = 0
@@ -357,10 +343,7 @@ class Lima5(Page):
 
         if values["ProduccionLima5"] + values["RojoProduccionLima5"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
+
 
     def vars_for_template(self):
 
@@ -435,7 +418,7 @@ class Lima5(Page):
 
 class Lima6(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima6','RojoProduccionLima6','tabla1']
+    form_fields = ['ProduccionLima6','RojoProduccionLima6']
     global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
     inventariofinal6 = 0
     rojoinventariofinal6 = 0
@@ -485,10 +468,6 @@ class Lima6(Page):
 
         if values["ProduccionLima6"] + values["RojoProduccionLima6"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -577,7 +556,7 @@ class Lima6(Page):
 
 class Lima7(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima7', 'RojoProduccionLima7','tabla1']
+    form_fields = ['ProduccionLima7', 'RojoProduccionLima7']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
         inventariofinal2 = 0
@@ -610,10 +589,6 @@ class Lima7(Page):
 
         if values["ProduccionLima7"] + values["RojoProduccionLima7"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return{
@@ -637,7 +612,7 @@ class Lima7(Page):
 
 class Lima8(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima8', 'RojoProduccionLima8','tabla1']
+    form_fields = ['ProduccionLima8', 'RojoProduccionLima8']
     def before_next_page(self):
         global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
         inventariofinal3 = 0
@@ -667,10 +642,6 @@ class Lima8(Page):
         else:
             rojosetup2 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -706,7 +677,7 @@ class Lima8(Page):
 
 class Lima9(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima9', 'RojoProduccionLima9','tabla1']
+    form_fields = ['ProduccionLima9', 'RojoProduccionLima9']
     def before_next_page(self):
         global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
         inventariofinal4 = 0
@@ -736,10 +707,6 @@ class Lima9(Page):
         else:
             rojosetup3 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -790,7 +757,7 @@ class Lima9(Page):
 
 class Lima10(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima10', 'RojoProduccionLima10','tabla1']
+    form_fields = ['ProduccionLima10', 'RojoProduccionLima10']
     def before_next_page(self):
         global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
         inventariofinal5 = 0
@@ -822,10 +789,6 @@ class Lima10(Page):
 
         if values["ProduccionLima10"] + values["RojoProduccionLima10"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -888,7 +851,7 @@ class Lima10(Page):
 
 class Lima11(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima11', 'RojoProduccionLima11','tabla1']
+    form_fields = ['ProduccionLima11', 'RojoProduccionLima11']
 
     def before_next_page(self):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
@@ -921,10 +884,6 @@ class Lima11(Page):
 
         if values["ProduccionLima11"] + values["RojoProduccionLima11"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -1001,7 +960,7 @@ class Lima11(Page):
 
 class Lima12(Page):
     form_model = 'player'
-    form_fields = ['ProduccionLima12', 'RojoProduccionLima12','tabla1']
+    form_fields = ['ProduccionLima12', 'RojoProduccionLima12']
     def before_next_page(self):
         global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
         inventariofinal1 = 0
@@ -1044,14 +1003,8 @@ class Lima12(Page):
 
         if values["ProduccionLima12"] + values["RojoProduccionLima12"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
-
-
         return {
             'InvAzul': inventariofinal6,
             'InvRojo': rojoinventariofinal6,
@@ -1149,7 +1102,7 @@ class InicioJapon (Page):
 
 class Japon1(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon1','RojoProduccionJapon1','tabla1']
+    form_fields = ['ProduccionJapon1','RojoProduccionJapon1']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
         inventariofinal2 = 0
@@ -1181,10 +1134,7 @@ class Japon1(Page):
 
         if values["ProduccionJapon1"] + values["RojoProduccionJapon1"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1']== True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
+
     def vars_for_template(self):
         return{
             'InvAzul': inventariofinal1,
@@ -1204,7 +1154,7 @@ class Japon1(Page):
 
 class Japon2(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon2','RojoProduccionJapon2','tabla1']
+    form_fields = ['ProduccionJapon2','RojoProduccionJapon2']
     def before_next_page(self):
         global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
         inventariofinal3 = 0
@@ -1236,10 +1186,6 @@ class Japon2(Page):
         else:
             rojosetup2 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -1273,7 +1219,7 @@ class Japon2(Page):
 
 class Japon3(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon3','RojoProduccionJapon3','tabla1']
+    form_fields = ['ProduccionJapon3','RojoProduccionJapon3']
     def before_next_page(self):
         global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
         inventariofinal4 = 0
@@ -1305,10 +1251,6 @@ class Japon3(Page):
         else:
             rojosetup3 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
 
     def vars_for_template(self):
@@ -1357,7 +1299,7 @@ class Japon3(Page):
 
 class Japon4(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon4','RojoProduccionJapon4','tabla1']
+    form_fields = ['ProduccionJapon4','RojoProduccionJapon4']
     def before_next_page(self):
         global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
         inventariofinal5 = 0
@@ -1392,10 +1334,6 @@ class Japon4(Page):
 
         if values["ProduccionJapon4"] + values["RojoProduccionJapon4"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return{
@@ -1455,7 +1393,7 @@ class Japon4(Page):
 
 class Japon5(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon5','RojoProduccionJapon5','tabla1']
+    form_fields = ['ProduccionJapon5','RojoProduccionJapon5']
     def before_next_page(self):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
         inventariofinal6 = 0
@@ -1489,10 +1427,6 @@ class Japon5(Page):
 
         if values["ProduccionJapon5"] + values["RojoProduccionJapon5"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -1566,7 +1500,7 @@ class Japon5(Page):
 
 class Japon6(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon6','RojoProduccionJapon6','tabla1']
+    form_fields = ['ProduccionJapon6','RojoProduccionJapon6']
     def before_next_page(self):
         global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
         inventariofinal1 = 0
@@ -1609,10 +1543,6 @@ class Japon6(Page):
 
         if values["ProduccionJapon6"] + values["RojoProduccionJapon6"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -1706,7 +1636,7 @@ class Japon6(Page):
 
 class Japon7(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon7', 'RojoProduccionJapon7','tabla1']
+    form_fields = ['ProduccionJapon7', 'RojoProduccionJapon7']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
         inventariofinal2 = 0
@@ -1740,10 +1670,6 @@ class Japon7(Page):
 
         if values["ProduccionJapon7"] + values["RojoProduccionJapon7"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-                )
 
     def vars_for_template(self):
         return{
@@ -1767,7 +1693,7 @@ class Japon7(Page):
 
 class Japon8(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon8', 'RojoProduccionJapon8','tabla1']
+    form_fields = ['ProduccionJapon8', 'RojoProduccionJapon8']
     def before_next_page(self):
         global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
         inventariofinal3 = 0
@@ -1798,10 +1724,6 @@ class Japon8(Page):
         else:
             rojosetup2 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -1837,7 +1759,7 @@ class Japon8(Page):
 
 class Japon9(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon9', 'RojoProduccionJapon9','tabla1']
+    form_fields = ['ProduccionJapon9', 'RojoProduccionJapon9']
     def before_next_page(self):
         global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
         inventariofinal4 = 0
@@ -1868,10 +1790,6 @@ class Japon9(Page):
         else:
             rojosetup3 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -1922,7 +1840,7 @@ class Japon9(Page):
 
 class Japon10(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon10', 'RojoProduccionJapon10','tabla1']
+    form_fields = ['ProduccionJapon10', 'RojoProduccionJapon10']
     def before_next_page(self):
         global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
         inventariofinal5 = 0
@@ -1955,10 +1873,6 @@ class Japon10(Page):
 
         if values["ProduccionJapon10"] + values["RojoProduccionJapon10"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -2022,7 +1936,7 @@ class Japon10(Page):
 
 class Japon11(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon11', 'RojoProduccionJapon11','tabla1']
+    form_fields = ['ProduccionJapon11', 'RojoProduccionJapon11']
     def before_next_page(self):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
         inventariofinal6 = 0
@@ -2055,10 +1969,6 @@ class Japon11(Page):
 
         if values["ProduccionJapon11"] + values["RojoProduccionJapon11"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -2136,7 +2046,7 @@ class Japon11(Page):
 
 class Japon12(Page):
     form_model = 'player'
-    form_fields = ['ProduccionJapon12', 'RojoProduccionJapon12','tabla1']
+    form_fields = ['ProduccionJapon12', 'RojoProduccionJapon12']
     def before_next_page(self):
         global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
         inventariofinal1 = 0
@@ -2181,10 +2091,6 @@ class Japon12(Page):
 
         if values["ProduccionJapon12"] + values["RojoProduccionJapon12"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -2289,7 +2195,7 @@ class InicioHanoi (Page):
 
 class Hanoi1(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi1','RojoProduccionHanoi1','tabla1']
+    form_fields = ['ProduccionHanoi1','RojoProduccionHanoi1']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
         inventariofinal2 = 0
@@ -2321,11 +2227,7 @@ class Hanoi1(Page):
 
         if values["ProduccionHanoi1"] + values["RojoProduccionHanoi1"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1']== True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
 
-            )
     def vars_for_template(self):
         return{
             'InvAzul': inventariofinal1,
@@ -2345,7 +2247,7 @@ class Hanoi1(Page):
 
 class Hanoi2(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi2','RojoProduccionHanoi2','tabla1']
+    form_fields = ['ProduccionHanoi2','RojoProduccionHanoi2']
     def before_next_page(self):
         global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
         inventariofinal3 = 0
@@ -2377,10 +2279,6 @@ class Hanoi2(Page):
         else:
             rojosetup2 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -2415,7 +2313,7 @@ class Hanoi2(Page):
 
 class Hanoi3(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi3','RojoProduccionHanoi3','tabla1']
+    form_fields = ['ProduccionHanoi3','RojoProduccionHanoi3']
     def before_next_page(self):
         global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
         inventariofinal4 = 0
@@ -2446,11 +2344,6 @@ class Hanoi3(Page):
             rojosetup3 = 1500
         else:
             rojosetup3 = 0
-
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
 
     def vars_for_template(self):
@@ -2499,7 +2392,7 @@ class Hanoi3(Page):
 
 class Hanoi4(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi4','RojoProduccionHanoi4','tabla1']
+    form_fields = ['ProduccionHanoi4','RojoProduccionHanoi4']
     def before_next_page(self):
         global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
         inventariofinal5 = 0
@@ -2533,10 +2426,6 @@ class Hanoi4(Page):
 
         if values["ProduccionHanoi4"] + values["RojoProduccionHanoi4"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return{
@@ -2597,7 +2486,7 @@ class Hanoi4(Page):
 
 class Hanoi5(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi5','RojoProduccionHanoi5','tabla1']
+    form_fields = ['ProduccionHanoi5','RojoProduccionHanoi5']
     def before_next_page(self):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
         inventariofinal6 = 0
@@ -2631,10 +2520,6 @@ class Hanoi5(Page):
 
         if values["ProduccionHanoi5"] + values["RojoProduccionHanoi5"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -2709,7 +2594,7 @@ class Hanoi5(Page):
 
 class Hanoi6(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi6','RojoProduccionHanoi6','tabla1']
+    form_fields = ['ProduccionHanoi6','RojoProduccionHanoi6']
     def before_next_page(self):
         global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
         inventariofinal1 = 0
@@ -2752,10 +2637,6 @@ class Hanoi6(Page):
 
         if values["ProduccionHanoi6"] + values["RojoProduccionHanoi6"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -2849,7 +2730,7 @@ class Hanoi6(Page):
 
 class Hanoi7(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi7', 'RojoProduccionHanoi7','tabla1']
+    form_fields = ['ProduccionHanoi7', 'RojoProduccionHanoi7']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
         inventariofinal2 = 0
@@ -2883,10 +2764,7 @@ class Hanoi7(Page):
 
         if values["ProduccionHanoi7"] + values["RojoProduccionHanoi7"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-                )
+
     def vars_for_template(self):
         return{
             'InvAzul': inventariofinal1,
@@ -2909,7 +2787,7 @@ class Hanoi7(Page):
 
 class Hanoi8(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi8', 'RojoProduccionHanoi8','tabla1']
+    form_fields = ['ProduccionHanoi8', 'RojoProduccionHanoi8']
     def before_next_page(self):
         global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
         inventariofinal3 = 0
@@ -2940,10 +2818,6 @@ class Hanoi8(Page):
         else:
             rojosetup2 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-                )
 
     def vars_for_template(self):
         return {
@@ -2978,7 +2852,7 @@ class Hanoi8(Page):
 
 class Hanoi9(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi9', 'RojoProduccionHanoi9','tabla1']
+    form_fields = ['ProduccionHanoi9', 'RojoProduccionHanoi9']
     def before_next_page(self):
         global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
         inventariofinal4 = 0
@@ -3010,10 +2884,6 @@ class Hanoi9(Page):
         else:
             rojosetup3 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -3064,7 +2934,7 @@ class Hanoi9(Page):
 
 class Hanoi10(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi10', 'RojoProduccionHanoi10','tabla1']
+    form_fields = ['ProduccionHanoi10', 'RojoProduccionHanoi10']
     def before_next_page(self):
         global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
         inventariofinal5 = 0
@@ -3097,10 +2967,6 @@ class Hanoi10(Page):
 
         if values["ProduccionHanoi10"] + values["RojoProduccionHanoi10"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -3164,7 +3030,7 @@ class Hanoi10(Page):
 
 class Hanoi11(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi11', 'RojoProduccionHanoi11','tabla1']
+    form_fields = ['ProduccionHanoi11', 'RojoProduccionHanoi11']
     def before_next_page(self):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
         inventariofinal6 = 0
@@ -3197,10 +3063,7 @@ class Hanoi11(Page):
 
         if values["ProduccionHanoi11"] + values["RojoProduccionHanoi11"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
+
 
     def vars_for_template(self):
 
@@ -3278,7 +3141,7 @@ class Hanoi11(Page):
 
 class Hanoi12(Page):
     form_model = 'player'
-    form_fields = ['ProduccionHanoi12', 'RojoProduccionHanoi12','tabla1']
+    form_fields = ['ProduccionHanoi12', 'RojoProduccionHanoi12']
     def before_next_page(self):
         global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
         inventariofinal1 = 0
@@ -3322,10 +3185,6 @@ class Hanoi12(Page):
 
         if values["ProduccionHanoi12"] + values["RojoProduccionHanoi12"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -3428,7 +3287,7 @@ class InicioMexico (Page):
 
 class Mexico1(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico1','RojoProduccionMexico1','tabla1']
+    form_fields = ['ProduccionMexico1','RojoProduccionMexico1']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
         inventariofinal2 = 0
@@ -3460,10 +3319,6 @@ class Mexico1(Page):
 
         if values["ProduccionMexico1"] + values["RojoProduccionMexico1"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1']== True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return{
@@ -3484,7 +3339,7 @@ class Mexico1(Page):
 
 class Mexico2(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico2','RojoProduccionMexico2','tabla1']
+    form_fields = ['ProduccionMexico2','RojoProduccionMexico2']
     def before_next_page(self):
         global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
         inventariofinal3 = 0
@@ -3516,10 +3371,6 @@ class Mexico2(Page):
         else:
             rojosetup2 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -3553,7 +3404,7 @@ class Mexico2(Page):
 
 class Mexico3(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico3','RojoProduccionMexico3','tabla1']
+    form_fields = ['ProduccionMexico3','RojoProduccionMexico3']
     def before_next_page(self):
         global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
         inventariofinal4 = 0
@@ -3584,11 +3435,6 @@ class Mexico3(Page):
             rojosetup3 = 1500
         else:
             rojosetup3 = 0
-
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
 
     def vars_for_template(self):
@@ -3636,7 +3482,7 @@ class Mexico3(Page):
 
 class Mexico4(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico4','RojoProduccionMexico4','tabla1']
+    form_fields = ['ProduccionMexico4','RojoProduccionMexico4']
     def before_next_page(self):
         global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
         inventariofinal5 = 0
@@ -3671,10 +3517,6 @@ class Mexico4(Page):
 
         if values["ProduccionMexico4"] + values["RojoProduccionMexico4"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return{
@@ -3735,7 +3577,7 @@ class Mexico4(Page):
 
 class Mexico5(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico5','RojoProduccionMexico5','tabla1']
+    form_fields = ['ProduccionMexico5','RojoProduccionMexico5']
     def before_next_page(self):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
         inventariofinal6 = 0
@@ -3770,10 +3612,6 @@ class Mexico5(Page):
 
         if values["ProduccionMexico5"] + values["RojoProduccionMexico5"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -3848,7 +3686,7 @@ class Mexico5(Page):
 
 class Mexico6(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico6','RojoProduccionMexico6','tabla1']
+    form_fields = ['ProduccionMexico6','RojoProduccionMexico6']
     def before_next_page(self):
         global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
         inventariofinal1 = 0
@@ -3892,10 +3730,6 @@ class Mexico6(Page):
 
         if values["ProduccionMexico6"] + values["RojoProduccionMexico6"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -3990,7 +3824,7 @@ class Mexico6(Page):
 
 class Mexico7(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico7', 'RojoProduccionMexico7','tabla1']
+    form_fields = ['ProduccionMexico7', 'RojoProduccionMexico7']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
         inventariofinal2 = 0
@@ -4024,10 +3858,7 @@ class Mexico7(Page):
 
         if values["ProduccionMexico7"] + values["RojoProduccionMexico7"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-                )
+
     def vars_for_template(self):
         return{
             'InvAzul': inventariofinal1,
@@ -4051,7 +3882,7 @@ class Mexico7(Page):
 
 class Mexico8(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico8', 'RojoProduccionMexico8','tabla1']
+    form_fields = ['ProduccionMexico8', 'RojoProduccionMexico8']
     def before_next_page(self):
         global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3, setup3, rojosetup3
         inventariofinal3 = 0
@@ -4083,10 +3914,6 @@ class Mexico8(Page):
         else:
             rojosetup2 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -4122,7 +3949,7 @@ class Mexico8(Page):
 
 class Mexico9(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico9', 'RojoProduccionMexico9','tabla1']
+    form_fields = ['ProduccionMexico9', 'RojoProduccionMexico9']
     def before_next_page(self):
         global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4, setup4, rojosetup4
         inventariofinal4 = 0
@@ -4154,10 +3981,6 @@ class Mexico9(Page):
         else:
             rojosetup3 = 0
 
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -4208,7 +4031,7 @@ class Mexico9(Page):
 
 class Mexico10(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico10', 'RojoProduccionMexico10','tabla1']
+    form_fields = ['ProduccionMexico10', 'RojoProduccionMexico10']
     def before_next_page(self):
         global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5, setup5, rojosetup5
         inventariofinal5 = 0
@@ -4242,10 +4065,6 @@ class Mexico10(Page):
 
         if values["ProduccionMexico10"] + values["RojoProduccionMexico10"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
         return {
@@ -4309,7 +4128,7 @@ class Mexico10(Page):
 
 class Mexico11(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico11', 'RojoProduccionMexico11','tabla1']
+    form_fields = ['ProduccionMexico11', 'RojoProduccionMexico11']
     def before_next_page(self):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6, setup6, rojosetup6
         inventariofinal6 = 0
@@ -4344,10 +4163,6 @@ class Mexico11(Page):
 
         if values["ProduccionMexico11"] + values["RojoProduccionMexico11"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -4425,7 +4240,7 @@ class Mexico11(Page):
 
 class Mexico12(Page):
     form_model = 'player'
-    form_fields = ['ProduccionMexico12', 'RojoProduccionMexico12','tabla1']
+    form_fields = ['ProduccionMexico12', 'RojoProduccionMexico12']
 
     def error_message(self, values):
 
@@ -4460,10 +4275,6 @@ class Mexico12(Page):
 
         if values["ProduccionMexico12"] + values["RojoProduccionMexico12"] > 1500:
             return ' La produccion no debe pasar de 1500'
-        if values['tabla1'] == True:
-            return (
-                "No es un mensaje de error, los calculos de los costos de su periodo estan debajo."
-            )
 
     def vars_for_template(self):
 
@@ -4586,9 +4397,8 @@ page_sequence = [
 Inicio1,
     Inicio2,
     Inicio3,
-    Inicio6,
     Inicio4,
-
+    Inicio6,
 
 Inicio7LIMA,
     Lima1,

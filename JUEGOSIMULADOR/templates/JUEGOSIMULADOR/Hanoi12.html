@@ -8,51 +8,6 @@
 <p><th> Costo venta perdida = S/. 10</th></p>
 <p><th> Capacidad maxima entre las dos producciones = 1500 unidades </th></p>
 
-<p><tr>  Tabla de costos   </tr></p>
-    <table class=table>
-        <thead>
-        <tr>
-            <th>DATOS</th>
-            <th>HILO AZUL</th>
-            <th>HILO ROJO</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th>Inventario Final</th>
-            <td> {{ InvAzul}} </td>
-            <td> {{ InvRojo}} </td>
-        </tr>
-        <tr>
-            <th>Ventas Perdidas</th>
-            <td> {{VentaPerdidaAzul}} </td>
-            <td> {{VentaPerdidaRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Almacenamiento [S/.]</th>
-            <td> {{AlmacenamientoAzul}} </td>
-            <td> {{AlmacenamientoRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Ventas Perdidas [S/.]</th>
-            <td> {{CostoPerdidasAzul}} </td>
-            <td> {{CostoPerdidasRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Set - Up [S/.]</th>
-            <td> {{SetupAzul}} </td>
-            <td> {{SetupRojo}} </td>
-        </tr>
-        <tr>
-            <th>COSTOS TOTALES [S/.]</th>
-            <td> {{TotalesAzul}} </td>
-            <td> {{TotalesRojo}} </td>
-        </tr>
-
-        </tbody>
-    </table>
-
-
  <table class=table>
         <thead>
         <tr>
@@ -213,7 +168,7 @@
             <td>{{Constants.HanoiDemanda9}} </td>
             <td>{{Constants.HanoiDemanda10}} </td>
             <td>{{Constants.HanoiDemanda11}} </td>
-            <td>{{Constants.HanoiDemanda12}} </td>
+            <td> - </td>
         </tr>
         <tr>
             <th>Cantidad a producir</th>
@@ -260,7 +215,7 @@
             <td>{{Constants.rojoHanoiDemanda9}} </td>
             <td>{{Constants.rojoHanoiDemanda10}} </td>
             <td>{{Constants.rojoHanoiDemanda11}} </td>
-            <td>{{Constants.rojoHanoiDemanda12}} </td>
+            <td> - </td>
         </tr>
         <tr>
             <th>Cantidad a producir</th>
@@ -288,8 +243,7 @@
           ['2', {{Constants.HanoiDemanda8}},{{inventario2}}],
           ['3', {{Constants.HanoiDemanda9}},{{inventario3}}],
           ['4', {{Constants.HanoiDemanda10}},{{inventario4}}],
-          ['5', {{Constants.HanoiDemanda11}},{{inventario5}}],
-          ['6', {{Constants.HanoiDemanda12}},{{inventario6}}]
+          ['5', {{Constants.HanoiDemanda11}},{{inventario5}}]
         ]);
 
         var options = {
@@ -324,8 +278,7 @@
           ['2', {{Constants.rojoHanoiDemanda8}},{{rojoinventario2}}],
           ['3', {{Constants.rojoHanoiDemanda9}},{{rojoinventario3}}],
           ['4', {{Constants.rojoHanoiDemanda10}},{{rojoinventario4}}],
-          ['5', {{Constants.rojoHanoiDemanda11}},{{rojoinventario5}}],
-          ['6', {{Constants.rojoHanoiDemanda12}},{{rojoinventario6}}]
+          ['5', {{Constants.rojoHanoiDemanda11}},{{rojoinventario5}}]
         ]);
 
         var options = {

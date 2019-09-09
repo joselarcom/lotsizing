@@ -8,50 +8,6 @@
 <p><th> Costo venta perdida = S/. 10</th></p>
 <p><th> Capacidad maxima entre las dos producciones = 1500 unidades </th></p>
 
-    <p><tr>  Tabla de costos   </tr></p>
-    <table class=table>
-        <thead>
-        <tr>
-            <th>DATOS</th>
-            <th>HILO AZUL</th>
-            <th>HILO ROJO</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th>Inventario Final</th>
-            <td> {{ InvAzul}} </td>
-            <td> {{ InvRojo}} </td>
-        </tr>
-        <tr>
-            <th>Ventas Perdidas</th>
-            <td> {{VentaPerdidaAzul}} </td>
-            <td> {{VentaPerdidaRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Almacenamiento [S/.]</th>
-            <td> {{AlmacenamientoAzul}} </td>
-            <td> {{AlmacenamientoRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Ventas Perdidas [S/.]</th>
-            <td> {{CostoPerdidasAzul}} </td>
-            <td> {{CostoPerdidasRojo}} </td>
-        </tr>
-        <tr>
-            <th>Costo de Set - Up [S/.]</th>
-            <td> {{SetupAzul}} </td>
-            <td> {{SetupRojo}} </td>
-        </tr>
-        <tr>
-            <th>COSTOS TOTALES [S/.]</th>
-            <td> {{TotalesAzul}} </td>
-            <td> {{TotalesRojo}} </td>
-        </tr>
-
-        </tbody>
-    </table>
-
 
  <table class=table>
         <thead>
@@ -209,7 +165,7 @@
         <tr>
             <th>Demanda</th>
             <td>{{Constants.JaponDemanda1}}</td>
-            <td>{{Constants.JaponDemanda2}}</td>
+            <td> - </td>
             <td> - </td>
             <td> - </td>
             <td> - </td>
@@ -256,7 +212,7 @@
         <tr>
             <th>Demanda</th>
             <td>{{Constants.rojoJaponDemanda1}}</td>
-            <td>{{Constants.rojoJaponDemanda2}}</td>
+            <td> - </td>
             <td> - </td>
             <td> - </td>
             <td> - </td>
@@ -285,8 +241,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Periodo', 'Demanda Hilo Azul','Inventario inicial Hilo Azul'],
-          ['1', {{Constants.JaponDemanda1}},{{Constants.inventario_inicial2}}],
-          ['2', {{Constants.JaponDemanda2}},{{inventario2}}]
+          ['1', {{Constants.JaponDemanda1}},{{Constants.inventario_inicial2}}]
         ]);
 
         var options = {
@@ -317,8 +272,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Periodo', 'Demanda Hilo Rojo','Inventario inicial Hilo Rojo'],
-          ['1', {{Constants.rojoJaponDemanda1}},{{Constants.inventario_inicialR2}}],
-          ['2', {{Constants.rojoJaponDemanda2}},{{Rojoinventario2}}]
+          ['1', {{Constants.rojoJaponDemanda1}},{{Constants.inventario_inicialR2}}]
         ]);
 
         var options = {
