@@ -45,6 +45,11 @@ ROOMS = [
     },
 ]
 
+if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+    DEBUG = False
+else:
+    DEBUG = True
+
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
