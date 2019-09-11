@@ -47,15 +47,6 @@ ROOMS = [
 
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'HOST': 'db',
-            'PORT': 5432,
-        }
-    }
 else:
     DEBUG = True
 
@@ -75,6 +66,15 @@ SECRET_KEY = 'b#@#omsjpdy2q^&rt-d9$8$b3f@0gbp(sixcjy!&ds6qb($qvb'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'postgres_db',
+        'PORT': 5432,
+    }
+}
 
 # inactive session configs
 ### {

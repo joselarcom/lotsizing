@@ -7,7 +7,7 @@ services:
     image: redis
   lotsizing:
     build: .
-    command: python manage.py devserver 0.0.0.0:8000
+    command: python manage.py runprodserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
