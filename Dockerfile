@@ -12,4 +12,9 @@ COPY . .
 
 EXPOSE 8000
 
+ENV OTREE_ADMIN_PASSWORD="admin"
+# ENV OTREE_PRODUCTION=1
+ENV OTREE_AUTH_LEVEL="DEMO"
+ENV REDIS_URL="redis://redis_db:6379"
+
 CMD [ "otree", "runprodserver", "0.0.0.0:8000" ]

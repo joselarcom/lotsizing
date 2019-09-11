@@ -1,8 +1,10 @@
 version: "3"
 
 services:
-  db:
+  postgres_db:
     image: postgres
+  redis_db:
+    image: redis
   lotsizing:
     build: .
     command: python manage.py devserver 0.0.0.0:8000
@@ -11,4 +13,5 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - postgres_db
+      - redis_db

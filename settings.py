@@ -76,7 +76,6 @@ SECRET_KEY = 'b#@#omsjpdy2q^&rt-d9$8$b3f@0gbp(sixcjy!&ds6qb($qvb'
 INSTALLED_APPS = ['otree']
 
 
-
 # inactive session configs
 ### {
 ###     'name': 'trust',
