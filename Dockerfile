@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD [ "otree", "devserver", "0.0.0.0:8000" ]
+CMD [ "otree", "runprodserver", "0.0.0.0:8000" ]
