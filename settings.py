@@ -76,6 +76,9 @@ DATABASES = {
     }
 }
 
+MIGRATION_MODULES = {'otree': 'otree_core_migrations'}
+
+
 # inactive session configs
 ### {
 ###     'name': 'trust',
