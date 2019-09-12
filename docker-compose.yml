@@ -7,7 +7,7 @@ services:
     image: redis
   lotsizing:
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runprodserver 0.0.0.0:8000"
+    command: "python manage.py runprodserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
