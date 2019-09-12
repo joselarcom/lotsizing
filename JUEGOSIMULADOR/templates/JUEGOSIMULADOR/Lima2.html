@@ -1,15 +1,20 @@
-{% extends "global/Page.html" %}
-{% load otree %}
+{% extends "global/Page.html" %} {% load otree %} {% block content %}
 
-{% block content %}
+<p>
+    <th> Costo unitario de inventario = S/. 5 </th>
+</p>
+<p>
+    <th> Costo de Set-up = S/.1500 </th>
+</p>
+<p>
+    <th> Costo venta perdida = S/. 10 </th>
+</p>
+<p>
+    <th> Capacidad maxima entre las dos producciones = 1500 unidades </th>
+</p>
 
-<p><th> Costo unitario de inventario = S/. 5 </th></p>
-<p><th> Costo de Set-up = S/.1500 </th></p>
-<p><th> Costo venta perdida = S/. 10 </th></p>
-<p><th> Capacidad maxima entre las dos producciones = 1500 unidades </th></p>
-
- <table class=table>
-        <thead>
+<table class=table>
+    <thead>
         <tr>
             <th>DATOS</th>
             <th>HILO AZUL</th>
@@ -25,8 +30,8 @@
             <td> - </td>
             <td> - </td>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
         <tr>
             <th>Periodos</th>
             <td> Periodo 1-1 </td>
@@ -133,16 +138,16 @@
             <td> - </td>
         </tr>
 
-        </tbody>
-    </table>
-    <table class=table>
-        <thead>
+    </tbody>
+</table>
+<table class=table>
+    <thead>
         <tr>
             <th>DATOS</th>
             <th>HILO AZUL</th>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
         <tr>
             <th>Periodos</th>
             <td> Periodo 1-1 </td>
@@ -179,17 +184,17 @@
             <td> - </td>
             <td> - </td>
         </tr>
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <table class=table>
-        <thead>
+<table class=table>
+    <thead>
         <tr>
             <th>DATOS</th>
             <th>HILO ROJO</th>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
         <tr>
             <th>Periodos</th>
             <td> Periodo 1-1 </td>
@@ -226,75 +231,105 @@
             <td> - </td>
             <td> - </td>
         </tr>
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
 <div style="width: 90vw; display: flex; justify-content: flex-start; overflow-x: scroll">
 
-<div >
-<head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
+    <div>
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Periodo', 'Demanda Hilo Azul','Demanda Hilo Rojo'],
-          ['1', {{Constants.LimaDemanda1}},{{Constants.rojoLimaDemanda1}}]
-        ]);
+        <head>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                google.charts.load('current', {
+                    'packages': ['bar']
+                });
+                google.charts.setOnLoadCallback(drawChart);
 
-        var options = {
-          chart: {
-            title: 'Demanda e Inventario durante periodos',
-          }
-        };
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Periodo', 'Demanda Hilo Azul', 'Demanda Hilo Rojo'],
+                        ['1', {
+                            {
+                                Constants.LimaDemanda1
+                            }
+                        }, {
+                            {
+                                Constants.rojoLimaDemanda1
+                            }
+                        }]
+                    ]);
 
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+                    var options = {
+                        chart: {
+                            title: 'Demanda e Inventario durante periodos',
+                        }
+                    };
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-  </head>
-  <body>
-    <div id="columnchart_material" style="width: 800px; height: 500px;margin:10px"></div>
-  </body>
+                    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            </script>
+        </head>
+
+        <body>
+            <div id="columnchart_material" style="width: 800px; height: 500px;margin:10px"></div>
+        </body>
+    </div>
+
+
+    <div>
+
+        <head>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                google.charts.load('current', {
+                    'packages': ['bar']
+                });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Periodo', 'Demanda Hilo Rojo', 'Inventario inicial Hilo Rojo'],
+                        ['1', {
+                            {
+                                Constants.inventario_inicial
+                            }
+                        }, {
+                            {
+                                Constants.inventario_inicialR
+                            }
+                        }],
+                        ['2', {
+                            {
+                                Constants.rojoLimaDemanda2
+                            }
+                        }, {
+                            {
+                                Rojoinventario2
+                            }
+                        }]
+                    ]);
+
+                    var options = {
+                        chart: {
+                            title: 'Demanda e Inventario durante periodos',
+                        }
+                    };
+
+                    var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
+
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            </script>
+        </head>
+
+        <body>
+            <div id="columnchart_material2" style="width: 800px; height: 500px;"></div>
+        </body>
+    </div>
 </div>
 
 
-<div >
-<head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Periodo', 'Demanda Hilo Rojo','Inventario inicial Hilo Rojo'],
-          ['1', {{Constants.inventario_inicial}},{{Constants.inventario_inicialR}}],
-          ['2', {{Constants.rojoLimaDemanda2}},{{Rojoinventario2}}]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Demanda e Inventario durante periodos',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-  </head>
-  <body>
-    <div id="columnchart_material2" style="width: 800px; height: 500px;"></div>
-  </body>
-</div>
-</div>
-
-
-    {% next_button %}
-
-{% endblock %}
+{% next_button %} {% endblock %}
