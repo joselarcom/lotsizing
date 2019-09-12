@@ -103,69 +103,6 @@
         </tbody>
     </table>
 
-<div style="width: 50px; float:left; height:60px; background:gray">
-<head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Periodo', 'Demanda Hilo Azul','Inventario inicial Hilo Azul'],
-          ['1', {{Constants.LimaDemanda1}},{{Constants.inventario_inicial}}],
-          ['2', {{Constants.LimaDemanda2}},{{inventario2}}]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Demanda e Inventario durante periodos',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-  </head>
-  <body>
-    <div id="columnchart_material" style="width: 800px; height: 500px;margin:10px"></div>
-  </body>
-</div>
-
-
-<div style="width: 50px; float:right; height:60px; background:yellow">
-<head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Periodo', 'Demanda Hilo Rojo','Inventario inicial Hilo Rojo'],
-          ['1', {{Constants.rojoLimaDemanda1}},{{Constants.inventario_inicialR}}],
-          ['2', {{Constants.rojoLimaDemanda2}},{{Rojoinventario2}}]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Demanda e Inventario durante periodos',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-  </head>
-  <body>
-    <div id="columnchart_material2" style="width: 800px; height: 500px;"></div>
-  </body>
-</div>
-
     {% next_button %}
 
 {% endblock %}

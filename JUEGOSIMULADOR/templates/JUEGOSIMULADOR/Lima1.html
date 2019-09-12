@@ -245,11 +245,7 @@
 <div>
     <div id="columnchart_material"></div>
     <div id="columnchart_material2"></div>
-
 </div>
-
-</div>
-
 {% endblock %} {% block app_scripts %}
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -259,20 +255,12 @@
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Periodo', 'Demanda Hilo Rojo', 'Inventario inicial Hilo Rojo'],
-            ['1', {
-                {
-                    Constants.rojoLimaDemanda1
-                }
-            }, {
-                {
-                    Constants.inventario_inicialR
-                }
-            }]
+            ['Periodo', 'Demanda Hilo Azul', 'Demanda Hilo Rojo'],
+            ['1','1','1']
         ]);
         var options = {
             chart: {
-                title: 'Demanda e Inventario durante periodos',
+                title: 'Demanda de hilos durante periodos',
             }
         };
         var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
@@ -286,24 +274,20 @@
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Periodo', 'Demanda Hilo Rojo', 'Inventario inicial Hilo Rojo'],
-            ['1', {
-                {
-                    Constants.rojoLimaDemanda1
-                }
-            }, {
-                {
-                    Constants.inventario_inicialR
-                }
-            }]
+            ['Periodo', 'Inventario Hilo Rojo', 'Inventario Hilo Azul'],
+            ['1',
+            {{Constants.inventario_inicialR}},
+            {{Constants.inventario_inicial}}
+            ]
         ]);
         var options = {
             chart: {
-                title: 'Demanda e Inventario durante periodos',
+                title: 'Inventario inicial durante periodos',
             }
         };
         var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 </script>
+
 {% endblock %}
