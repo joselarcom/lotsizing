@@ -305,10 +305,10 @@
             </table>
         </div>
     </div>
-
+{% next_button %}
     <div style="display: flex; justify-content: flex-start; align-items:flex-start;  flex-direction: column; padding-top: 10px">
         <div style="margin-left: 0px">
-            {% next_button %}
+
         </div>
     </div>
 </div>
@@ -441,8 +441,6 @@
                 <td class="right" style="border-bottom: 0px"> </td>
                 <td class="right" style="border-right: 0px; border-bottom: 0px"> </td>
             </tr>
-
-
         </table>
     </div>
 </div>
@@ -495,6 +493,7 @@
         var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
+
 </script>
 
 {% endblock %}

@@ -1105,6 +1105,7 @@ class Japon1(Page):
     form_fields = ['ProduccionJapon1','RojoProduccionJapon1']
     def before_next_page(self):
         global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
+
         inventariofinal2 = 0
         rojoinventariofinal2 = 0
         ventasperdidas2 = 0
@@ -1114,7 +1115,7 @@ class Japon1(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal1, rojoinventariofinal1,ventasperdidas1,rojoventasperdidas1,setup1,rojosetup1
+        global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
 
         inventariofinal1 = max(values['ProduccionJapon1']+Constants.inventario_inicial2-Constants.JaponDemanda1, 0)
         rojoinventariofinal1 = max(values['RojoProduccionJapon1']+Constants.inventario_inicialR2-Constants.rojoJaponDemanda1, 0)
@@ -4400,8 +4401,6 @@ page_sequence = [
 #     Inicio3,
 #     Inicio6,
 #     Inicio4,
-
-
 Inicio7LIMA,
     Lima1,
     Lima2,
@@ -4416,11 +4415,6 @@ Inicio7LIMA,
     Lima11,
     Lima12,
     ResumenLima,
-
-
-
-
-
 
 InicioJapon,
     Japon1,
