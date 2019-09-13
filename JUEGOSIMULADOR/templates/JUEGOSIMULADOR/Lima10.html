@@ -6,22 +6,48 @@
         color: #0a0a0a;
         font-size: 16px;
     }
-
+    
+    .alert-danger {
+        position: fixed;
+        bottom: 0px;
+        right: 5px;
+        z-index: 3;
+    }
+    
     .otree-title {
         padding: 0
     }
-
+    
     .page-header {
         margin: 0
     }
-
+    
     .otree-body {
         max-width: 100vw;
         background-color: #f9f9fa;
         color: #0a0a0a;
         font-size: 16px;
     }
-
+    
+    button {
+        font-size: 14px;
+        /* background: #66e2d5; */
+        background: #cfd7ff;
+        transition: 0.3s;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 2px solid #0a0a0a;
+        cursor: pointer;
+        color: #0a0a0a;
+    }
+    
+    button:hover {
+        background: #4e57ef80;
+        /* background: #66e2d599; */
+        cursor: pointer
+    }
+    
     .top-data {
         background: #cfd7ff;
         color: #0a0a0a;
@@ -29,14 +55,14 @@
         box-shadow: 3px 4px 0px #4e57ef;
         transition: 0.3s;
     }
-
+    
     .top-data:hover {
         background: #4e57ef;
         color: white;
         border: 1px solid #cfd7ff;
         box-shadow: 3px 4px 0px #cfd7ff;
     }
-
+    
     .table-custom {
         width: 100%;
         max-width: 100%;
@@ -44,19 +70,19 @@
         font-size: 15px;
         font-weight: 400;
     }
-
+    
     .card {
         border: 1px solid #d6d6d6;
         box-shadow: 1px 1px 0px #c2c2c2;
         border-radius: 3px;
         margin-bottom: 1rem;
     }
-
+    
     .card .inside {
         border-bottom: 1px solid #eeeef1;
         padding: 10px 20px;
     }
-
+    
     .form-control {
         padding: 1px 2px;
         color: #0a0a0a;
@@ -65,7 +91,7 @@
         text-align: right;
         transition: 0.3s;
     }
-
+    
     .form-control:focus {
         padding: 1px 2px;
         background: #bebebe20;
@@ -74,7 +100,7 @@
         box-shadow: 3px 4px 0px #0a0a0a;
         /* transform: translateY(-2px) */
     }
-
+    
     td {
         font-size: 15px;
         font-weight: 400;
@@ -84,7 +110,7 @@
         border-right: 1px solid #ddd;
         border-left: 1px solid #ddd;
     }
-
+    
     th {
         font-size: 15px;
         font-weight: 400;
@@ -94,53 +120,53 @@
         border-right: 1px solid #ddd;
         border-left: 1px solid #ddd;
     }
-
+    
     .table-custom .head-text {
         font-size: 14px;
         font-weight: 700;
     }
-
+    
     .table-custom .red-text {
         color: #cd284a99;
     }
-
+    
     .table-custom .blue-text {
         color: #0f59f799;
     }
-
+    
     .table-custom .uppercase {
         text-transform: uppercase
     }
-
+    
     .table-custom .center {
         text-align: center;
     }
-
+    
     .table-custom .right {
         text-align: right;
     }
-
+    
     .table-custom input {
         background: #bebebe20;
         color: #0a0a0a;
         border: 1px solid #0a0a0a;
         box-shadow: 3px 4px 0px #0a0a0a;
     }
-
+    
     .table-custom input:active input:hover input:focus {
         background: #bebebe20;
         color: #0a0a0a;
         border: 1px solid #0a0a0a;
         box-shadow: 3px 4px 0px #0a0a0a;
     }
-
+    
     .table-custom .blue-input input {
         background: #0f59f750;
         color: #0a0a0a;
         border: 1px solid #0a0a0a;
         box-shadow: 3px 4px 0px #0a0a0a;
     }
-
+    
     .table-custom .blue-input .form-control:focus {
         padding: 1px 2px;
         background: #bebebe20;
@@ -149,14 +175,14 @@
         box-shadow: 3px 5px 0px #0f59f780;
         transform: translateY(-1px)
     }
-
+    
     .table-custom .red-input input {
         background: #fa2c5550;
         color: #0a0a0a;
         border: 1px solid #0a0a0a;
         box-shadow: 3px 4px 0px #0a0a0a;
     }
-
+    
     .table-custom .red-input .form-control:focus {
         padding: 1px 2px;
         background: #bebebe20;
@@ -165,15 +191,15 @@
         box-shadow: 3px 5px 0px #fa2c5580;
         transform: translateY(-1px)
     }
-
+    
     .form-group {
         margin: 0
     }
-
+    
     .card.debug-info {
         display: none;
     }
-
+    
     .screen {
         position: relative;
         min-height: 100vh;
@@ -186,9 +212,14 @@
 {% endblock %}{% block content %}
 <div class="screen">
     <div style="position: relative; top: 0px; left: 0; right: 0;">
-        <div style=" margin-top: 40px; text-align:left; font-weight:800; font-size: 32px; padding-bottom: 10px; color: #4e57ef">PERIODO 1-10 LIMA</div>
+        <div style="background-color: white; position: fixed; top: 0; z-index: 2; left: 0; width: 100%; box-shadow: 0 1px 6px 0 #d2d3d770;">
+            <div style="display: flex; justify-content: center; align-items: center">
+                <div style=" margin-top: 10px; text-align:left; font-weight:800; font-size: 32px; padding-bottom: 10px; color: #4e57ef; text-align: center">LIMA</div>
+                <div style="margin-left: 10px;  margin-top: 10px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px; color: #bdc8d5; text-align: center">Periodo 1-10 Ciclo 2 </div>
+            </div>
+        </div>
 
-        <div style="display: flex; align-items: center; font-size: 14px; width: 100%; justify-content: space-around; padding: 20px 30px">
+        <div style="margin-top: 80px;  display: flex; align-items: center; font-size: 14px; width: 100%; justify-content: space-around; padding: 20px 30px">
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
                 <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px"> Costo unitario de inventario</div>
@@ -249,14 +280,14 @@
 
                 <tr>
                     <th scope="row" class="head-text" style="border-left: 0px;">Inventario Inicial</th>
-                    <td class="right"> {{ inventario1 }} </td>
-                    <td class="right"> {{ rojoinventario1 }} </td>
-                    <td class="right">{{inventario2}} </td>
-                    <td class="right">{{Rojoinventario2}} </td>
-                    <td class="right">{{inventario3}} </td>
-                    <td class="right">{{Rojoinventario3}} </td>
-                    <td class="right">{{inventario4}} </td>
-                    <td class="right">{{Rojoinventario4}} </td>
+                    <td class="right"> {{ inventario7 }} </td>
+                    <td class="right"> {{ Rojoinventario7 }} </td>
+                    <td class="right">{{inventario8}} </td>
+                    <td class="right">{{Rojoinventario8}} </td>
+                    <td class="right">{{inventario9}} </td>
+                    <td class="right">{{Rojoinventario9}} </td>
+                    <td class="right">{{inventario10}} </td>
+                    <td class="right">{{Rojoinventario10}} </td>
                     <td class="right"> </td>
                     <td class="right"> </td>
                     <td class="right"> </td>
@@ -271,8 +302,8 @@
                     <td class="right">{{Constants.rojoLimaDemanda8}} </td>
                     <td class="right">{{Constants.LimaDemanda9}} </td>
                     <td class="right">{{Constants.rojoLimaDemanda9}} </td>
-                    <td class="right"> </td>
-                    <td class="right"> </td>
+                    <td class="right"> - </td>
+                    <td class="right"> - </td>
                     <td class="right"> </td>
                     <td class="right"> </td>
                     <td class="right"> </td>
@@ -300,7 +331,7 @@
                             <div style="width: 90%;  max-width: 65px;  min-width: 45px;">{{player.RojoProduccionLima8}}</div>
                         </div>
                     </td>
-                     <td class="right" style="border-bottom: 0px">
+                    <td class="right" style="border-bottom: 0px">
                         <div style="display: flex; justify-content: flex-end; transform: translateX(2px)">
                             <div style="width: 90%; max-width: 65px; min-width: 45px;">{{player.ProduccionLima9}}</div>
                         </div>
@@ -329,8 +360,9 @@
             </table>
         </div>
     </div>
-{% next_button %}
-
+    <div style="text-align: center; margin-top: 20px">
+        <button><div style="padding: 7px 20px;">CALCULAR Y PASAR AL PERIODO 1-11   <span style="padding-left: 15px"> &#8594;</span></div></button>
+    </div>
 
     <div style="display: flex; justify-content: flex-start; align-items:flex-start;  flex-direction: column; padding-top: 10px">
         <div style="margin-left: 0px">
@@ -391,12 +423,12 @@
 
             <tr>
                 <th scope="row" class="head-text" style="border-left: 0px;">Inventario final</th>
-                <td class="right">{{inventario2}}</td>
-                <td class="right">{{Rojoinventario2}} </td>
-                <td class="right">{{inventario3}}</td>
-                <td class="right">{{Rojoinventario3}} </td>
-                <td class="right">{{inventario4}}</td>
-                <td class="right">{{Rojoinventario4}} </td>
+                <td class="right">{{inventario8}}</td>
+                <td class="right">{{Rojoinventario8}} </td>
+                <td class="right">{{inventario9}}</td>
+                <td class="right">{{Rojoinventario9}} </td>
+                <td class="right">{{inventario10}}</td>
+                <td class="right">{{Rojoinventario10}} </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
@@ -406,12 +438,12 @@
             </tr>
             <tr>
                 <th scope="row" class="head-text" style="border-left: 0px;">Ventas perdidas</th>
-                <td class="right">{{ventasperdidas1}} </td>
-                <td class="right">{{rojoventasperdidas1}} </td>
-                <td class="right">{{ventasperdidas2}} </td>
-                <td class="right">{{rojoventasperdidas2}} </td>
-                <td class="right">{{ventasperdidas3}} </td>
-                <td class="right">{{rojoventasperdidas3}} </td>
+                <td class="right">{{ventasperdidas7}} </td>
+                <td class="right">{{rojoventasperdidas7}} </td>
+                <td class="right">{{ventasperdidas8}} </td>
+                <td class="right">{{rojoventasperdidas8}} </td>
+                <td class="right">{{ventasperdidas9}} </td>
+                <td class="right">{{rojoventasperdidas9}} </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
@@ -421,12 +453,12 @@
             </tr>
             <tr>
                 <th scope="row" class="head-text" style="border-left: 0px;">Costo de almacenamiento (S/.)</th>
-                <td class="right">{{costoalmacenamiento1}} </td>
-                <td class="right">{{rojocostoalmacenamiento1}} </td>
-                <td class="right">{{costoalmacenamiento2}} </td>
-                <td class="right">{{rojocostoalmacenamiento2}} </td>
-                <td class="right">{{costoalmacenamiento3}} </td>
-                <td class="right">{{rojocostoalmacenamiento3}} </td>
+                <td class="right">{{costoalmacenamiento7}} </td>
+                <td class="right">{{rojocostoalmacenamiento7}} </td>
+                <td class="right">{{costoalmacenamiento8}} </td>
+                <td class="right">{{rojocostoalmacenamiento8}} </td>
+                <td class="right">{{costoalmacenamiento9}} </td>
+                <td class="right">{{rojocostoalmacenamiento9}} </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
@@ -436,12 +468,12 @@
             </tr>
             <tr>
                 <th scope="row" class="head-text" style="border-left: 0px;">Costo de ventas perdidas (S/.)</th>
-                <td class="right">{{costoventasperdidas1}} </td>
-                <td class="right">{{rojocostoventasperdidas1}} </td>
-                <td class="right">{{costoventasperdidas2}} </td>
-                <td class="right">{{rojocostoventasperdidas2}} </td>
-                <td class="right">{{costoventasperdidas3}} </td>
-                <td class="right">{{rojocostoventasperdidas3}} </td>
+                <td class="right">{{costoventasperdidas7}} </td>
+                <td class="right">{{rojocostoventasperdidas7}} </td>
+                <td class="right">{{costoventasperdidas8}} </td>
+                <td class="right">{{rojocostoventasperdidas8}} </td>
+                <td class="right">{{costoventasperdidas9}} </td>
+                <td class="right">{{rojocostoventasperdidas9}} </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
@@ -451,12 +483,12 @@
             </tr>
             <tr>
                 <th scope="row" class="head-text" style="border-left: 0px;">Costo de set-up (S/.)</th>
-                <td class="right">{{setup1}} </td>
-                <td class="right">{{rojosetup1}} </td>
-                <td class="right">{{setup2}} </td>
-                <td class="right">{{rojosetup2}} </td>
-                <td class="right">{{setup3}} </td>
-                <td class="right">{{rojosetup3}} </td>
+                <td class="right">{{setup7}} </td>
+                <td class="right">{{rojosetup7}} </td>
+                <td class="right">{{setup8}} </td>
+                <td class="right">{{rojosetup8}} </td>
+                <td class="right">{{setup9}} </td>
+                <td class="right">{{rojosetup9}} </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
                 <td class="right"> </td>
@@ -466,12 +498,12 @@
             </tr>
             <tr>
                 <th scope="row" class="head-text" style="border-left: 0px; border-bottom: 0px">Costos totales (S/.)</th>
-                <td class="right" style="border-bottom: 0px">{{totales1}} </td>
-                <td class="right" style="border-bottom: 0px">{{rojototales1}} </td>
-                <td class="right" style="border-bottom: 0px">{{totales2}} </td>
-                <td class="right" style="border-bottom: 0px">{{rojototales2}} </td>
-                <td class="right" style="border-bottom: 0px">{{totales3}} </td>
-                <td class="right" style="border-bottom: 0px">{{rojototales3}} </td>
+                <td class="right" style="border-bottom: 0px">{{totales7}} </td>
+                <td class="right" style="border-bottom: 0px">{{rojototales7}} </td>
+                <td class="right" style="border-bottom: 0px">{{totales8}} </td>
+                <td class="right" style="border-bottom: 0px">{{rojototales8}} </td>
+                <td class="right" style="border-bottom: 0px">{{totales9}} </td>
+                <td class="right" style="border-bottom: 0px">{{rojototales9}} </td>
                 <td class="right" style="border-bottom: 0px"> </td>
                 <td class="right" style="border-bottom: 0px"> </td>
                 <td class="right" style="border-bottom: 0px"> </td>
@@ -493,13 +525,13 @@
             labels: ['Periodo 1-7', 'Periodo 1-8', 'Periodo 1-9', 'Periodo 1-10', 'Periodo 1-11', 'Periodo 1-12'],
             datasets: [{
                 label: 'Azul',
-                data: [`{{inventario1}}`,`{{inventario2}}`,`{{inventario3}}`,`{{inventario4}}`],
+                data: [`{{inventario7}}`, `{{inventario8}}`, `{{inventario9}}`, `{{inventario10}}`],
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             }, {
                 label: 'Rojo',
-                data: [`{{rojoinventario1}}`,{{Rojoinventario2}},{{Rojoinventario3}},{{Rojoinventario4}}],
+                data: [`{{Rojoinventario7}}`, `{{Rojoinventario8}}`, `{{Rojoinventario9}}`, `{{Rojoinventario10}}`],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
@@ -524,13 +556,13 @@
             labels: ['Periodo 1-7', 'Periodo 1-8', 'Periodo 1-9', 'Periodo 1-10', 'Periodo 1-11', 'Periodo 1-12'],
             datasets: [{
                 label: 'Azul',
-                data: [`{{Constants.LimaDemanda7}}`,`{{Constants.LimaDemanda8}}`,`{{Constants.LimaDemanda9}}`],
+                data: [`{{Constants.LimaDemanda7}}`, `{{Constants.LimaDemanda8}}`, `{{Constants.LimaDemanda9}}`],
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             }, {
                 label: 'Rojo',
-                data: [`{{Constants.rojoLimaDemanda7}}`,`{{Constants.rojoLimaDemanda8}}`,`{{Constants.rojoLimaDemanda9}}`],
+                data: [`{{Constants.rojoLimaDemanda7}}`, `{{Constants.rojoLimaDemanda8}}`, `{{Constants.rojoLimaDemanda9}}`],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
@@ -544,15 +576,7 @@
                     }
                 }]
             }
-<<<<<<< HEAD
-        };
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-    }
-
-=======
         }
     });
->>>>>>> 6815035eb92ac9a234edc02af44d316c35cd09ec
 </script>
 {% endblock %} {% endblock %}
