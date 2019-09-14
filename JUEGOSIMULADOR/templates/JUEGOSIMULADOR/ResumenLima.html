@@ -31,8 +31,8 @@
     
     button {
         font-size: 14px;
-        /* background: #66e2d5; */
-        background: #cfd7ff;
+        background: #66e2d5;
+        /* background: #cfd7ff; */
         transition: 0.3s;
         text-align: center;
         font-weight: bold;
@@ -43,8 +43,8 @@
     }
     
     button:hover {
-        background: #4e57ef80;
-        /* background: #66e2d599; */
+        /* background: #4e57ef80; */
+        background: #66e2d599;
         cursor: pointer
     }
     
@@ -210,35 +210,177 @@
     }
 </style>
 {% endblock %}{% block content %}
-<h2>
-    ¡Felicidades! Has culminado tu periodo de práctica en Lima.
-</h2>
 
-<p>
-    Resultados: Su solucion le produjo un costo total de: {{TotalTotales}}
-</p>
+<div>
+    <div style="background-color: white; position: fixed; top: 0; z-index: 2; left: 0; width: 100%; box-shadow: 0 1px 6px 0 #d2d3d770;">
+        <div style="position: relative">
+            <div style="display: flex; justify-content: center; align-items: center">
+                <div style=" margin-top: 10px; text-align:left; font-weight:800; font-size: 32px; padding-bottom: 10px; color: #4e57ef; text-align: center">Resumen LIMA</div>
+            </div>
 
-<p>
-    Pulse NEXT para continuar
-</p>
-
-<div style="width: 100%; padding-top: 40px; display: flex; justify-content: space-between">
-    <div style="width: 48%;">
-        <div style=" margin-top: 40px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px;">Inventario</div>
-        <div id="container" style="width: 100%;">
-            <canvas id="inventario"></canvas>
+            <div style="position: absolute; right: 10px; top: 12px; bottom: 0;">
+                <div style="text-align: center;">
+                    <button><div style="padding: 7px 20px;">JUGAR EN LA PRODUCCIÓN DE JAPÓN<span style="padding-left: 15px"> &#8594;</span></div></button>
+                </div>
+            </div>
         </div>
     </div>
-    <div style="width: 48%;">
-        <div style=" margin-top: 40px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px;">Demanda</div>
-        <div id="container" style="width: 100%;">
-            <canvas id="demanda"></canvas>
+    <div style="width: 100%; padding-top: 100px;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <h2>
+                ¡Felicidades! Has culminado tu periodo de práctica en Lima.
+            </h2>
+            <br/>
+            <p>
+                Tu solución produjo un costo total de: <span id="TotalTotalesMoneyFormat"></span>
+            </p>
+        </div>
+
+    </div>
+    <div style="width: 100%; padding-top: 30px; display: flex; justify-content: space-between">
+        <div style="width: 48%;">
+            <div style=" margin-top: 40px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px;">Inventario</div>
+            <div id="container" style="width: 100%;">
+                <canvas id="inventario"></canvas>
+            </div>
+        </div>
+        <div style="width: 48%;">
+            <div style=" margin-top: 40px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px;">Demanda</div>
+            <div id="container" style="width: 100%;">
+                <canvas id="demanda"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <div style=" margin-top: 100px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px; opacity: 0.6 ">Resumen</div>
+
+    <div class="card" style="opacity: 0.6">
+        <div class="inside">
+            <table class="table-custom ">
+                <col>
+                <colgroup span="2"></colgroup>
+                <colgroup span="2"></colgroup>
+                <tr>
+                    <th rowspan="1" class="head-text" style="border-top: 0px; border-left: 0px">Periodos</td>
+                        <th colspan="2" scope="colgroup" class="head-text center" style="border-top: 0px;">Periodo 1-7</th>
+                        <th colspan="2" scope="colgroup" class="head-text center" style="border-top: 0px;">Periodo 1-8</th>
+                        <th colspan="2" scope="colgroup" class="head-text center" style="border-top: 0px;">Periodo 1-9</th>
+                        <th colspan="2" scope="colgroup" class="head-text center" style="border-top: 0px;">Periodo 1-10</th>
+                        <th colspan="2" scope="colgroup" class="head-text center" style="border-top: 0px;">Periodo 1-11</th>
+                        <th colspan="2" scope="colgroup" class="head-text center" style="border-top: 0px; border-right: 0px;">Periodo 1-12</th>
+                </tr>
+                <tr>
+                    <th scope="col" class="head-text" style="border-left: 0px;">Hilos</th>
+                    <th scope="col" class="head-text blue-text center uppercase">Azul</th>
+                    <th scope="col" class="head-text red-text center uppercase"> Rojo</th>
+                    <th scope="col" class="head-text blue-text center uppercase"> Azul</th>
+                    <th scope="col" class="head-text red-text center uppercase"> Rojo</th>
+                    <th scope="col" class="head-text blue-text center uppercase"> Azul</th>
+                    <th scope="col" class="head-text red-text center uppercase"> Rojo</th>
+                    <th scope="col" class="head-text blue-text center uppercase"> Azul</th>
+                    <th scope="col" class="head-text red-text center uppercase"> Rojo</th>
+                    <th scope="col" class="head-text blue-text center uppercase"> Azul</th>
+                    <th scope="col" class="head-text red-text center uppercase"> Rojo</th>
+                    <th scope="col" class="head-text blue-text center uppercase"> Azul</th>
+                    <th scope="col" class="head-text red-text center uppercase" style="border-right: 0px;"> Rojo</th>
+                </tr>
+
+                <tr>
+                    <th scope="row" class="head-text" style="border-left: 0px;">Inventario final</th>
+                    <td class="right">{{inventario8}}</td>
+                    <td class="right">{{Rojoinventario8}} </td>
+                    <td class="right">{{inventario9}}</td>
+                    <td class="right">{{Rojoinventario9}} </td>
+                    <td class="right">{{inventario10}}</td>
+                    <td class="right">{{Rojoinventario10}} </td>
+                    <td class="right">{{inventario11}}</td>
+                    <td class="right">{{Rojoinventario11}} </td>
+                    <td class="right">{{inventario12}}</td>
+                    <td class="right">{{Rojoinventario12}} </td>
+                    <td class="right">{{inventario12final}}</td>
+                    <td class="right" style="border-right: 0px;">{{Rojoinventario12final}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="head-text" style="border-left: 0px;">Ventas perdidas</th>
+                    <td class="right">{{ventasperdidas7}} </td>
+                    <td class="right">{{rojoventasperdidas7}} </td>
+                    <td class="right">{{ventasperdidas8}} </td>
+                    <td class="right">{{rojoventasperdidas8}} </td>
+                    <td class="right">{{ventasperdidas9}} </td>
+                    <td class="right">{{rojoventasperdidas9}} </td>
+                    <td class="right">{{ventasperdidas10}} </td>
+                    <td class="right">{{rojoventasperdidas10}} </td>
+                    <td class="right">{{ventasperdidas11}} </td>
+                    <td class="right">{{rojoventasperdidas11}} </td>
+                    <td class="right">{{ventasperdidas11}}</td>
+                    <td class="right" style="border-right: 0px;">{{rojoventasperdidas12}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="head-text" style="border-left: 0px;">Costo de almacenamiento (S/.)</th>
+                    <td class="right">{{costoalmacenamiento7}} </td>
+                    <td class="right">{{rojocostoalmacenamiento7}} </td>
+                    <td class="right">{{costoalmacenamiento8}} </td>
+                    <td class="right">{{rojocostoalmacenamiento8}} </td>
+                    <td class="right">{{costoalmacenamiento9}} </td>
+                    <td class="right">{{rojocostoalmacenamiento9}} </td>
+                    <td class="right">{{costoalmacenamiento10}} </td>
+                    <td class="right">{{rojocostoalmacenamiento10}} </td>
+                    <td class="right">{{costoalmacenamiento11}} </td>
+                    <td class="right">{{rojocostoalmacenamiento11}} </td>
+                    <td class="right">{{costoalmacenamiento11}} </td>
+                    <td class="right" style="border-right: 0px;">{{rojocostoalmacenamiento12}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="head-text" style="border-left: 0px;">Costo de ventas perdidas (S/.)</th>
+                    <td class="right">{{costoventasperdidas7}} </td>
+                    <td class="right">{{rojocostoventasperdidas7}} </td>
+                    <td class="right">{{costoventasperdidas8}} </td>
+                    <td class="right">{{rojocostoventasperdidas8}} </td>
+                    <td class="right">{{costoventasperdidas9}} </td>
+                    <td class="right">{{rojocostoventasperdidas9}} </td>
+                    <td class="right">{{costoventasperdidas10}} </td>
+                    <td class="right">{{rojocostoventasperdidas10}} </td>
+                    <td class="right">{{costoventasperdidas11}} </td>
+                    <td class="right">{{rojocostoventasperdidas11}} </td>
+                    <td class="right">{{costoventasperdidas12}}</td>
+                    <td class="right" style="border-right: 0px;">{{rojocostoventasperdidas12}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="head-text" style="border-left: 0px;">Costo de set-up (S/.)</th>
+                    <td class="right">{{setup7}} </td>
+                    <td class="right">{{rojosetup7}} </td>
+                    <td class="right">{{setup8}} </td>
+                    <td class="right">{{rojosetup8}} </td>
+                    <td class="right">{{setup9}} </td>
+                    <td class="right">{{rojosetup9}} </td>
+                    <td class="right">{{setup10}} </td>
+                    <td class="right">{{rojosetup10}} </td>
+                    <td class="right">{{setup11}} </td>
+                    <td class="right">{{rojosetup11}} </td>
+                    <td class="right">{{setup12}} </td>
+                    <td class="right" style="border-right: 0px;">{{rojosetup12}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="head-text" style="border-left: 0px; border-bottom: 0px">Costos totales (S/.)</th>
+                    <td class="right" style="border-bottom: 0px">{{totales7}} </td>
+                    <td class="right" style="border-bottom: 0px">{{rojototales7}} </td>
+                    <td class="right" style="border-bottom: 0px">{{totales8}} </td>
+                    <td class="right" style="border-bottom: 0px">{{rojototales8}} </td>
+                    <td class="right" style="border-bottom: 0px">{{totales9}} </td>
+                    <td class="right" style="border-bottom: 0px">{{rojototales9}} </td>
+                    <td class="right" style="border-bottom: 0px">{{totales10}} </td>
+                    <td class="right" style="border-bottom: 0px">{{rojototales10}} </td>
+                    <td class="right" style="border-bottom: 0px">{{totales11}} </td>
+                    <td class="right" style="border-bottom: 0px">{{rojototales11}}</td>
+                    <td class="right" style="border-bottom: 0px">{{rojototales12}}</td>
+                    <td class="right" style="border-right: 0px; border-bottom: 0px">{{rojototales12}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
-
-
-{% next_button %} {% block app_scripts %}
+{% block app_scripts %}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 <script>
     var ctx = document.getElementById('inventario').getContext('2d');
@@ -301,5 +443,23 @@
             }
         }
     });
+</script>
+<script>
+    function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
+        try {
+            decimalCount = Math.abs(decimalCount);
+            decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+            const negativeSign = amount < 0 ? "-" : "";
+
+            let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+            let j = (i.length > 3) ? i.length % 3 : 0;
+
+            return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+        } catch (e) {
+            console.log(e)
+        }
+    };
+    document.getElementById("TotalTotalesMoneyFormat").innerText = "S/. " + formatMoney(`{{TotalTotales}}`);
 </script>
 {% endblock %} {% endblock %}
