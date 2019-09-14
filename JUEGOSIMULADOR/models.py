@@ -66,6 +66,7 @@ class Constants(BaseConstants):
     rojoJaponDemanda5 = 1100
     rojoJaponDemanda6 = 200
 
+
     JaponDemanda7 = 1300
     JaponDemanda8 = 1100
     JaponDemanda9 = 100
