@@ -1147,8 +1147,8 @@ class Lima11(Page):
 
         inventariofinal11 = max(values['ProduccionLima11'] + inventariofinal4 - Constants.LimaDemanda11, 0)
         rojoinventariofinal11 = max(values['RojoProduccionLima11'] + rojoinventariofinal4 - Constants.rojoLimaDemanda11, 0)
-        ventasperdidas11 = max(Constants.LimaDemanda11 - values['ProduccionLima11'] - inventariofinal4, 0)
-        rojoventasperdidas11 = max(Constants.LimaDemanda11 - values['RojoProduccionLima11'] - rojoinventariofinal4, 0)
+        ventasperdidas11 = max(Constants.LimaDemanda11 - values['ProduccionLima11'] - inventariofinal10, 0)
+        rojoventasperdidas11 = max(Constants.LimaDemanda11 - values['RojoProduccionLima11'] - rojoinventariofinal10, 0)
 
         if values["ProduccionLima11"] > 0:
             setup11 = 1500
@@ -2843,8 +2843,8 @@ class Japon11(Page):
     
         inventariofinal11 = max(values['ProduccionJapon11'] + inventariofinal4 - Constants.JaponDemanda11, 0)
         rojoinventariofinal11 = max(values['RojoProduccionJapon11'] + rojoinventariofinal4 - Constants.rojoJaponDemanda11, 0)
-        ventasperdidas11 = max(Constants.JaponDemanda11 - values['ProduccionJapon11'] - inventariofinal4, 0)
-        rojoventasperdidas11 = max(Constants.JaponDemanda11 - values['RojoProduccionJapon11'] - rojoinventariofinal4, 0)
+        ventasperdidas11 = max(Constants.JaponDemanda11 - values['ProduccionJapon11'] - inventariofinal10, 0)
+        rojoventasperdidas11 = max(Constants.JaponDemanda11 - values['RojoProduccionJapon11'] - rojoinventariofinal10, 0)
 
         if values["ProduccionJapon11"] > 0:
             setup11 = 1500
