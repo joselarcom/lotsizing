@@ -1,13 +1,115 @@
-{% extends "global/Page.html" %}
-{% load otree %}
+{% extends "global/Page.html" %} {% load otree %} {% block app_styles %}
+<style>
+    body {
+        max-width: 100vw;
+        background-color: #f9f9fa;
+        color: #0a0a0a;
+        font-size: 16px;
+    }
+    
+    .alert-danger {
+        position: fixed;
+        bottom: 0px;
+        right: 5px;
+        z-index: 3;
+    }
+    
+    .otree-title {
+        padding: 0
+    }
+    
+    .page-header {
+        margin: 0
+    }
+    
+    .otree-body {
+        max-width: 100vw;
+        background-color: #f9f9fa;
+        color: #0a0a0a;
+        font-size: 16px;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+    
+    button {
+        font-size: 14px;
+        background: #66e2d5;
+        /* background: #cfd7ff; */
+        transition: 0.3s;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 2px solid #0a0a0a;
+        cursor: pointer;
+        color: #0a0a0a;
+    }
+    
+    button:hover {
+        /* background: #4e57ef80; */
+        background: #66e2d599;
+        cursor: pointer
+    }
+    
+    .card {
+        border: 1px solid #d6d6d6;
+        box-shadow: 1px 1px 0px #c2c2c2;
+        border-radius: 3px;
+        margin-bottom: 1rem;
+    }
+    
+    .card .inside {
+        border-bottom: 1px solid #eeeef1;
+        padding: 10px 20px;
+    }
+    
+    .form-control {
+        padding: 1px 2px;
+        color: #0a0a0a;
+        border: 1px solid #4e57ef;
+        border-radius: 2px;
+        text-align: right;
+        transition: 0.3s;
+    }
+    
+    .form-control:focus {
+        padding: 1px 2px;
+        background: #bebebe20;
+        color: #0a0a0a;
+        border: 1px solid #0a0a0a;
+        box-shadow: 3px 4px 0px #0a0a0a;
+        /* transform: translateY(-2px) */
+    }
+    
+    .form-group {
+        margin: 0
+    }
+    
+    .card.debug-info {
+        display: none;
+    }
+    
+    .screen {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+</style>{% endblock %} {% block content %}
+<div class="screen">
+    <div style=" padding-bottom: 40px">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <div style=" margin-top: 10px; text-align:left; font-weight:800; font-size: 65px; padding-bottom: 20px; color: #2ed2c0; text-align: center">TOKYO</div>
+            <div style="max-width: 300px; padding-top: 10px;  text-align:left; font-weight:400; font-size: 18px; padding-bottom: 30px; color: #000000; text-align: center">
+                Usted está en la Planta de TOKYO, JAPÓN y está encargado de la programacion de la producción.
+            </div>
+        </div>
 
-{% block content %}
-    <h2>
-        Usted está en la Planta de TOKYO, JAPÓN y está encargado de la programacion de la producción.
-    </h2>
+        <div style="text-align: center; margin-top: 20px">
+            <button><div style="padding: 7px 20px;">EMPEZAR LIMA PERIODO 1<span style="padding-left: 15px"> &#8594;</span></div></button>
+        </div>
+    </div>
+</div>
 
-    <p>
-        Por favor, pulse NEXT para continuar.
-    </p>
-    {% next_button %}
 {% endblock %}
