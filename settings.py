@@ -14,17 +14,17 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
 
     {
-     'name': 'JuegoDeProduccion1',
-     'display_name': 'Juego de Alex Dyer 1',
+     'name': 'JuegoDeProduccionBase',
+     'display_name': 'Juego Base',
      'num_demo_participants': 1,
      'app_sequence': ['JUEGOSIMULADOR'],
 
     },
     {
-     'name': 'JuegoDeProduccion2',
-     'display_name': 'Juego de Alex Dyer 2',
+     'name': 'JuegoDeProduccionMejorVista',
+     'display_name': 'Juego de Producción',
      'num_demo_participants': 1,
-     'app_sequence': ['JUEGOSIMULADOR'],
+     'app_sequence': ['JUEGOSIMULADOR2'],
 
     }
     # other session configs go here ...
