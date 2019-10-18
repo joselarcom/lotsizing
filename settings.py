@@ -5,28 +5,25 @@ from os import environ
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
-SESSION_CONFIG_DEFAULTS = {
-    'real_world_currency_per_point': 1.00,
-    'participation_fee': 0.00,
-    'doc': "",
-}
+SESSION_CONFIG_DEFAULTS = dict(
+    real_world_currency_per_point=1.00,
+    participation_fee=0.00,
+    doc="",
+)
 
 SESSION_CONFIGS = [
-
-    {
-     'name': 'JuegoDeProduccionBase',
-     'display_name': 'Juego Base',
-     'num_demo_participants': 1,
-     'app_sequence': ['JUEGOSIMULADOR'],
-
-    },
-    {
-     'name': 'JuegoDeProduccionMejorVista',
-     'display_name': 'Juego de Producción',
-     'num_demo_participants': 1,
-     'app_sequence': ['JUEGOSIMULADOR2'],
-
-    }
+    dict(
+        name='JuegoDeProduccionBase',
+        display_name="Juego Base",
+        num_demo_participants=1,
+        app_sequence=['JUEGOSIMULADOR']
+    ),
+    dict(
+        name='JuegoDeProduccionMejorVista',
+        display_name="Juego de Producción",
+        num_demo_participants=1,
+        app_sequence=['JUEGOSIMULADOR2']
+    )
     # other session configs go here ...
 ]
 # see the end of this file for the inactive session configs
@@ -41,16 +38,13 @@ REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
 ROOMS = [
-    {
-        'name': 'econ101',
-        'display_name': 'Econ 101 class',
-        'participant_label_file': '_rooms/econ101.txt',
-    },
-    {
-        'name': 'live_demo',
-        'display_name': 'Room for live demo (no participant labels)',
-    },
+    dict(name='econ101', display_name='Econ 101 class', participant_label_file='_rooms/econ101.txt'),
+    dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
 ]
+
+ADMIN_USERNAME = 'admin'
+# for security, best to set admin password in an environment variable
+ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False
@@ -66,12 +60,6 @@ if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
 else:
     DEBUG = True
 
-
-ADMIN_USERNAME = 'admin'
-# for security, best to set admin password in an environment variable
-ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-
-
 DEMO_PAGE_INTRO_HTML = """
 Here are some oTree games.
 """
@@ -83,7 +71,6 @@ SECRET_KEY = 'b#@#omsjpdy2q^&rt-d9$8$b3f@0gbp(sixcjy!&ds6qb($qvb'
 INSTALLED_APPS = ['otree']
 
 MIGRATION_MODULES = {'otree': 'otree_core_migrations'}
-
 
 # inactive session configs
 ### {
