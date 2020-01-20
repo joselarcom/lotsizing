@@ -46,17 +46,17 @@ class Lima1(Page):
         rojoventasperdidas1 = max(Constants.rojoLimaDemanda1-values['RojoProduccionLima1']-Constants.inventario_inicialR, 0)
 
         if values["ProduccionLima1"]>0:
-            setup1=1500
+            setup1= Constants.SETUP
         else:
             setup1=0
 
         if values["RojoProduccionLima1"]>0:
-            rojosetup1=1500
+            rojosetup1=Constants.SETUP
         else:
             rojosetup1=0
 
-        if values["ProduccionLima1"] + values["RojoProduccionLima1"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima1"] + values["RojoProduccionLima1"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return{
@@ -64,14 +64,14 @@ class Lima1(Page):
             'InvRojo':rojoinventariofinal1,
             'VentaPerdidaAzul':ventasperdidas1,
             'VentaPerdidaRojo':rojoventasperdidas1,
-            'AlmacenamientoAzul':inventariofinal1*5,
-            'AlmacenamientoRojo':rojoinventariofinal1*5,
-            'CostoPerdidasAzul':ventasperdidas1*10,
-            'CostoPerdidasRojo':rojoventasperdidas1*10,
+            'AlmacenamientoAzul':inventariofinal1*Constants.CostoInventario1,
+            'AlmacenamientoRojo':rojoinventariofinal1*Constants.CostoInventario1,
+            'CostoPerdidasAzul':ventasperdidas1*Constants.CostoBackorder1,
+            'CostoPerdidasRojo':rojoventasperdidas1*Constants.CostoBackorder1,
             'SetupAzul':setup1,
             'SetupRojo':rojosetup1,
-            'TotalesAzul':inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'TotalesRojo':rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'TotalesAzul':inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'TotalesRojo':rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 }
 
 class Lima2(Page):
@@ -94,17 +94,17 @@ class Lima2(Page):
         rojoventasperdidas2 = max(Constants.rojoLimaDemanda2 - values['RojoProduccionLima2'] - rojoinventariofinal1, 0)
 
         if values["ProduccionLima2"] > 0:
-            setup2 = 1500
+            setup2 = Constants.SETUP
         else:
             setup2 = 0
 
         if values["RojoProduccionLima2"] > 0:
-            rojosetup2 = 1500
+            rojosetup2 = Constants.SETUP
         else:
             rojosetup2 = 0
 
-        if values["ProduccionLima2"] + values["RojoProduccionLima2"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima2"] + values["RojoProduccionLima2"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -112,28 +112,28 @@ class Lima2(Page):
             'InvRojo': rojoinventariofinal2,
             'VentaPerdidaAzul': ventasperdidas2,
             'VentaPerdidaRojo': rojoventasperdidas2,
-            'AlmacenamientoAzul': inventariofinal2 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal2 * 5,
-            'CostoPerdidasAzul': ventasperdidas2 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas2 * 10,
+            'AlmacenamientoAzul': inventariofinal2 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal2 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas2 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas2 * Constants.CostoBackorder1,
             'SetupAzul': setup2,
             'SetupRojo': rojosetup2,
-            'TotalesAzul': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'TotalesRojo': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'TotalesAzul': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'TotalesRojo': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'inventario2': inventariofinal1,
             'Rojoinventario2': rojoinventariofinal1,
 
             'ventasperdidas1':ventasperdidas1,
             'rojoventasperdidas1':rojoventasperdidas1,
-            'costoalmacenamiento1':inventariofinal1*5,
-            'rojocostoalmacenamiento1':rojoinventariofinal1*5,
-            'costoventasperdidas1':ventasperdidas1*10,
-            'rojocostoventasperdidas1':rojoventasperdidas1*10,
+            'costoalmacenamiento1':inventariofinal1*Constants.CostoInventario1,
+            'rojocostoalmacenamiento1':rojoinventariofinal1*Constants.CostoInventario1,
+            'costoventasperdidas1':ventasperdidas1*Constants.CostoBackorder1,
+            'rojocostoventasperdidas1':rojoventasperdidas1*Constants.CostoBackorder1,
             'setup1':setup1,
             'rojosetup1':rojosetup1,
-            'totales1':inventariofinal1*5+ventasperdidas1*10+setup1,
-            'rojototales1':rojoinventariofinal1*5+rojoventasperdidas1*10+rojosetup1
+            'totales1':inventariofinal1*Constants.CostoInventario1+ventasperdidas1*Constants.CostoBackorder1+setup1,
+            'rojototales1':rojoinventariofinal1*Constants.CostoInventario1+rojoventasperdidas1*Constants.CostoBackorder1+rojosetup1
         }
 
 
@@ -157,17 +157,17 @@ class Lima3(Page):
         rojoventasperdidas3 = max(Constants.rojoLimaDemanda3 - values['RojoProduccionLima3'] - rojoinventariofinal2, 0)
 
         if values["ProduccionLima3"] > 0:
-            setup3 = 1500
+            setup3 = Constants.SETUP
         else:
             setup3 = 0
 
         if values["RojoProduccionLima3"] > 0:
-            rojosetup3 = 1500
+            rojosetup3 = Constants.SETUP
         else:
             rojosetup3 = 0
         
-        if values["ProduccionLima3"] + values["RojoProduccionLima3"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima3"] + values["RojoProduccionLima3"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return{
@@ -175,14 +175,14 @@ class Lima3(Page):
             'InvRojo': rojoinventariofinal3,
             'VentaPerdidaAzul': ventasperdidas3,
             'VentaPerdidaRojo': rojoventasperdidas3,
-            'AlmacenamientoAzul': inventariofinal3 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal3 * 5,
-            'CostoPerdidasAzul': ventasperdidas3 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas3 * 10,
+            'AlmacenamientoAzul': inventariofinal3 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal3 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas3 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas3 * Constants.CostoBackorder1,
             'SetupAzul': setup3,
             'SetupRojo': rojosetup3,
-            'TotalesAzul': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'TotalesRojo': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'TotalesAzul': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'TotalesRojo': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -191,25 +191,25 @@ class Lima3(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
         }
 
@@ -233,17 +233,17 @@ class Lima4(Page):
         rojoventasperdidas4 = max(Constants.rojoLimaDemanda4 - values['RojoProduccionLima4'] - rojoinventariofinal3, 0)
 
         if values["ProduccionLima4"] > 0:
-            setup4 = 1500
+            setup4 = Constants.SETUP
         else:
             setup4 = 0
 
         if values["RojoProduccionLima4"] > 0:
-            rojosetup4 = 1500
+            rojosetup4 = Constants.SETUP
         else:
             rojosetup4 = 0
 
-        if values["ProduccionLima4"] + values["RojoProduccionLima4"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima4"] + values["RojoProduccionLima4"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
 
     def vars_for_template(self):
@@ -252,14 +252,14 @@ class Lima4(Page):
             'InvRojo': rojoinventariofinal4,
             'VentaPerdidaAzul': ventasperdidas4,
             'VentaPerdidaRojo': rojoventasperdidas4,
-            'AlmacenamientoAzul': inventariofinal4 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal4 * 5,
-            'CostoPerdidasAzul': ventasperdidas4 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas4 * 10,
+            'AlmacenamientoAzul': inventariofinal4 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal4 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas4 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas4 * Constants.CostoBackorder1,
             'SetupAzul': setup4,
             'SetupRojo': rojosetup4,
-            'TotalesAzul': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'TotalesRojo': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'TotalesAzul': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'TotalesRojo': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -270,36 +270,36 @@ class Lima4(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
         }
 
 class Lima5(Page):
@@ -322,17 +322,17 @@ class Lima5(Page):
         rojoventasperdidas5 = max(Constants.rojoLimaDemanda5 - values['RojoProduccionLima5'] - rojoinventariofinal4, 0)
 
         if values["ProduccionLima5"] > 0:
-            setup5 = 1500
+            setup5 = Constants.SETUP
         else:
             setup5 = 0
 
         if values["RojoProduccionLima5"] > 0:
-            rojosetup5 = 1500
+            rojosetup5 = Constants.SETUP
         else:
             rojosetup5 = 0
 
-        if values["ProduccionLima5"] + values["RojoProduccionLima5"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima5"] + values["RojoProduccionLima5"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
 
     def vars_for_template(self):
@@ -342,14 +342,14 @@ class Lima5(Page):
             'InvRojo': rojoinventariofinal5,
             'VentaPerdidaAzul': ventasperdidas5,
             'VentaPerdidaRojo': rojoventasperdidas5,
-            'AlmacenamientoAzul': inventariofinal5 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal5 * 5,
-            'CostoPerdidasAzul': ventasperdidas5 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas5 * 10,
+            'AlmacenamientoAzul': inventariofinal5 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal5 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas5 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas5 * Constants.CostoBackorder1,
             'SetupAzul': setup5,
             'SetupRojo': rojosetup5,
-            'TotalesAzul': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'TotalesRojo': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'TotalesAzul': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'TotalesRojo': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -362,47 +362,47 @@ class Lima5(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
         }
 
 class Lima6(Page):
@@ -425,26 +425,26 @@ class Lima6(Page):
         rojoventasperdidas6 = max(Constants.rojoLimaDemanda6 - values['RojoProduccionLima6'] - rojoinventariofinal5, 0)
 
         if values["ProduccionLima6"] > 0:
-            setup6 = 1500
+            setup6 = Constants.SETUP
         else:
             setup6 = 0
 
         if values["RojoProduccionLima6"] > 0:
-            rojosetup6 = 1500
+            rojosetup6 = Constants.SETUP
         else:
             rojosetup6= 0
 
         global TotalinventarioLima, TotalsetupLima, TotalventasLima, TotalTotalesLima
 
-        TotalinventarioLima = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6) * 5
-        TotalinventarioLima = TotalinventarioLima + (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6) * 5
+        TotalinventarioLima = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6) * Constants.CostoInventario1
+        TotalinventarioLima = TotalinventarioLima + (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6) * Constants.CostoInventario1
         TotalsetupLima = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6
-        TotalventasLima = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6) * 10
-        TotalventasLima = TotalventasLima + (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6) * 10
+        TotalventasLima = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6) * Constants.CostoBackorder1
+        TotalventasLima = TotalventasLima + (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6) * Constants.CostoBackorder1
         TotalTotalesLima = TotalinventarioLima + TotalventasLima + TotalsetupLima
 
-        if values["ProduccionLima6"] + values["RojoProduccionLima6"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima6"] + values["RojoProduccionLima6"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
 
@@ -453,14 +453,14 @@ class Lima6(Page):
             'InvRojo': rojoinventariofinal6,
             'VentaPerdidaAzul': ventasperdidas6,
             'VentaPerdidaRojo': rojoventasperdidas6,
-            'AlmacenamientoAzul': inventariofinal6 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal6 * 5,
-            'CostoPerdidasAzul': ventasperdidas6 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas6 * 10,
+            'AlmacenamientoAzul': inventariofinal6 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal6 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas6 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas6 * Constants.CostoBackorder1,
             'SetupAzul': setup6,
             'SetupRojo': rojosetup6,
-            'TotalesAzul': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'TotalesRojo': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'TotalesAzul': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'TotalesRojo': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -475,58 +475,58 @@ class Lima6(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
         }
 
 
@@ -550,17 +550,17 @@ class Lima7(Page):
         rojoventasperdidas7 = max(Constants.rojoLimaDemanda7 - values['RojoProduccionLima7'] - rojoinventariofinal6, 0)
 
         if values["ProduccionLima7"] > 0:
-            setup7 = 1500
+            setup7 = Constants.SETUP
         else:
             setup7 = 0
 
         if values["RojoProduccionLima7"] > 0:
-            rojosetup7 = 1500
+            rojosetup7 = Constants.SETUP
         else:
             rojosetup7 = 0
 
-        if values["ProduccionLima7"] + values["RojoProduccionLima7"] > 1500:
-            return 'La produccion no debe pasar de 1500'
+        if values["ProduccionLima7"] + values["RojoProduccionLima7"] > Constants.Capacidad:
+            return 'La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return{
@@ -568,14 +568,14 @@ class Lima7(Page):
             'InvRojo': rojoinventariofinal7,
             'VentaPerdidaAzul': ventasperdidas7,
             'VentaPerdidaRojo': rojoventasperdidas7,
-            'AlmacenamientoAzul': inventariofinal7 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal7 * 5,
-            'CostoPerdidasAzul': ventasperdidas7 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas7 * 10,
+            'AlmacenamientoAzul': inventariofinal7 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal7 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas7 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas7 * Constants.CostoBackorder1,
             'SetupAzul': setup7,
             'SetupRojo': rojosetup7,
-            'TotalesAzul': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'TotalesRojo': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'TotalesAzul': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
+            'TotalesRojo': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -592,69 +592,69 @@ class Lima7(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario1,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder1,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
         }
 
 
@@ -678,17 +678,17 @@ class Lima8(Page):
         rojoventasperdidas8 = max(Constants.rojoLimaDemanda8 - values['RojoProduccionLima8'] - rojoinventariofinal7, 0)
 
         if values["ProduccionLima8"] > 0:
-            setup8 = 1500
+            setup8 = Constants.SETUP
         else:
             setup8 = 0
 
         if values["RojoProduccionLima8"] > 0:
-            rojosetup8 = 1500
+            rojosetup8 = Constants.SETUP
         else:
             rojosetup8 = 0
 
-        if values["ProduccionLima8"] + values["RojoProduccionLima8"] > 1500:
-            return 'La produccion no debe pasar de 1500'
+        if values["ProduccionLima8"] + values["RojoProduccionLima8"] > Constants.Capacidad:
+            return 'La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -696,14 +696,14 @@ class Lima8(Page):
             'InvRojo': rojoinventariofinal8,
             'VentaPerdidaAzul': ventasperdidas8,
             'VentaPerdidaRojo': rojoventasperdidas8,
-            'AlmacenamientoAzul': inventariofinal8 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal8 * 5,
-            'CostoPerdidasAzul': ventasperdidas8 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas8 * 10,
+            'AlmacenamientoAzul': inventariofinal8 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal8 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas8 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas8 * Constants.CostoBackorder1,
             'SetupAzul': setup8,
             'SetupRojo': rojosetup8,
-            'TotalesAzul': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'TotalesRojo': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'TotalesAzul': inventariofinal8 * Constants.CostoInventario1 + ventasperdidas8 * Constants.CostoBackorder1 + setup8,
+            'TotalesRojo': rojoinventariofinal8 * Constants.CostoInventario1 + rojoventasperdidas8 * Constants.CostoBackorder1 + rojosetup8,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -722,80 +722,80 @@ class Lima8(Page):
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario1,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder1,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario1,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder1,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
         }
 
 class Lima9(Page):
@@ -818,17 +818,17 @@ class Lima9(Page):
         rojoventasperdidas9 = max(Constants.rojoLimaDemanda9 - values['RojoProduccionLima9'] - rojoinventariofinal8, 0)
 
         if values["ProduccionLima9"] > 0:
-            setup9 = 1500
+            setup9 = Constants.SETUP
         else:
             setup9 = 0
 
         if values["RojoProduccionLima9"] > 0:
-            rojosetup9 = 1500
+            rojosetup9 = Constants.SETUP
         else:
             rojosetup9 = 0
 
-        if values["ProduccionLima9"] + values["RojoProduccionLima9"] > 1500:
-            return 'La produccion no debe pasar de 1500'
+        if values["ProduccionLima9"] + values["RojoProduccionLima9"] > Constants.Capacidad:
+            return 'La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -836,14 +836,14 @@ class Lima9(Page):
             'InvRojo': rojoinventariofinal9,
             'VentaPerdidaAzul': ventasperdidas9,
             'VentaPerdidaRojo': rojoventasperdidas9,
-            'AlmacenamientoAzul': inventariofinal9 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal9 * 5,
-            'CostoPerdidasAzul': ventasperdidas9 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas9 * 10,
+            'AlmacenamientoAzul': inventariofinal9 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal9 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas9 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas9 * Constants.CostoBackorder1,
             'SetupAzul': setup9,
             'SetupRojo': rojosetup9,
-            'TotalesAzul': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'TotalesRojo': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'TotalesAzul': inventariofinal9 * Constants.CostoInventario1 + ventasperdidas9 * Constants.CostoBackorder1 + setup9,
+            'TotalesRojo': rojoinventariofinal9 * Constants.CostoInventario1 + rojoventasperdidas9 * Constants.CostoBackorder1 + rojosetup9,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -864,102 +864,102 @@ class Lima9(Page):
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario1,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder1,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario1,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder1,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario1,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder1,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario1 + ventasperdidas8 * Constants.CostoBackorder1 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario1 + rojoventasperdidas8 * Constants.CostoBackorder1 + rojosetup8,
 
         }
 
@@ -984,17 +984,17 @@ class Lima10(Page):
         rojoventasperdidas10 = max(Constants.rojoLimaDemanda10 - values['RojoProduccionLima10'] - rojoinventariofinal9, 0)
 
         if values["ProduccionLima10"] > 0:
-            setup10 = 1500
+            setup10 = Constants.SETUP
         else:
             setup10 = 0
 
         if values["RojoProduccionLima10"] > 0:
-            rojosetup10 = 1500
+            rojosetup10 = Constants.SETUP
         else:
             rojosetup10 = 0
 
-        if values["ProduccionLima10"] + values["RojoProduccionLima10"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima10"] + values["RojoProduccionLima10"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -1002,14 +1002,14 @@ class Lima10(Page):
             'InvRojo': rojoinventariofinal10,
             'VentaPerdidaAzul': ventasperdidas10,
             'VentaPerdidaRojo': rojoventasperdidas10,
-            'AlmacenamientoAzul': inventariofinal10 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal10 * 5,
-            'CostoPerdidasAzul': ventasperdidas10 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas10 * 10,
+            'AlmacenamientoAzul': inventariofinal10 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal10 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas10 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas10 * Constants.CostoBackorder1,
             'SetupAzul': setup10,
             'SetupRojo': rojosetup10,
-            'TotalesAzul': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'TotalesRojo': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup10,
+            'TotalesAzul': inventariofinal10 * Constants.CostoInventario1 + ventasperdidas10 * Constants.CostoBackorder1 + setup10,
+            'TotalesRojo': rojoinventariofinal10 * Constants.CostoInventario1 + rojoventasperdidas10 * Constants.CostoBackorder1 + rojosetup10,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -1032,102 +1032,102 @@ class Lima10(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario1,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder1,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario1,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder1,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario1,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder1,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario1 + ventasperdidas8 * Constants.CostoBackorder1 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario1 + rojoventasperdidas8 * Constants.CostoBackorder1 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario1,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder1,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario1 + ventasperdidas9 * Constants.CostoBackorder1 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario1 + rojoventasperdidas9 * Constants.CostoBackorder1 + rojosetup9,
         }
 
 
@@ -1151,17 +1151,17 @@ class Lima11(Page):
         rojoventasperdidas11 = max(Constants.rojoLimaDemanda11 - values['RojoProduccionLima11'] - rojoinventariofinal10, 0)
 
         if values["ProduccionLima11"] > 0:
-            setup11 = 1500
+            setup11 = Constants.SETUP
         else:
             setup11 = 0
 
         if values["RojoProduccionLima11"] > 0:
-            rojosetup11 = 1500
+            rojosetup11 = Constants.SETUP
         else:
             rojosetup11 = 0
 
-        if values["ProduccionLima11"] + values["RojoProduccionLima11"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima11"] + values["RojoProduccionLima11"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
 
@@ -1170,14 +1170,14 @@ class Lima11(Page):
             'InvRojo': rojoinventariofinal11,
             'VentaPerdidaAzul': ventasperdidas11,
             'VentaPerdidaRojo': rojoventasperdidas11,
-            'AlmacenamientoAzul': inventariofinal11 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal11 * 5,
-            'CostoPerdidasAzul': ventasperdidas11 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas11 * 10,
+            'AlmacenamientoAzul': inventariofinal11 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal11 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas11 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas11 * Constants.CostoBackorder1,
             'SetupAzul': setup11,
             'SetupRojo': rojosetup11,
-            'TotalesAzul': inventariofinal11 * 5 + ventasperdidas11 * 10 + setup11,
-            'TotalesRojo': rojoinventariofinal11 * 5 + rojoventasperdidas11 * 10 + rojosetup11,
+            'TotalesAzul': inventariofinal11 * Constants.CostoInventario1 + ventasperdidas11 * Constants.CostoBackorder1 + setup11,
+            'TotalesRojo': rojoinventariofinal11 * Constants.CostoInventario1 + rojoventasperdidas11 * Constants.CostoBackorder1 + rojosetup11,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -1202,113 +1202,113 @@ class Lima11(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario1,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder1,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario1,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder1,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario1,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder1,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario1 + ventasperdidas8 * Constants.CostoBackorder1 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario1 + rojoventasperdidas8 * Constants.CostoBackorder1 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario1,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder1,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario1 + ventasperdidas9 * Constants.CostoBackorder1 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario1 + rojoventasperdidas9 * Constants.CostoBackorder1 + rojosetup9,
 
             'ventasperdidas10': ventasperdidas10,
             'rojoventasperdidas10': rojoventasperdidas10,
-            'costoalmacenamiento10': inventariofinal10 * 5,
-            'rojocostoalmacenamiento10': rojoinventariofinal10 * 5,
-            'costoventasperdidas10': ventasperdidas10 * 10,
-            'rojocostoventasperdidas10': rojoventasperdidas10 * 10,
+            'costoalmacenamiento10': inventariofinal10 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento10': rojoinventariofinal10 * Constants.CostoInventario1,
+            'costoventasperdidas10': ventasperdidas10 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas10': rojoventasperdidas10 * Constants.CostoBackorder1,
             'setup10': setup10,
             'rojosetup10': rojosetup10,
-            'totales10': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'rojototales10': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup10,
+            'totales10': inventariofinal10 * Constants.CostoInventario1 + ventasperdidas10 * Constants.CostoBackorder1 + setup10,
+            'rojototales10': rojoinventariofinal10 * Constants.CostoInventario1 + rojoventasperdidas10 * Constants.CostoBackorder1 + rojosetup10,
         }
 
 
@@ -1334,24 +1334,24 @@ class Lima12(Page):
         rojoventasperdidas12 = max(Constants.rojoLimaDemanda12 - values['RojoProduccionLima12'] - rojoinventariofinal11, 0)
 
         if values["ProduccionLima12"] > 0:
-            setup12 = 1500
+            setup12 = Constants.SETUP
         else:
             setup12 = 0
 
         if values["RojoProduccionLima12"] > 0:
-            rojosetup12 = 1500
+            rojosetup12 = Constants.SETUP
         else:
             rojosetup12 = 0
 
-        TotalinventarioLima = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * 5
-        TotalinventarioLima = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * 5
+        TotalinventarioLima = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * Constants.CostoInventario1
+        TotalinventarioLima = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario1
         TotalsetupLima = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + setup7 + setup8 + setup9 + setup10 + setup11 + setup12 + rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6 + rojosetup7 + rojosetup8 + rojosetup9 + rojosetup10 + rojosetup11 + rojosetup12
-        TotalventasLima = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * 10
-        TotalventasLima = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * 10
+        TotalventasLima = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * Constants.CostoBackorder1
+        TotalventasLima = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder1
         TotalTotalesLima = TotalinventarioLima + TotalventasLima + TotalsetupLima
 
-        if values["ProduccionLima12"] + values["RojoProduccionLima12"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionLima12"] + values["RojoProduccionLima12"] > Constants.Capacidad:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -1359,14 +1359,14 @@ class Lima12(Page):
             'InvRojo': rojoinventariofinal12,
             'VentaPerdidaAzul': ventasperdidas12,
             'VentaPerdidaRojo': rojoventasperdidas12,
-            'AlmacenamientoAzul': inventariofinal12 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal12 * 5,
-            'CostoPerdidasAzul': ventasperdidas12 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas12 * 10,
+            'AlmacenamientoAzul': inventariofinal12 * Constants.CostoInventario1,
+            'AlmacenamientoRojo': rojoinventariofinal12 * Constants.CostoInventario1,
+            'CostoPerdidasAzul': ventasperdidas12 * Constants.CostoBackorder1,
+            'CostoPerdidasRojo': rojoventasperdidas12 * Constants.CostoBackorder1,
             'SetupAzul': setup12,
             'SetupRojo': rojosetup12,
-            'TotalesAzul': inventariofinal12 * 5 + ventasperdidas12 * 10 + setup12,
-            'TotalesRojo': rojoinventariofinal12 * 5 + rojoventasperdidas12 * 10 + rojosetup12,
+            'TotalesAzul': inventariofinal12 * Constants.CostoInventario1 + ventasperdidas12 * Constants.CostoBackorder1 + setup12,
+            'TotalesRojo': rojoinventariofinal12 * Constants.CostoInventario1 + rojoventasperdidas12 * Constants.CostoBackorder1 + rojosetup12,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -1393,124 +1393,124 @@ class Lima12(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario1,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder1,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario1,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder1,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario1,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder1,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario1 + ventasperdidas8 * Constants.CostoBackorder1 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario1 + rojoventasperdidas8 * Constants.CostoBackorder1 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario1,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder1,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario1 + ventasperdidas9 * Constants.CostoBackorder1 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario1 + rojoventasperdidas9 * Constants.CostoBackorder1 + rojosetup9,
 
             'ventasperdidas10': ventasperdidas10,
             'rojoventasperdidas10': rojoventasperdidas10,
-            'costoalmacenamiento10': inventariofinal10 * 5,
-            'rojocostoalmacenamiento10': rojoinventariofinal10 * 5,
-            'costoventasperdidas10': ventasperdidas10 * 10,
-            'rojocostoventasperdidas10': rojoventasperdidas10 * 10,
+            'costoalmacenamiento10': inventariofinal10 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento10': rojoinventariofinal10 * Constants.CostoInventario1,
+            'costoventasperdidas10': ventasperdidas10 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas10': rojoventasperdidas10 * Constants.CostoBackorder1,
             'setup10': setup10,
             'rojosetup10': rojosetup10,
-            'totales10': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'rojototales10': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup4,
+            'totales10': inventariofinal10 * Constants.CostoInventario1 + ventasperdidas10 * Constants.CostoBackorder1 + setup10,
+            'rojototales10': rojoinventariofinal10 * Constants.CostoInventario1 + rojoventasperdidas10 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas11': ventasperdidas11,
             'rojoventasperdidas11': rojoventasperdidas11,
-            'costoalmacenamiento11': inventariofinal11 * 5,
-            'rojocostoalmacenamiento11': rojoinventariofinal11 * 5,
-            'costoventasperdidas11': ventasperdidas11 * 10,
-            'rojocostoventasperdidas11': rojoventasperdidas11 * 10,
+            'costoalmacenamiento11': inventariofinal11 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento11': rojoinventariofinal11 * Constants.CostoInventario1,
+            'costoventasperdidas11': ventasperdidas11 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas11': rojoventasperdidas11 * Constants.CostoBackorder1,
             'setup11': setup11,
             'rojosetup11': rojosetup11,
-            'totales11': inventariofinal11 * 5 + ventasperdidas11 * 10 + setup11,
-            'rojototales11': rojoinventariofinal11 * 5 + rojoventasperdidas11 * 10 + rojosetup11,
+            'totales11': inventariofinal11 * Constants.CostoInventario1 + ventasperdidas11 * Constants.CostoBackorder1 + setup11,
+            'rojototales11': rojoinventariofinal11 * Constants.CostoInventario1 + rojoventasperdidas11 * Constants.CostoBackorder1 + rojosetup11,
         }
 
 #Costos totales
@@ -1547,135 +1547,135 @@ class ResumenLima(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario1,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder1,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario1 + ventasperdidas1 * Constants.CostoBackorder1 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario1 + rojoventasperdidas1 * Constants.CostoBackorder1 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario1,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder1,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario1,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder1,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario1,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder1,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario1,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder1,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario1,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder1,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario1,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder1,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario1,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder1,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario1 + ventasperdidas8 * Constants.CostoBackorder1 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario1 + rojoventasperdidas8 * Constants.CostoBackorder1 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario1,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder1,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario1 + ventasperdidas9 * Constants.CostoBackorder1 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario1 + rojoventasperdidas9 * Constants.CostoBackorder1 + rojosetup9,
 
             'ventasperdidas10': ventasperdidas10,
             'rojoventasperdidas10': rojoventasperdidas10,
-            'costoalmacenamiento10': inventariofinal10 * 5,
-            'rojocostoalmacenamiento10': rojoinventariofinal10 * 5,
-            'costoventasperdidas10': ventasperdidas10 * 10,
-            'rojocostoventasperdidas10': rojoventasperdidas10 * 10,
+            'costoalmacenamiento10': inventariofinal10 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento10': rojoinventariofinal10 * Constants.CostoInventario1,
+            'costoventasperdidas10': ventasperdidas10 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas10': rojoventasperdidas10 * Constants.CostoBackorder1,
             'setup10': setup10,
             'rojosetup10': rojosetup10,
-            'totales10': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'rojototales10': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup4,
+            'totales10': inventariofinal10 * Constants.CostoInventario1 + ventasperdidas10 * Constants.CostoBackorder1 + setup10,
+            'rojototales10': rojoinventariofinal10 * Constants.CostoInventario1 + rojoventasperdidas10 * Constants.CostoBackorder1 + rojosetup4,
 
             'ventasperdidas11': ventasperdidas11,
             'rojoventasperdidas11': rojoventasperdidas11,
-            'costoalmacenamiento11': inventariofinal11 * 5,
-            'rojocostoalmacenamiento11': rojoinventariofinal11 * 5,
-            'costoventasperdidas11': ventasperdidas11 * 10,
-            'rojocostoventasperdidas11': rojoventasperdidas11 * 10,
+            'costoalmacenamiento11': inventariofinal11 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento11': rojoinventariofinal11 * Constants.CostoInventario1,
+            'costoventasperdidas11': ventasperdidas11 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas11': rojoventasperdidas11 * Constants.CostoBackorder1,
             'setup11': setup11,
             'rojosetup11': rojosetup11,
-            'totales11': inventariofinal11 * 5 + ventasperdidas11 * 10 + setup11,
-            'rojototales11': rojoinventariofinal11 * 5 + rojoventasperdidas11 * 10 + rojosetup11,
+            'totales11': inventariofinal11 * Constants.CostoInventario1 + ventasperdidas11 * Constants.CostoBackorder1 + setup11,
+            'rojototales11': rojoinventariofinal11 * Constants.CostoInventario1 + rojoventasperdidas11 * Constants.CostoBackorder1 + rojosetup11,
 
             'ventasperdidas12': ventasperdidas12,
             'rojoventasperdidas12': rojoventasperdidas12,
-            'costoalmacenamiento12': inventariofinal12 * 5,
-            'rojocostoalmacenamiento12': rojoinventariofinal12 * 5,
-            'costoventasperdidas12': ventasperdidas12 * 10,
-            'rojocostoventasperdidas12': rojoventasperdidas12 * 10,
+            'costoalmacenamiento12': inventariofinal12 * Constants.CostoInventario1,
+            'rojocostoalmacenamiento12': rojoinventariofinal12 * Constants.CostoInventario1,
+            'costoventasperdidas12': ventasperdidas12 * Constants.CostoBackorder1,
+            'rojocostoventasperdidas12': rojoventasperdidas12 * Constants.CostoBackorder1,
             'setup12': setup12,
             'rojosetup12': rojosetup12,
-            'totales12': inventariofinal12 * 5 + ventasperdidas12 * 10 + setup12,
-            'rojototales12': rojoinventariofinal12 * 5 + rojoventasperdidas12 * 10 + rojosetup12,
+            'totales12': inventariofinal12 * Constants.CostoInventario1 + ventasperdidas12 * Constants.CostoBackorder1 + setup12,
+            'rojototales12': rojoinventariofinal12 * Constants.CostoInventario1 + rojoventasperdidas12 * Constants.CostoBackorder1 + rojosetup12,
         }
 
 
@@ -1705,17 +1705,17 @@ class Japon1(Page):
         rojoventasperdidas1 = max(Constants.rojoJaponDemanda1-values['RojoProduccionJapon1']-Constants.inventario_inicialR2, 0)
 
         if values["ProduccionJapon1"]>0:
-            setup1=1500
+            setup1=Constants.SETUP2
         else:
             setup1=0
 
         if values["RojoProduccionJapon1"]>0:
-            rojosetup1=1500
+            rojosetup1=Constants.SETUP2
         else:
             rojosetup1=0
 
-        if values["ProduccionJapon1"] + values["RojoProduccionJapon1"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon1"] + values["RojoProduccionJapon1"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return{
@@ -1723,14 +1723,14 @@ class Japon1(Page):
             'InvRojo': rojoinventariofinal1,
             'VentaPerdidaAzul': ventasperdidas1,
             'VentaPerdidaRojo': rojoventasperdidas1,
-            'AlmacenamientoAzul': inventariofinal1 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal1 * 5,
-            'CostoPerdidasAzul': ventasperdidas1 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas1 * 10,
+            'AlmacenamientoAzul': inventariofinal1 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal1 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas1 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas1 * Constants.CostoBackorder2,
             'SetupAzul': setup1,
             'SetupRojo': rojosetup1,
-            'TotalesAzul': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'TotalesRojo': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'TotalesAzul': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'TotalesRojo': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
         }
 
 
@@ -1756,17 +1756,17 @@ class Japon2(Page):
         rojoventasperdidas2 = max(Constants.rojoJaponDemanda2 - values['RojoProduccionJapon2'] - rojoinventariofinal1, 0)
 
         if values["ProduccionJapon2"] > 0:
-            setup2 = 1500
+            setup2 = Constants.SETUP2
         else:
             setup2 = 0
 
         if values["RojoProduccionJapon2"] > 0:
-            rojosetup2 = 1500
+            rojosetup2 = Constants.SETUP2
         else:
             rojosetup2 = 0
 
-        if values["ProduccionJapon2"] + values["RojoProduccionJapon2"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon2"] + values["RojoProduccionJapon2"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -1774,28 +1774,28 @@ class Japon2(Page):
             'InvRojo': rojoinventariofinal2,
             'VentaPerdidaAzul': ventasperdidas2,
             'VentaPerdidaRojo': rojoventasperdidas2,
-            'AlmacenamientoAzul': inventariofinal2 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal2 * 5,
-            'CostoPerdidasAzul': ventasperdidas2 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas2 * 10,
+            'AlmacenamientoAzul': inventariofinal2 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal2 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas2 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas2 * Constants.CostoBackorder2,
             'SetupAzul': setup2,
             'SetupRojo': rojosetup2,
-            'TotalesAzul': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'TotalesRojo': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'TotalesAzul': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'TotalesRojo': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'inventario2': inventariofinal1,
             'Rojoinventario2': rojoinventariofinal1,
             
             'ventasperdidas1':ventasperdidas1,
             'rojoventasperdidas1':rojoventasperdidas1,
-            'costoalmacenamiento1':inventariofinal1*5,
-            'rojocostoalmacenamiento1':rojoinventariofinal1*5,
-            'costoventasperdidas1':ventasperdidas1*10,
-            'rojocostoventasperdidas1':rojoventasperdidas1*10,
+            'costoalmacenamiento1':inventariofinal1*Constants.CostoInventario2,
+            'rojocostoalmacenamiento1':rojoinventariofinal1*Constants.CostoInventario2,
+            'costoventasperdidas1':ventasperdidas1*Constants.CostoBackorder2,
+            'rojocostoventasperdidas1':rojoventasperdidas1*Constants.CostoBackorder2,
             'setup1':setup1,
             'rojosetup1':rojosetup1,
-            'totales1':inventariofinal1*5+ventasperdidas1*10+setup1,
-            'rojototales1':rojoinventariofinal1*5+rojoventasperdidas1*10+rojosetup1
+            'totales1':inventariofinal1*Constants.CostoInventario2+ventasperdidas1*Constants.CostoBackorder2+setup1,
+            'rojototales1':rojoinventariofinal1*Constants.CostoInventario2+rojoventasperdidas1*Constants.CostoBackorder2+rojosetup1
         }
 
 
@@ -1821,17 +1821,17 @@ class Japon3(Page):
         rojoventasperdidas3 = max(Constants.rojoJaponDemanda3 - values['RojoProduccionJapon3'] - rojoinventariofinal2, 0)
 
         if values["ProduccionJapon3"] > 0:
-            setup3 = 1500
+            setup3 = Constants.SETUP2
         else:
             setup3 = 0
 
         if values["RojoProduccionJapon3"] > 0:
-            rojosetup3 = 1500
+            rojosetup3 = Constants.SETUP2
         else:
             rojosetup3 = 0
 
-        if values["ProduccionJapon3"] + values["RojoProduccionJapon3"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon3"] + values["RojoProduccionJapon3"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
 
     def vars_for_template(self):
@@ -1840,14 +1840,14 @@ class Japon3(Page):
             'InvRojo': rojoinventariofinal3,
             'VentaPerdidaAzul': ventasperdidas3,
             'VentaPerdidaRojo': rojoventasperdidas3,
-            'AlmacenamientoAzul': inventariofinal3 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal3 * 5,
-            'CostoPerdidasAzul': ventasperdidas3 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas3 * 10,
+            'AlmacenamientoAzul': inventariofinal3 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal3 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas3 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas3 * Constants.CostoBackorder2,
             'SetupAzul': setup3,
             'SetupRojo': rojosetup3,
-            'TotalesAzul': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'TotalesRojo': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'TotalesAzul': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'TotalesRojo': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -1856,25 +1856,25 @@ class Japon3(Page):
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
         }
 
@@ -1901,17 +1901,17 @@ class Japon4(Page):
         rojoventasperdidas4 = max(Constants.rojoJaponDemanda4 - values['RojoProduccionJapon4'] - rojoinventariofinal3, 0)
 
         if values["ProduccionJapon4"] > 0:
-            setup4 = 1500
+            setup4 = Constants.SETUP2
         else:
             setup4 = 0
 
         if values["RojoProduccionJapon4"] > 0:
-            rojosetup4 = 1500
+            rojosetup4 = Constants.SETUP2
         else:
             rojosetup4 = 0
 
-        if values["ProduccionJapon4"] + values["RojoProduccionJapon4"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon4"] + values["RojoProduccionJapon4"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return{
@@ -1919,14 +1919,14 @@ class Japon4(Page):
             'InvRojo': rojoinventariofinal4,
             'VentaPerdidaAzul': ventasperdidas4,
             'VentaPerdidaRojo': rojoventasperdidas4,
-            'AlmacenamientoAzul': inventariofinal4 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal4 * 5,
-            'CostoPerdidasAzul': ventasperdidas4 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas4 * 10,
+            'AlmacenamientoAzul': inventariofinal4 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal4 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas4 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas4 * Constants.CostoBackorder2,
             'SetupAzul': setup4,
             'SetupRojo': rojosetup4,
-            'TotalesAzul': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'TotalesRojo': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'TotalesAzul': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'TotalesRojo': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -1937,36 +1937,36 @@ class Japon4(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
         }
 
 class Japon5(Page):
@@ -1991,17 +1991,17 @@ class Japon5(Page):
         rojoventasperdidas5 = max(Constants.rojoJaponDemanda5 - values['RojoProduccionJapon5'] - rojoinventariofinal4, 0)
 
         if values["ProduccionJapon5"] > 0:
-            setup5 = 1500
+            setup5 = Constants.SETUP2
         else:
             setup5 = 0
 
         if values["RojoProduccionJapon5"] > 0:
-            rojosetup5 = 1500
+            rojosetup5 = Constants.SETUP2
         else:
             rojosetup5 = 0
 
-        if values["ProduccionJapon5"] + values["RojoProduccionJapon5"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon5"] + values["RojoProduccionJapon5"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
 
@@ -2010,14 +2010,14 @@ class Japon5(Page):
             'InvRojo': rojoinventariofinal5,
             'VentaPerdidaAzul': ventasperdidas5,
             'VentaPerdidaRojo': rojoventasperdidas5,
-            'AlmacenamientoAzul': inventariofinal5 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal5 * 5,
-            'CostoPerdidasAzul': ventasperdidas5 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas5 * 10,
+            'AlmacenamientoAzul': inventariofinal5 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal5 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas5 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas5 * Constants.CostoBackorder2,
             'SetupAzul': setup5,
             'SetupRojo': rojosetup5,
-            'TotalesAzul': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'TotalesRojo': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'TotalesAzul': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'TotalesRojo': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -2030,47 +2030,47 @@ class Japon5(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
         }
 
 class Japon6(Page):
@@ -2089,8 +2089,8 @@ class Japon6(Page):
     def error_message(self, values):
         global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6,setup6,rojosetup6
 
-        if values["ProduccionJapon6"] + values["RojoProduccionJapon6"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon6"] + values["RojoProduccionJapon6"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
         inventariofinal6 = max(values['ProduccionJapon6'] + inventariofinal5 - Constants.JaponDemanda6, 0)
         rojoinventariofinal6 = max(values['RojoProduccionJapon6'] + rojoinventariofinal5 - Constants.rojoJaponDemanda6, 0)
@@ -2098,26 +2098,26 @@ class Japon6(Page):
         rojoventasperdidas6 = max(Constants.rojoJaponDemanda6 - values['RojoProduccionJapon6'] - rojoinventariofinal5, 0)
 
         if values["ProduccionJapon6"] > 0:
-            setup6 = 1500
+            setup6 = Constants.SETUP2
         else:
             setup6 = 0
 
         if values["RojoProduccionJapon6"] > 0:
-            rojosetup6 = 1500
+            rojosetup6 = Constants.SETUP2
         else:
             rojosetup6= 0
 
         global TotalinventarioJapon, TotalsetupJapon, TotalventasJapon, TotalTotalesJapon
 
-        TotalinventarioJapon = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6) * 5
-        TotalinventarioJapon = TotalinventarioJapon + (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6) * 5
+        TotalinventarioJapon = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6) * Constants.CostoInventario2
+        TotalinventarioJapon = TotalinventarioJapon + (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6) * Constants.CostoInventario2
         TotalsetupJapon = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6
-        TotalventasJapon = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6) * 10
-        TotalventasJapon = TotalventasJapon + (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6) * 10
+        TotalventasJapon = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6) * Constants.CostoBackorder2
+        TotalventasJapon = TotalventasJapon + (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6) * Constants.CostoBackorder2
         TotalTotalesJapon = TotalinventarioJapon + TotalventasJapon + TotalsetupJapon
 
-        if values["ProduccionJapon6"] + values["RojoProduccionJapon6"] > 1500:
-            return 'La produccion no debe pasar de 1500'
+        if values["ProduccionJapon6"] + values["RojoProduccionJapon6"] > Constants.Capacidad2:
+            return 'La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
 
@@ -2126,14 +2126,14 @@ class Japon6(Page):
             'InvRojo': rojoinventariofinal6,
             'VentaPerdidaAzul': ventasperdidas6,
             'VentaPerdidaRojo': rojoventasperdidas6,
-            'AlmacenamientoAzul': inventariofinal6 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal6 * 5,
-            'CostoPerdidasAzul': ventasperdidas6 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas6 * 10,
+            'AlmacenamientoAzul': inventariofinal6 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal6 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas6 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas6 * Constants.CostoBackorder2,
             'SetupAzul': setup6,
             'SetupRojo': rojosetup6,
-            'TotalesAzul': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'TotalesRojo': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'TotalesAzul': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'TotalesRojo': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
 
             'inventario2': inventariofinal1,
@@ -2149,58 +2149,58 @@ class Japon6(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
         }
 
 class Japon7(Page):
@@ -2225,17 +2225,17 @@ class Japon7(Page):
         rojoventasperdidas7 = max(Constants.rojoJaponDemanda7 - values['RojoProduccionJapon7'] - rojoinventariofinal6, 0)
 
         if values["ProduccionJapon7"] > 0:
-            setup7 = 1500
+            setup7 = Constants.SETUP2
         else:
             setup7 = 0
 
         if values["RojoProduccionJapon7"] > 0:
-            rojosetup7 = 1500
+            rojosetup7 = Constants.SETUP2
         else:
             rojosetup7 = 0
 
-        if values["ProduccionJapon7"] + values["RojoProduccionJapon7"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon7"] + values["RojoProduccionJapon7"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return{
@@ -2243,14 +2243,14 @@ class Japon7(Page):
             'InvRojo': rojoinventariofinal7,
             'VentaPerdidaAzul': ventasperdidas7,
             'VentaPerdidaRojo': rojoventasperdidas7,
-            'AlmacenamientoAzul': inventariofinal7 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal7 * 5,
-            'CostoPerdidasAzul': ventasperdidas7 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas7 * 10,
+            'AlmacenamientoAzul': inventariofinal7 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal7 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas7 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas7 * Constants.CostoBackorder2,
             'SetupAzul': setup7,
             'SetupRojo': rojosetup7,
-            'TotalesAzul': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'TotalesRojo': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'TotalesAzul': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
+            'TotalesRojo': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -2267,69 +2267,69 @@ class Japon7(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario2,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder2,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
         }
 
 
@@ -2355,17 +2355,17 @@ class Japon8(Page):
         rojoventasperdidas8 = max(Constants.rojoJaponDemanda8 - values['RojoProduccionJapon8'] - rojoinventariofinal7, 0)
 
         if values["ProduccionJapon8"] > 0:
-            setup8 = 1500
+            setup8 = Constants.SETUP2
         else:
             setup8 = 0
 
         if values["RojoProduccionJapon8"] > 0:
-            rojosetup8 = 1500
+            rojosetup8 = Constants.SETUP2
         else:
             rojosetup8 = 0
 
-        if values["ProduccionJapon8"] + values["RojoProduccionJapon8"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon8"] + values["RojoProduccionJapon8"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
 
     def vars_for_template(self):
@@ -2374,14 +2374,14 @@ class Japon8(Page):
             'InvRojo': rojoinventariofinal8,
             'VentaPerdidaAzul': ventasperdidas8,
             'VentaPerdidaRojo': rojoventasperdidas8,
-            'AlmacenamientoAzul': inventariofinal8 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal8 * 5,
-            'CostoPerdidasAzul': ventasperdidas8 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas8 * 10,
+            'AlmacenamientoAzul': inventariofinal8 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal8 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas8 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas8 * Constants.CostoBackorder2,
             'SetupAzul': setup8,
             'SetupRojo': rojosetup8,
-            'TotalesAzul': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'TotalesRojo': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'TotalesAzul': inventariofinal8 * Constants.CostoInventario2 + ventasperdidas8 * Constants.CostoBackorder2 + setup8,
+            'TotalesRojo': rojoinventariofinal8 * Constants.CostoInventario2 + rojoventasperdidas8 * Constants.CostoBackorder2 + rojosetup8,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -2400,80 +2400,80 @@ class Japon8(Page):
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario2,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder2,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario2,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder2,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
         }
 
 class Japon9(Page):
@@ -2498,17 +2498,17 @@ class Japon9(Page):
         rojoventasperdidas9 = max(Constants.rojoJaponDemanda9 - values['RojoProduccionJapon9'] - rojoinventariofinal8, 0)
 
         if values["ProduccionJapon9"] > 0:
-            setup9 = 1500
+            setup9 = Constants.SETUP2
         else:
             setup9 = 0
 
         if values["RojoProduccionJapon9"] > 0:
-            rojosetup9 = 1500
+            rojosetup9 = Constants.SETUP2
         else:
             rojosetup9 = 0
 
-        if values["ProduccionJapon9"] + values["RojoProduccionJapon9"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon9"] + values["RojoProduccionJapon9"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
 
     def vars_for_template(self):
@@ -2517,14 +2517,14 @@ class Japon9(Page):
             'InvRojo': rojoinventariofinal9,
             'VentaPerdidaAzul': ventasperdidas9,
             'VentaPerdidaRojo': rojoventasperdidas9,
-            'AlmacenamientoAzul': inventariofinal9 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal9 * 5,
-            'CostoPerdidasAzul': ventasperdidas9 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas9 * 10,
+            'AlmacenamientoAzul': inventariofinal9 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal9 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas9 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas9 * Constants.CostoBackorder2,
             'SetupAzul': setup9,
             'SetupRojo': rojosetup9,
-            'TotalesAzul': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'TotalesRojo': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'TotalesAzul': inventariofinal9 * Constants.CostoInventario2 + ventasperdidas9 * Constants.CostoBackorder2 + setup9,
+            'TotalesRojo': rojoinventariofinal9 * Constants.CostoInventario2 + rojoventasperdidas9 * Constants.CostoBackorder2 + rojosetup9,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -2545,102 +2545,102 @@ class Japon9(Page):
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario2,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder2,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario2,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder2,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario2,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder2,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario2 + ventasperdidas8 * Constants.CostoBackorder2 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario2 + rojoventasperdidas8 * Constants.CostoBackorder2 + rojosetup8,
 
         }
 
@@ -2667,17 +2667,17 @@ class Japon10(Page):
         rojoventasperdidas10 = max(Constants.rojoJaponDemanda10 - values['RojoProduccionJapon10'] - rojoinventariofinal9, 0)
 
         if values["ProduccionJapon10"] > 0:
-            setup10 = 1500
+            setup10 = Constants.SETUP2
         else:
             setup10 = 0
 
         if values["RojoProduccionJapon10"] > 0:
-            rojosetup10 = 1500
+            rojosetup10 = Constants.SETUP2
         else:
             rojosetup10 = 0
 
-        if values["ProduccionJapon10"] + values["RojoProduccionJapon10"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon10"] + values["RojoProduccionJapon10"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -2685,14 +2685,14 @@ class Japon10(Page):
             'InvRojo': rojoinventariofinal10,
             'VentaPerdidaAzul': ventasperdidas10,
             'VentaPerdidaRojo': rojoventasperdidas10,
-            'AlmacenamientoAzul': inventariofinal10 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal10 * 5,
-            'CostoPerdidasAzul': ventasperdidas10 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas10 * 10,
+            'AlmacenamientoAzul': inventariofinal10 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal10 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas10 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas10 * Constants.CostoBackorder2,
             'SetupAzul': setup10,
             'SetupRojo': rojosetup10,
-            'TotalesAzul': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'TotalesRojo': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup10,
+            'TotalesAzul': inventariofinal10 * Constants.CostoInventario2 + ventasperdidas10 * Constants.CostoBackorder2 + setup10,
+            'TotalesRojo': rojoinventariofinal10 * Constants.CostoInventario2 + rojoventasperdidas10 * Constants.CostoBackorder2 + rojosetup10,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -2715,113 +2715,113 @@ class Japon10(Page):
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario2,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder2,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario2,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder2,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario2,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder2,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario2 + ventasperdidas8 * Constants.CostoBackorder2 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario2 + rojoventasperdidas8 * Constants.CostoBackorder2 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario2,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder2,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario2 + ventasperdidas9 * Constants.CostoBackorder2 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario2 + rojoventasperdidas9 * Constants.CostoBackorder2 + rojosetup9,
         }
 
 
@@ -2847,17 +2847,17 @@ class Japon11(Page):
         rojoventasperdidas11 = max(Constants.rojoJaponDemanda11 - values['RojoProduccionJapon11'] - rojoinventariofinal10, 0)
 
         if values["ProduccionJapon11"] > 0:
-            setup11 = 1500
+            setup11 = Constants.SETUP2
         else:
             setup11 = 0
 
         if values["RojoProduccionJapon11"] > 0:
-            rojosetup11 = 1500
+            rojosetup11 = Constants.SETUP2
         else:
             rojosetup11 = 0
 
-        if values["ProduccionJapon11"] + values["RojoProduccionJapon11"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon11"] + values["RojoProduccionJapon11"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
 
@@ -2866,14 +2866,14 @@ class Japon11(Page):
             'InvRojo': rojoinventariofinal11,
             'VentaPerdidaAzul': ventasperdidas11,
             'VentaPerdidaRojo': rojoventasperdidas11,
-            'AlmacenamientoAzul': inventariofinal11 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal11 * 5,
-            'CostoPerdidasAzul': ventasperdidas11 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas11 * 10,
+            'AlmacenamientoAzul': inventariofinal11 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal11 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas11 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas11 * Constants.CostoBackorder2,
             'SetupAzul': setup11,
             'SetupRojo': rojosetup11,
-            'TotalesAzul': inventariofinal11 * 5 + ventasperdidas11 * 10 + setup11,
-            'TotalesRojo': rojoinventariofinal11 * 5 + rojoventasperdidas11 * 10 + rojosetup11,
+            'TotalesAzul': inventariofinal11 * Constants.CostoInventario2 + ventasperdidas11 * Constants.CostoBackorder2 + setup11,
+            'TotalesRojo': rojoinventariofinal11 * Constants.CostoInventario2 + rojoventasperdidas11 * Constants.CostoBackorder2 + rojosetup11,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -2898,124 +2898,124 @@ class Japon11(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario2,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder2,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario2,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder2,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario2,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder2,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario2 + ventasperdidas8 * Constants.CostoBackorder2 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario2 + rojoventasperdidas8 * Constants.CostoBackorder2 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario2,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder2,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario2 + ventasperdidas9 * Constants.CostoBackorder2 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario2 + rojoventasperdidas9 * Constants.CostoBackorder2 + rojosetup9,
 
             'ventasperdidas10': ventasperdidas10,
             'rojoventasperdidas10': rojoventasperdidas10,
-            'costoalmacenamiento10': inventariofinal10 * 5,
-            'rojocostoalmacenamiento10': rojoinventariofinal10 * 5,
-            'costoventasperdidas10': ventasperdidas10 * 10,
-            'rojocostoventasperdidas10': rojoventasperdidas10 * 10,
+            'costoalmacenamiento10': inventariofinal10 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento10': rojoinventariofinal10 * Constants.CostoInventario2,
+            'costoventasperdidas10': ventasperdidas10 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas10': rojoventasperdidas10 * Constants.CostoBackorder2,
             'setup10': setup10,
             'rojosetup10': rojosetup10,
-            'totales10': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'rojototales10': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup10,
+            'totales10': inventariofinal10 * Constants.CostoInventario2 + ventasperdidas10 * Constants.CostoBackorder2 + setup10,
+            'rojototales10': rojoinventariofinal10 * Constants.CostoInventario2 + rojoventasperdidas10 * Constants.CostoBackorder2 + rojosetup10,
         }
 
 
@@ -3043,24 +3043,24 @@ class Japon12(Page):
         rojoventasperdidas12 = max(Constants.rojoJaponDemanda12 - values['RojoProduccionJapon12'] - rojoinventariofinal11, 0)
 
         if values["ProduccionJapon12"] > 0:
-            setup12 = 1500
+            setup12 = Constants.SETUP2
         else:
             setup12 = 0
 
         if values["RojoProduccionJapon12"] > 0:
-            rojosetup12 = 1500
+            rojosetup12 = Constants.SETUP2
         else:
             rojosetup12 = 0
 
-        TotalinventarioJapon = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * 5
-        TotalinventarioJapon = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * 5
+        TotalinventarioJapon = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * Constants.CostoInventario2
+        TotalinventarioJapon = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario2
         TotalsetupJapon = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + setup7 + setup8 + setup9 + setup10 + setup11 + setup12 + rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6 + rojosetup7 + rojosetup8 + rojosetup9 + rojosetup10 + rojosetup11 + rojosetup12
-        TotalventasJapon = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * 10
-        TotalventasJapon = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * 10
+        TotalventasJapon = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * Constants.CostoBackorder2
+        TotalventasJapon = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder2
         TotalTotalesJapon = TotalinventarioJapon + TotalventasJapon + TotalsetupJapon
 
-        if values["ProduccionJapon12"] + values["RojoProduccionJapon12"] > 1500:
-            return ' La produccion no debe pasar de 1500'
+        if values["ProduccionJapon12"] + values["RojoProduccionJapon12"] > Constants.Capacidad2:
+            return ' La produccion no debe pasar de la capacidad'
 
     def vars_for_template(self):
         return {
@@ -3068,14 +3068,14 @@ class Japon12(Page):
             'InvRojo': rojoinventariofinal12,
             'VentaPerdidaAzul': ventasperdidas12,
             'VentaPerdidaRojo': rojoventasperdidas12,
-            'AlmacenamientoAzul': inventariofinal12 * 5,
-            'AlmacenamientoRojo': rojoinventariofinal12 * 5,
-            'CostoPerdidasAzul': ventasperdidas12 * 10,
-            'CostoPerdidasRojo': rojoventasperdidas12 * 10,
+            'AlmacenamientoAzul': inventariofinal12 * Constants.CostoInventario2,
+            'AlmacenamientoRojo': rojoinventariofinal12 * Constants.CostoInventario2,
+            'CostoPerdidasAzul': ventasperdidas12 * Constants.CostoBackorder2,
+            'CostoPerdidasRojo': rojoventasperdidas12 * Constants.CostoBackorder2,
             'SetupAzul': setup12,
             'SetupRojo': rojosetup12,
-            'TotalesAzul': inventariofinal12 * 5 + ventasperdidas12 * 10 + setup12,
-            'TotalesRojo': rojoinventariofinal12 * 5 + rojoventasperdidas12 * 10 + rojosetup12,
+            'TotalesAzul': inventariofinal12 * Constants.CostoInventario2 + ventasperdidas12 * Constants.CostoBackorder2 + setup12,
+            'TotalesRojo': rojoinventariofinal12 * Constants.CostoInventario2 + rojoventasperdidas12 * Constants.CostoBackorder2 + rojosetup12,
 
             'inventario2': inventariofinal1,
             'inventario3': inventariofinal2,
@@ -3102,135 +3102,135 @@ class Japon12(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario2,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder2,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario2,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder2,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario2,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder2,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario2 + ventasperdidas8 * Constants.CostoBackorder2 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario2 + rojoventasperdidas8 * Constants.CostoBackorder2 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario2,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder2,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario2 + ventasperdidas9 * Constants.CostoBackorder2 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario2 + rojoventasperdidas9 * Constants.CostoBackorder2 + rojosetup9,
 
             'ventasperdidas10': ventasperdidas10,
             'rojoventasperdidas10': rojoventasperdidas10,
-            'costoalmacenamiento10': inventariofinal10 * 5,
-            'rojocostoalmacenamiento10': rojoinventariofinal10 * 5,
-            'costoventasperdidas10': ventasperdidas10 * 10,
-            'rojocostoventasperdidas10': rojoventasperdidas10 * 10,
+            'costoalmacenamiento10': inventariofinal10 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento10': rojoinventariofinal10 * Constants.CostoInventario2,
+            'costoventasperdidas10': ventasperdidas10 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas10': rojoventasperdidas10 * Constants.CostoBackorder2,
             'setup10': setup10,
             'rojosetup10': rojosetup10,
-            'totales10': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'rojototales10': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup4,
+            'totales10': inventariofinal10 * Constants.CostoInventario2 + ventasperdidas10 * Constants.CostoBackorder2 + setup10,
+            'rojototales10': rojoinventariofinal10 * Constants.CostoInventario2 + rojoventasperdidas10 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas11': ventasperdidas11,
             'rojoventasperdidas11': rojoventasperdidas11,
-            'costoalmacenamiento11': inventariofinal11 * 5,
-            'rojocostoalmacenamiento11': rojoinventariofinal11 * 5,
-            'costoventasperdidas11': ventasperdidas11 * 10,
-            'rojocostoventasperdidas11': rojoventasperdidas11 * 10,
+            'costoalmacenamiento11': inventariofinal11 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento11': rojoinventariofinal11 * Constants.CostoInventario2,
+            'costoventasperdidas11': ventasperdidas11 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas11': rojoventasperdidas11 * Constants.CostoBackorder2,
             'setup11': setup11,
             'rojosetup11': rojosetup11,
-            'totales11': inventariofinal11 * 5 + ventasperdidas11 * 10 + setup11,
-            'rojototales11': rojoinventariofinal11 * 5 + rojoventasperdidas11 * 10 + rojosetup11,
+            'totales11': inventariofinal11 * Constants.CostoInventario2 + ventasperdidas11 * Constants.CostoBackorder2 + setup11,
+            'rojototales11': rojoinventariofinal11 * Constants.CostoInventario2 + rojoventasperdidas11 * Constants.CostoBackorder2 + rojosetup11,
         }
 
 class ResumenJapon(Page):
@@ -3265,135 +3265,135 @@ class ResumenJapon(Page):
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
-            'costoalmacenamiento1': inventariofinal1 * 5,
-            'rojocostoalmacenamiento1': rojoinventariofinal1 * 5,
-            'costoventasperdidas1': ventasperdidas1 * 10,
-            'rojocostoventasperdidas1': rojoventasperdidas1 * 10,
+            'costoalmacenamiento1': inventariofinal1 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento1': rojoinventariofinal1 * Constants.CostoInventario2,
+            'costoventasperdidas1': ventasperdidas1 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas1': rojoventasperdidas1 * Constants.CostoBackorder2,
             'setup1': setup1,
             'rojosetup1': rojosetup1,
-            'totales1': inventariofinal1 * 5 + ventasperdidas1 * 10 + setup1,
-            'rojototales1': rojoinventariofinal1 * 5 + rojoventasperdidas1 * 10 + rojosetup1,
+            'totales1': inventariofinal1 * Constants.CostoInventario2 + ventasperdidas1 * Constants.CostoBackorder2 + setup1,
+            'rojototales1': rojoinventariofinal1 * Constants.CostoInventario2 + rojoventasperdidas1 * Constants.CostoBackorder2 + rojosetup1,
 
             'ventasperdidas2': ventasperdidas2,
             'rojoventasperdidas2': rojoventasperdidas2,
-            'costoalmacenamiento2': inventariofinal2 * 5,
-            'rojocostoalmacenamiento2': rojoinventariofinal2 * 5,
-            'costoventasperdidas2': ventasperdidas2 * 10,
-            'rojocostoventasperdidas2': rojoventasperdidas2 * 10,
+            'costoalmacenamiento2': inventariofinal2 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento2': rojoinventariofinal2 * Constants.CostoInventario2,
+            'costoventasperdidas2': ventasperdidas2 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas2': rojoventasperdidas2 * Constants.CostoBackorder2,
             'setup2': setup2,
             'rojosetup2': rojosetup2,
-            'totales2': inventariofinal2 * 5 + ventasperdidas2 * 10 + setup2,
-            'rojototales2': rojoinventariofinal2 * 5 + rojoventasperdidas2 * 10 + rojosetup2,
+            'totales2': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
+            'rojototales2': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
             'ventasperdidas3': ventasperdidas3,
             'rojoventasperdidas3': rojoventasperdidas3,
-            'costoalmacenamiento3': inventariofinal3 * 5,
-            'rojocostoalmacenamiento3': rojoinventariofinal3 * 5,
-            'costoventasperdidas3': ventasperdidas3 * 10,
-            'rojocostoventasperdidas3': rojoventasperdidas3 * 10,
+            'costoalmacenamiento3': inventariofinal3 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento3': rojoinventariofinal3 * Constants.CostoInventario2,
+            'costoventasperdidas3': ventasperdidas3 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas3': rojoventasperdidas3 * Constants.CostoBackorder2,
             'setup3': setup3,
             'rojosetup3': rojosetup3,
-            'totales3': inventariofinal3 * 5 + ventasperdidas3 * 10 + setup3,
-            'rojototales3': rojoinventariofinal3 * 5 + rojoventasperdidas3 * 10 + rojosetup3,
+            'totales3': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
+            'rojototales3': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
             'ventasperdidas4': ventasperdidas4,
             'rojoventasperdidas4': rojoventasperdidas4,
-            'costoalmacenamiento4': inventariofinal4 * 5,
-            'rojocostoalmacenamiento4': rojoinventariofinal4 * 5,
-            'costoventasperdidas4': ventasperdidas4 * 10,
-            'rojocostoventasperdidas4': rojoventasperdidas4 * 10,
+            'costoalmacenamiento4': inventariofinal4 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento4': rojoinventariofinal4 * Constants.CostoInventario2,
+            'costoventasperdidas4': ventasperdidas4 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas4': rojoventasperdidas4 * Constants.CostoBackorder2,
             'setup4': setup4,
             'rojosetup4': rojosetup4,
-            'totales4': inventariofinal4 * 5 + ventasperdidas4 * 10 + setup4,
-            'rojototales4': rojoinventariofinal4 * 5 + rojoventasperdidas4 * 10 + rojosetup4,
+            'totales4': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
+            'rojototales4': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas5': ventasperdidas5,
             'rojoventasperdidas5': rojoventasperdidas5,
-            'costoalmacenamiento5': inventariofinal5 * 5,
-            'rojocostoalmacenamiento5': rojoinventariofinal5 * 5,
-            'costoventasperdidas5': ventasperdidas5 * 10,
-            'rojocostoventasperdidas5': rojoventasperdidas5 * 10,
+            'costoalmacenamiento5': inventariofinal5 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento5': rojoinventariofinal5 * Constants.CostoInventario2,
+            'costoventasperdidas5': ventasperdidas5 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas5': rojoventasperdidas5 * Constants.CostoBackorder2,
             'setup5': setup5,
             'rojosetup5': rojosetup5,
-            'totales5': inventariofinal5 * 5 + ventasperdidas5 * 10 + setup5,
-            'rojototales5': rojoinventariofinal5 * 5 + rojoventasperdidas5 * 10 + rojosetup5,
+            'totales5': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
+            'rojototales5': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
             'ventasperdidas6': ventasperdidas6,
             'rojoventasperdidas6': rojoventasperdidas6,
-            'costoalmacenamiento6': inventariofinal6 * 5,
-            'rojocostoalmacenamiento6': rojoinventariofinal6 * 5,
-            'costoventasperdidas6': ventasperdidas6 * 10,
-            'rojocostoventasperdidas6': rojoventasperdidas6 * 10,
+            'costoalmacenamiento6': inventariofinal6 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento6': rojoinventariofinal6 * Constants.CostoInventario2,
+            'costoventasperdidas6': ventasperdidas6 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas6': rojoventasperdidas6 * Constants.CostoBackorder2,
             'setup6': setup6,
             'rojosetup6': rojosetup6,
-            'totales6': inventariofinal6 * 5 + ventasperdidas6 * 10 + setup6,
-            'rojototales6': rojoinventariofinal6 * 5 + rojoventasperdidas6 * 10 + rojosetup6,
+            'totales6': inventariofinal6 * Constants.CostoInventario2 + ventasperdidas6 * Constants.CostoBackorder2 + setup6,
+            'rojototales6': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
             'ventasperdidas7': ventasperdidas7,
             'rojoventasperdidas7': rojoventasperdidas7,
-            'costoalmacenamiento7': inventariofinal7 * 5,
-            'rojocostoalmacenamiento7': rojoinventariofinal7 * 5,
-            'costoventasperdidas7': ventasperdidas7 * 10,
-            'rojocostoventasperdidas7': rojoventasperdidas7 * 10,
+            'costoalmacenamiento7': inventariofinal7 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento7': rojoinventariofinal7 * Constants.CostoInventario2,
+            'costoventasperdidas7': ventasperdidas7 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas7': rojoventasperdidas7 * Constants.CostoBackorder2,
             'setup7': setup7,
             'rojosetup7': rojosetup7,
-            'totales7': inventariofinal7 * 5 + ventasperdidas7 * 10 + setup7,
-            'rojototales7': rojoinventariofinal7 * 5 + rojoventasperdidas7 * 10 + rojosetup7,
+            'totales7': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
+            'rojototales7': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
 
             'ventasperdidas8': ventasperdidas8,
             'rojoventasperdidas8': rojoventasperdidas8,
-            'costoalmacenamiento8': inventariofinal8 * 5,
-            'rojocostoalmacenamiento8': rojoinventariofinal8 * 5,
-            'costoventasperdidas8': ventasperdidas8 * 10,
-            'rojocostoventasperdidas8': rojoventasperdidas8 * 10,
+            'costoalmacenamiento8': inventariofinal8 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento8': rojoinventariofinal8 * Constants.CostoInventario2,
+            'costoventasperdidas8': ventasperdidas8 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas8': rojoventasperdidas8 * Constants.CostoBackorder2,
             'setup8': setup8,
             'rojosetup8': rojosetup8,
-            'totales8': inventariofinal8 * 5 + ventasperdidas8 * 10 + setup8,
-            'rojototales8': rojoinventariofinal8 * 5 + rojoventasperdidas8 * 10 + rojosetup8,
+            'totales8': inventariofinal8 * Constants.CostoInventario2 + ventasperdidas8 * Constants.CostoBackorder2 + setup8,
+            'rojototales8': rojoinventariofinal8 * Constants.CostoInventario2 + rojoventasperdidas8 * Constants.CostoBackorder2 + rojosetup8,
 
             'ventasperdidas9': ventasperdidas9,
             'rojoventasperdidas9': rojoventasperdidas9,
-            'costoalmacenamiento9': inventariofinal9 * 5,
-            'rojocostoalmacenamiento9': rojoinventariofinal9 * 5,
-            'costoventasperdidas9': ventasperdidas9 * 10,
-            'rojocostoventasperdidas9': rojoventasperdidas9 * 10,
+            'costoalmacenamiento9': inventariofinal9 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento9': rojoinventariofinal9 * Constants.CostoInventario2,
+            'costoventasperdidas9': ventasperdidas9 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas9': rojoventasperdidas9 * Constants.CostoBackorder2,
             'setup9': setup9,
             'rojosetup9': rojosetup9,
-            'totales9': inventariofinal9 * 5 + ventasperdidas9 * 10 + setup9,
-            'rojototales9': rojoinventariofinal9 * 5 + rojoventasperdidas9 * 10 + rojosetup9,
+            'totales9': inventariofinal9 * Constants.CostoInventario2 + ventasperdidas9 * Constants.CostoBackorder2 + setup9,
+            'rojototales9': rojoinventariofinal9 * Constants.CostoInventario2 + rojoventasperdidas9 * Constants.CostoBackorder2 + rojosetup9,
 
             'ventasperdidas10': ventasperdidas10,
             'rojoventasperdidas10': rojoventasperdidas10,
-            'costoalmacenamiento10': inventariofinal10 * 5,
-            'rojocostoalmacenamiento10': rojoinventariofinal10 * 5,
-            'costoventasperdidas10': ventasperdidas10 * 10,
-            'rojocostoventasperdidas10': rojoventasperdidas10 * 10,
+            'costoalmacenamiento10': inventariofinal10 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento10': rojoinventariofinal10 * Constants.CostoInventario2,
+            'costoventasperdidas10': ventasperdidas10 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas10': rojoventasperdidas10 * Constants.CostoBackorder2,
             'setup10': setup10,
             'rojosetup10': rojosetup10,
-            'totales10': inventariofinal10 * 5 + ventasperdidas10 * 10 + setup10,
-            'rojototales10': rojoinventariofinal10 * 5 + rojoventasperdidas10 * 10 + rojosetup4,
+            'totales10': inventariofinal10 * Constants.CostoInventario2 + ventasperdidas10 * Constants.CostoBackorder2 + setup10,
+            'rojototales10': rojoinventariofinal10 * Constants.CostoInventario2 + rojoventasperdidas10 * Constants.CostoBackorder2 + rojosetup4,
 
             'ventasperdidas11': ventasperdidas11,
             'rojoventasperdidas11': rojoventasperdidas11,
-            'costoalmacenamiento11': inventariofinal11 * 5,
-            'rojocostoalmacenamiento11': rojoinventariofinal11 * 5,
-            'costoventasperdidas11': ventasperdidas11 * 10,
-            'rojocostoventasperdidas11': rojoventasperdidas11 * 10,
+            'costoalmacenamiento11': inventariofinal11 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento11': rojoinventariofinal11 * Constants.CostoInventario2,
+            'costoventasperdidas11': ventasperdidas11 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas11': rojoventasperdidas11 * Constants.CostoBackorder2,
             'setup11': setup11,
             'rojosetup11': rojosetup11,
-            'totales11': inventariofinal11 * 5 + ventasperdidas11 * 10 + setup11,
-            'rojototales11': rojoinventariofinal11 * 5 + rojoventasperdidas11 * 10 + rojosetup11,
+            'totales11': inventariofinal11 * Constants.CostoInventario2 + ventasperdidas11 * Constants.CostoBackorder2 + setup11,
+            'rojototales11': rojoinventariofinal11 * Constants.CostoInventario2 + rojoventasperdidas11 * Constants.CostoBackorder2 + rojosetup11,
 
             'ventasperdidas12': ventasperdidas12,
             'rojoventasperdidas12': rojoventasperdidas12,
-            'costoalmacenamiento12': inventariofinal12 * 5,
-            'rojocostoalmacenamiento12': rojoinventariofinal12 * 5,
-            'costoventasperdidas12': ventasperdidas12 * 10,
-            'rojocostoventasperdidas12': rojoventasperdidas12 * 10,
+            'costoalmacenamiento12': inventariofinal12 * Constants.CostoInventario2,
+            'rojocostoalmacenamiento12': rojoinventariofinal12 * Constants.CostoInventario2,
+            'costoventasperdidas12': ventasperdidas12 * Constants.CostoBackorder2,
+            'rojocostoventasperdidas12': rojoventasperdidas12 * Constants.CostoBackorder2,
             'setup12': setup12,
             'rojosetup12': rojosetup12,
-            'totales12': inventariofinal12 * 5 + ventasperdidas12 * 10 + setup12,
-            'rojototales12': rojoinventariofinal12 * 5 + rojoventasperdidas12 * 10 + rojosetup12,
+            'totales12': inventariofinal12 * Constants.CostoInventario2 + ventasperdidas12 * Constants.CostoBackorder2 + setup12,
+            'rojototales12': rojoinventariofinal12 * Constants.CostoInventario2 + rojoventasperdidas12 * Constants.CostoBackorder2 + rojosetup12,
         }
 
 

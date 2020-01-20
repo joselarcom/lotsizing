@@ -14,6 +14,22 @@ Simulador de planeamiento
 class Constants(BaseConstants):
     name_in_url = 'JUEGOSIMULADOR'
     players_per_group = None
+
+    Capacidad = 1500
+    Capacidad2 = 1500
+
+    SETUP = 1500
+    SETUP2 = 1500
+
+    CostoProducto1 = 5.03
+    CostoProducto2 = 5.03
+
+    CostoInventario1 = 3
+    CostoInventario2 = 3
+
+    CostoBackorder1 = 14
+    CostoBackorder2 = 14
+
     num_rounds = 1
     inventario_inicial = 1000
     inventario_inicialR = 1000
