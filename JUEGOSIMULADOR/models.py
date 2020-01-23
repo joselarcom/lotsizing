@@ -18,8 +18,8 @@ class Constants(BaseConstants):
     Capacidad = 1500
     Capacidad2 = 1500
 
-    SETUP = 1500
-    SETUP2 = 1500
+    SETUP = 0
+    SETUP2 = 0
 
     CostoProducto1 = 5.03
     CostoProducto2 = 5.03

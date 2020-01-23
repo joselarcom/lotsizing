@@ -38,20 +38,23 @@ class Lima1(Page):
 
     def error_message(self, values):
 
-        global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
+        global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1,Binventariofinal1,Brojoinventariofinal1
 
-        inventariofinal1 = max(values['ProduccionLima1']+Constants.inventario_inicial-Constants.LimaDemanda1, 0)
+
+        Binventariofinal1 = values['ProduccionLima1']+Constants.inventario_inicial-Constants.LimaDemanda1
+        Brojoinventariofinal1 = values['RojoProduccionLima1']+Constants.inventario_inicialR-Constants.rojoLimaDemanda1
+        inventariofinal1 = max(values['ProduccionLima1']+Constants.inventario_inicial-Constants.LimaDemanda1,0)
         rojoinventariofinal1 = max(values['RojoProduccionLima1']+Constants.inventario_inicialR-Constants.rojoLimaDemanda1, 0)
         ventasperdidas1 = max(Constants.LimaDemanda1-values['ProduccionLima1']-Constants.inventario_inicial, 0)
         rojoventasperdidas1 = max(Constants.rojoLimaDemanda1-values['RojoProduccionLima1']-Constants.inventario_inicialR, 0)
 
         if values["ProduccionLima1"]>0:
-            setup1= Constants.SETUP
+            setup1= Constants.CostoProducto1*values['ProduccionLima1']
         else:
             setup1=0
 
         if values["RojoProduccionLima1"]>0:
-            rojosetup1=Constants.SETUP
+            rojosetup1=Constants.CostoProducto1*values['RojoProduccionLima1']
         else:
             rojosetup1=0
 
@@ -77,7 +80,7 @@ class Lima1(Page):
 class Lima2(Page):
     form_model = 'player'
     form_fields = ['ProduccionLima2','RojoProduccionLima2']
-    global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2
+    global inventariofinal2, rojoinventariofinal2, ventasperdidas2, rojoventasperdidas2, setup2, rojosetup2,Binventariofinal2,Brojoinventariofinal2
     inventariofinal2 = 0
     rojoinventariofinal2 = 0
     ventasperdidas2 = 0
@@ -86,20 +89,22 @@ class Lima2(Page):
     rojosetup2 = 0
 
     def error_message(self, values):
-        global inventariofinal2,rojoinventariofinal2,ventasperdidas2,rojoventasperdidas2,setup2,rojosetup2
+        global inventariofinal2,rojoinventariofinal2,ventasperdidas2,rojoventasperdidas2,setup2,rojosetup2,Binventariofinal2,Brojoinventariofinal2
 
-        inventariofinal2 = max(values['ProduccionLima2'] + inventariofinal1 - Constants.LimaDemanda2, 0)
-        rojoinventariofinal2 = max(values['RojoProduccionLima2'] + rojoinventariofinal1 - Constants.rojoLimaDemanda2, 0)
-        ventasperdidas2 = max(Constants.LimaDemanda2 - values['ProduccionLima2'] - inventariofinal1, 0)
-        rojoventasperdidas2 = max(Constants.rojoLimaDemanda2 - values['RojoProduccionLima2'] - rojoinventariofinal1, 0)
+        Binventariofinal2 = values['ProduccionLima2'] + Binventariofinal1 - Constants.LimaDemanda2
+        Brojoinventariofinal2 = values['RojoProduccionLima2'] + Brojoinventariofinal1 - Constants.rojoLimaDemanda2
+        inventariofinal2 = max(values['ProduccionLima2'] + Binventariofinal1 - Constants.LimaDemanda2,0)
+        rojoinventariofinal2 = max(values['RojoProduccionLima2'] + Brojoinventariofinal1 - Constants.rojoLimaDemanda2, 0)
+        ventasperdidas2 = max(Constants.LimaDemanda2 - values['ProduccionLima2'] - Binventariofinal1, 0)
+        rojoventasperdidas2 = max(Constants.rojoLimaDemanda2 - values['RojoProduccionLima2'] - Brojoinventariofinal1, 0)
 
         if values["ProduccionLima2"] > 0:
-            setup2 = Constants.SETUP
+            setup2 = Constants.CostoProducto1*values['ProduccionLima2']
         else:
             setup2 = 0
 
         if values["RojoProduccionLima2"] > 0:
-            rojosetup2 = Constants.SETUP
+            rojosetup2 = Constants.CostoProducto1*values['RojoProduccionLima2']
         else:
             rojosetup2 = 0
 
@@ -121,8 +126,8 @@ class Lima2(Page):
             'TotalesAzul': inventariofinal2 * Constants.CostoInventario1 + ventasperdidas2 * Constants.CostoBackorder1 + setup2,
             'TotalesRojo': rojoinventariofinal2 * Constants.CostoInventario1 + rojoventasperdidas2 * Constants.CostoBackorder1 + rojosetup2,
 
-            'inventario2': inventariofinal1,
-            'Rojoinventario2': rojoinventariofinal1,
+            'inventario2': Binventariofinal1,
+            'Rojoinventario2': Brojoinventariofinal1,
 
             'ventasperdidas1':ventasperdidas1,
             'rojoventasperdidas1':rojoventasperdidas1,
@@ -149,20 +154,22 @@ class Lima3(Page):
     rojosetup3 = 0
 
     def error_message(self, values):
-        global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3,setup3,rojosetup3
+        global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3,setup3,rojosetup3,Binventariofinal3,Brojoinventariofinal3
 
-        inventariofinal3 = max(values['ProduccionLima3'] + inventariofinal2 - Constants.LimaDemanda3, 0)
-        rojoinventariofinal3 = max(values['RojoProduccionLima3'] + rojoinventariofinal2 - Constants.rojoLimaDemanda3, 0)
-        ventasperdidas3 = max(Constants.LimaDemanda3 - values['ProduccionLima3'] - inventariofinal2, 0)
-        rojoventasperdidas3 = max(Constants.rojoLimaDemanda3 - values['RojoProduccionLima3'] - rojoinventariofinal2, 0)
+        Binventariofinal3 = values['ProduccionLima3'] + Binventariofinal2 - Constants.LimaDemanda3
+        Brojoinventariofinal3 = values['RojoProduccionLima3'] + Brojoinventariofinal2 - Constants.rojoLimaDemanda3
+        inventariofinal3 = max(values['ProduccionLima3'] + Binventariofinal2 - Constants.LimaDemanda3,0)
+        rojoinventariofinal3 = max(values['RojoProduccionLima3'] + Brojoinventariofinal2 - Constants.rojoLimaDemanda3, 0)
+        ventasperdidas3 = max(Constants.LimaDemanda3 - values['ProduccionLima3'] - Binventariofinal2, 0)
+        rojoventasperdidas3 = max(Constants.rojoLimaDemanda3 - values['RojoProduccionLima3'] - Brojoinventariofinal2, 0)
 
         if values["ProduccionLima3"] > 0:
-            setup3 = Constants.SETUP
+            setup3 = Constants.CostoProducto1*values['ProduccionLima3']
         else:
             setup3 = 0
 
         if values["RojoProduccionLima3"] > 0:
-            rojosetup3 = Constants.SETUP
+            rojosetup3 = Constants.CostoProducto1*values['RojoProduccionLima3']
         else:
             rojosetup3 = 0
         
@@ -184,10 +191,10 @@ class Lima3(Page):
             'TotalesAzul': inventariofinal3 * Constants.CostoInventario1 + ventasperdidas3 * Constants.CostoBackorder1 + setup3,
             'TotalesRojo': rojoinventariofinal3 * Constants.CostoInventario1 + rojoventasperdidas3 * Constants.CostoBackorder1 + rojosetup3,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -225,20 +232,23 @@ class Lima4(Page):
     rojosetup4 = 0
 
     def error_message(self, values):
-        global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4,setup4,rojosetup4
+        global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4,setup4,rojosetup4,Binventariofinal4,Brojoinventariofinal4
 
-        inventariofinal4 = max(values['ProduccionLima4'] + inventariofinal3 - Constants.LimaDemanda4, 0)
-        rojoinventariofinal4 = max(values['RojoProduccionLima4'] + rojoinventariofinal3 - Constants.rojoLimaDemanda4, 0)
-        ventasperdidas4 = max(Constants.LimaDemanda4 - values['ProduccionLima4'] - inventariofinal3, 0)
-        rojoventasperdidas4 = max(Constants.rojoLimaDemanda4 - values['RojoProduccionLima4'] - rojoinventariofinal3, 0)
+
+        Binventariofinal4 = values['ProduccionLima4'] + Binventariofinal3 - Constants.LimaDemanda4
+        Brojoinventariofinal4 = values['RojoProduccionLima4'] + Brojoinventariofinal3 - Constants.rojoLimaDemanda4
+        inventariofinal4 = max(values['ProduccionLima4'] + Binventariofinal3 - Constants.LimaDemanda4,0)
+        rojoinventariofinal4 = max(values['RojoProduccionLima4'] + Brojoinventariofinal3 - Constants.rojoLimaDemanda4, 0)
+        ventasperdidas4 = max(Constants.LimaDemanda4 - values['ProduccionLima4'] - Binventariofinal3, 0)
+        rojoventasperdidas4 = max(Constants.rojoLimaDemanda4 - values['RojoProduccionLima4'] - Brojoinventariofinal3, 0)
 
         if values["ProduccionLima4"] > 0:
-            setup4 = Constants.SETUP
+            setup4 = Constants.CostoProducto1*values['ProduccionLima4']
         else:
             setup4 = 0
 
         if values["RojoProduccionLima4"] > 0:
-            rojosetup4 = Constants.SETUP
+            rojosetup4 = Constants.CostoProducto1*values['RojoProduccionLima4']
         else:
             rojosetup4 = 0
 
@@ -261,12 +271,12 @@ class Lima4(Page):
             'TotalesAzul': inventariofinal4 * Constants.CostoInventario1 + ventasperdidas4 * Constants.CostoBackorder1 + setup4,
             'TotalesRojo': rojoinventariofinal4 * Constants.CostoInventario1 + rojoventasperdidas4 * Constants.CostoBackorder1 + rojosetup4,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -314,20 +324,22 @@ class Lima5(Page):
     rojosetup5 = 0
 
     def error_message(self, values):
-        global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5,setup5,rojosetup5
+        global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5,setup5,rojosetup5,Binventariofinal5,Brojoinventariofinal5
 
-        inventariofinal5 = max(values['ProduccionLima5'] + inventariofinal4 - Constants.LimaDemanda5, 0)
-        rojoinventariofinal5 = max(values['RojoProduccionLima5'] + rojoinventariofinal4 - Constants.rojoLimaDemanda5, 0)
-        ventasperdidas5 = max(Constants.LimaDemanda5 - values['ProduccionLima5'] - inventariofinal4, 0)
-        rojoventasperdidas5 = max(Constants.rojoLimaDemanda5 - values['RojoProduccionLima5'] - rojoinventariofinal4, 0)
+        Binventariofinal5 = values['ProduccionLima5'] + Binventariofinal4 - Constants.LimaDemanda5
+        Brojoinventariofinal5 = values['RojoProduccionLima5'] + Brojoinventariofinal4 - Constants.rojoLimaDemanda5
+        inventariofinal5 = max(values['ProduccionLima5'] + Binventariofinal4 - Constants.LimaDemanda5, 0)
+        rojoinventariofinal5 = max(values['RojoProduccionLima5'] + Brojoinventariofinal4 - Constants.rojoLimaDemanda5, 0)
+        ventasperdidas5 = max(Constants.LimaDemanda5 - values['ProduccionLima5'] - Binventariofinal4, 0)
+        rojoventasperdidas5 = max(Constants.rojoLimaDemanda5 - values['RojoProduccionLima5'] - Brojoinventariofinal4, 0)
 
         if values["ProduccionLima5"] > 0:
-            setup5 = Constants.SETUP
+            setup5 = Constants.CostoProducto1*values['ProduccionLima5']
         else:
             setup5 = 0
 
         if values["RojoProduccionLima5"] > 0:
-            rojosetup5 = Constants.SETUP
+            rojosetup5 = Constants.CostoProducto1*values['RojoProduccionLima5']
         else:
             rojosetup5 = 0
 
@@ -351,14 +363,14 @@ class Lima5(Page):
             'TotalesAzul': inventariofinal5 * Constants.CostoInventario1 + ventasperdidas5 * Constants.CostoBackorder1 + setup5,
             'TotalesRojo': rojoinventariofinal5 * Constants.CostoInventario1 + rojoventasperdidas5 * Constants.CostoBackorder1 + rojosetup5,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -417,20 +429,23 @@ class Lima6(Page):
     rojosetup6 = 0
 
     def error_message(self, values):
-        global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6,setup6,rojosetup6
+        global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6,setup6,rojosetup6,Binventariofinal6,Brojoinventariofinal6
 
-        inventariofinal6 = max(values['ProduccionLima6'] + inventariofinal5 - Constants.LimaDemanda6, 0)
-        rojoinventariofinal6 = max(values['RojoProduccionLima6'] + rojoinventariofinal5 - Constants.rojoLimaDemanda6, 0)
-        ventasperdidas6 = max(Constants.LimaDemanda6 - values['ProduccionLima6'] - inventariofinal5, 0)
-        rojoventasperdidas6 = max(Constants.rojoLimaDemanda6 - values['RojoProduccionLima6'] - rojoinventariofinal5, 0)
+
+        Binventariofinal6 = values['ProduccionLima6'] + Binventariofinal5 - Constants.LimaDemanda6
+        Brojoinventariofinal6 = values['RojoProduccionLima6'] + Brojoinventariofinal5 - Constants.rojoLimaDemanda6
+        inventariofinal6 = max(values['ProduccionLima6'] + Binventariofinal5 - Constants.LimaDemanda6, 0)
+        rojoinventariofinal6 = max(values['RojoProduccionLima6'] + Brojoinventariofinal5 - Constants.rojoLimaDemanda6, 0)
+        ventasperdidas6 = max(Constants.LimaDemanda6 - values['ProduccionLima6'] - Binventariofinal5, 0)
+        rojoventasperdidas6 = max(Constants.rojoLimaDemanda6 - values['RojoProduccionLima6'] - Brojoinventariofinal5, 0)
 
         if values["ProduccionLima6"] > 0:
-            setup6 = Constants.SETUP
+            setup6 = Constants.CostoProducto1*values['ProduccionLima6']
         else:
             setup6 = 0
 
         if values["RojoProduccionLima6"] > 0:
-            rojosetup6 = Constants.SETUP
+            rojosetup6 = Constants.CostoProducto1*values['RojoProduccionLima6']
         else:
             rojosetup6= 0
 
@@ -462,16 +477,16 @@ class Lima6(Page):
             'TotalesAzul': inventariofinal6 * Constants.CostoInventario1 + ventasperdidas6 * Constants.CostoBackorder1 + setup6,
             'TotalesRojo': rojoinventariofinal6 * Constants.CostoInventario1 + rojoventasperdidas6 * Constants.CostoBackorder1 + rojosetup6,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -542,20 +557,22 @@ class Lima7(Page):
     rojosetup7 = 0
 
     def error_message(self, values):
-        global inventariofinal7, rojoinventariofinal7, ventasperdidas7, rojoventasperdidas7, setup7, rojosetup7
+        global inventariofinal7, rojoinventariofinal7, ventasperdidas7, rojoventasperdidas7, setup7, rojosetup7,Binventariofinal7,Brojoinventariofinal7
 
-        inventariofinal7 = max(values['ProduccionLima7'] + inventariofinal6 - Constants.LimaDemanda7, 0)
-        rojoinventariofinal7 = max(values['RojoProduccionLima7'] + rojoinventariofinal6 - Constants.rojoLimaDemanda7, 0)
-        ventasperdidas7 = max(Constants.LimaDemanda7 - values['ProduccionLima7'] - inventariofinal6, 0)
-        rojoventasperdidas7 = max(Constants.rojoLimaDemanda7 - values['RojoProduccionLima7'] - rojoinventariofinal6, 0)
+        Binventariofinal7 = values['ProduccionLima7'] + Binventariofinal6 - Constants.LimaDemanda7
+        Brojoinventariofinal7 = values['RojoProduccionLima7'] + Brojoinventariofinal6 - Constants.rojoLimaDemanda7
+        inventariofinal7 = max(values['ProduccionLima7'] + Binventariofinal6 - Constants.LimaDemanda7, 0)
+        rojoinventariofinal7 = max(values['RojoProduccionLima7'] + Brojoinventariofinal6 - Constants.rojoLimaDemanda7, 0)
+        ventasperdidas7 = max(Constants.LimaDemanda7 - values['ProduccionLima7'] - Binventariofinal6, 0)
+        rojoventasperdidas7 = max(Constants.rojoLimaDemanda7 - values['RojoProduccionLima7'] - Brojoinventariofinal6, 0)
 
         if values["ProduccionLima7"] > 0:
-            setup7 = Constants.SETUP
+            setup7 = Constants.CostoProducto1*values['ProduccionLima7']
         else:
             setup7 = 0
 
         if values["RojoProduccionLima7"] > 0:
-            rojosetup7 = Constants.SETUP
+            rojosetup7 = Constants.CostoProducto1*values['RojoProduccionLima7']
         else:
             rojosetup7 = 0
 
@@ -577,18 +594,18 @@ class Lima7(Page):
             'TotalesAzul': inventariofinal7 * Constants.CostoInventario1 + ventasperdidas7 * Constants.CostoBackorder1 + setup7,
             'TotalesRojo': rojoinventariofinal7 * Constants.CostoInventario1 + rojoventasperdidas7 * Constants.CostoBackorder1 + rojosetup7,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -670,20 +687,22 @@ class Lima8(Page):
     rojosetup8 = 0
 
     def error_message(self, values):
-        global inventariofinal8, rojoinventariofinal8, ventasperdidas8, rojoventasperdidas8, setup8, rojosetup8
+        global inventariofinal8, rojoinventariofinal8, ventasperdidas8, rojoventasperdidas8, setup8, rojosetup8,Binventariofinal8, Brojoinventariofinal8
 
-        inventariofinal8 = max(values['ProduccionLima8'] + inventariofinal7 - Constants.LimaDemanda8, 0)
-        rojoinventariofinal8 = max(values['RojoProduccionLima8'] + rojoinventariofinal7 - Constants.rojoLimaDemanda8, 0)
-        ventasperdidas8 = max(Constants.LimaDemanda8 - values['ProduccionLima8'] - inventariofinal7, 0)
-        rojoventasperdidas8 = max(Constants.rojoLimaDemanda8 - values['RojoProduccionLima8'] - rojoinventariofinal7, 0)
+        Binventariofinal8 = values['ProduccionLima8'] + Binventariofinal7 - Constants.LimaDemanda8
+        Brojoinventariofinal8 = values['RojoProduccionLima8'] + Brojoinventariofinal7 - Constants.rojoLimaDemanda8
+        inventariofinal8 = max(values['ProduccionLima8'] + Binventariofinal7 - Constants.LimaDemanda8, 0)
+        rojoinventariofinal8 = max(values['RojoProduccionLima8'] + Brojoinventariofinal7 - Constants.rojoLimaDemanda8, 0)
+        ventasperdidas8 = max(Constants.LimaDemanda8 - values['ProduccionLima8'] - Binventariofinal7, 0)
+        rojoventasperdidas8 = max(Constants.rojoLimaDemanda8 - values['RojoProduccionLima8'] - Brojoinventariofinal7, 0)
 
         if values["ProduccionLima8"] > 0:
-            setup8 = Constants.SETUP
+            setup8 = Constants.CostoProducto1*values['ProduccionLima8']
         else:
             setup8 = 0
 
         if values["RojoProduccionLima8"] > 0:
-            rojosetup8 = Constants.SETUP
+            rojosetup8 = Constants.CostoProducto1*values['RojoProduccionLima8']
         else:
             rojosetup8 = 0
 
@@ -705,20 +724,20 @@ class Lima8(Page):
             'TotalesAzul': inventariofinal8 * Constants.CostoInventario1 + ventasperdidas8 * Constants.CostoBackorder1 + setup8,
             'TotalesRojo': rojoinventariofinal8 * Constants.CostoInventario1 + rojoventasperdidas8 * Constants.CostoBackorder1 + rojosetup8,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -810,20 +829,22 @@ class Lima9(Page):
     rojosetup9 = 0
 
     def error_message(self, values):
-        global inventariofinal9, rojoinventariofinal9, ventasperdidas9, rojoventasperdidas9, setup9, rojosetup9
+        global inventariofinal9, rojoinventariofinal9, ventasperdidas9, rojoventasperdidas9, setup9, rojosetup9,Binventariofinal9,Brojoinventariofinal9
 
-        inventariofinal9 = max(values['ProduccionLima9'] + inventariofinal8 - Constants.LimaDemanda9, 0)
-        rojoinventariofinal9 = max(values['RojoProduccionLima9'] + rojoinventariofinal8 - Constants.rojoLimaDemanda9, 0)
-        ventasperdidas9 = max(Constants.LimaDemanda9 - values['ProduccionLima9'] - inventariofinal8, 0)
-        rojoventasperdidas9 = max(Constants.rojoLimaDemanda9 - values['RojoProduccionLima9'] - rojoinventariofinal8, 0)
+        Binventariofinal9 = values['ProduccionLima9'] + Binventariofinal8 - Constants.LimaDemanda9
+        Brojoinventariofinal9 = values['RojoProduccionLima9'] + Brojoinventariofinal8 - Constants.rojoLimaDemanda9
+        inventariofinal9 = max(values['ProduccionLima9'] + Binventariofinal8 - Constants.LimaDemanda9, 0)
+        rojoinventariofinal9 = max(values['RojoProduccionLima9'] + Brojoinventariofinal8 - Constants.rojoLimaDemanda9, 0)
+        ventasperdidas9 = max(Constants.LimaDemanda9 - values['ProduccionLima9'] - Binventariofinal8, 0)
+        rojoventasperdidas9 = max(Constants.rojoLimaDemanda9 - values['RojoProduccionLima9'] - Brojoinventariofinal8, 0)
 
         if values["ProduccionLima9"] > 0:
-            setup9 = Constants.SETUP
+            setup9 = Constants.CostoProducto1*values['ProduccionLima9']
         else:
             setup9 = 0
 
         if values["RojoProduccionLima9"] > 0:
-            rojosetup9 = Constants.SETUP
+            rojosetup9 = Constants.CostoProducto1*values['RojoProduccionLima9']
         else:
             rojosetup9 = 0
 
@@ -845,22 +866,22 @@ class Lima9(Page):
             'TotalesAzul': inventariofinal9 * Constants.CostoInventario1 + ventasperdidas9 * Constants.CostoBackorder1 + setup9,
             'TotalesRojo': rojoinventariofinal9 * Constants.CostoInventario1 + rojoventasperdidas9 * Constants.CostoBackorder1 + rojosetup9,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,            
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -976,20 +997,22 @@ class Lima10(Page):
     rojosetup10 = 0
 
     def error_message(self, values):
-        global inventariofinal10, rojoinventariofinal10, ventasperdidas10, rojoventasperdidas10, setup10, rojosetup10
+        global inventariofinal10, rojoinventariofinal10, ventasperdidas10, rojoventasperdidas10, setup10, rojosetup10,Binventariofinal10,Brojoinventariofinal10
 
-        inventariofinal10 = max(values['ProduccionLima10'] + inventariofinal9 - Constants.LimaDemanda10, 0)
-        rojoinventariofinal10 = max(values['RojoProduccionLima10'] + rojoinventariofinal9 - Constants.rojoLimaDemanda10, 0)
-        ventasperdidas10 = max(Constants.LimaDemanda10 - values['ProduccionLima10'] - inventariofinal9, 0)
-        rojoventasperdidas10 = max(Constants.rojoLimaDemanda10 - values['RojoProduccionLima10'] - rojoinventariofinal9, 0)
+        Binventariofinal10 = values['ProduccionLima10'] + Binventariofinal9 - Constants.LimaDemanda10
+        Brojoinventariofinal10 = values['RojoProduccionLima10'] + Brojoinventariofinal9 - Constants.rojoLimaDemanda10
+        inventariofinal10 = max(values['ProduccionLima10'] + Binventariofinal9 - Constants.LimaDemanda10, 0)
+        rojoinventariofinal10 = max(values['RojoProduccionLima10'] + Brojoinventariofinal9 - Constants.rojoLimaDemanda10, 0)
+        ventasperdidas10 = max(Constants.LimaDemanda10 - values['ProduccionLima10'] - Binventariofinal9, 0)
+        rojoventasperdidas10 = max(Constants.rojoLimaDemanda10 - values['RojoProduccionLima10'] - Brojoinventariofinal9, 0)
 
         if values["ProduccionLima10"] > 0:
-            setup10 = Constants.SETUP
+            setup10 = Constants.CostoProducto1*values['ProduccionLima10']
         else:
             setup10 = 0
 
         if values["RojoProduccionLima10"] > 0:
-            rojosetup10 = Constants.SETUP
+            rojosetup10 = Constants.CostoProducto1*values['RojoProduccionLima10']
         else:
             rojosetup10 = 0
 
@@ -1011,24 +1034,24 @@ class Lima10(Page):
             'TotalesAzul': inventariofinal10 * Constants.CostoInventario1 + ventasperdidas10 * Constants.CostoBackorder1 + setup10,
             'TotalesRojo': rojoinventariofinal10 * Constants.CostoInventario1 + rojoventasperdidas10 * Constants.CostoBackorder1 + rojosetup10,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,                      
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -1143,20 +1166,22 @@ class Lima11(Page):
     rojosetup11 = 0
 
     def error_message(self, values):
-        global inventariofinal11, rojoinventariofinal11, ventasperdidas11, rojoventasperdidas11, setup11, rojosetup11
+        global inventariofinal11, rojoinventariofinal11, ventasperdidas11, rojoventasperdidas11, setup11, rojosetup11,Binventariofinal11,Brojoinventariofinal11
 
-        inventariofinal11 = max(values['ProduccionLima11'] + inventariofinal10 - Constants.LimaDemanda11, 0)
-        rojoinventariofinal11 = max(values['RojoProduccionLima11'] + rojoinventariofinal10 - Constants.rojoLimaDemanda11, 0)
-        ventasperdidas11 = max(Constants.LimaDemanda11 - values['ProduccionLima11'] - inventariofinal10, 0)
-        rojoventasperdidas11 = max(Constants.rojoLimaDemanda11 - values['RojoProduccionLima11'] - rojoinventariofinal10, 0)
+        Binventariofinal11 = values['ProduccionLima11'] + Binventariofinal10 - Constants.LimaDemanda11
+        Brojoinventariofinal11 = values['RojoProduccionLima11'] + Brojoinventariofinal10 - Constants.rojoLimaDemanda11
+        inventariofinal11 = max(values['ProduccionLima11'] + Binventariofinal10 - Constants.LimaDemanda11, 0)
+        rojoinventariofinal11 = max(values['RojoProduccionLima11'] + Brojoinventariofinal10 - Constants.rojoLimaDemanda11, 0)
+        ventasperdidas11 = max(Constants.LimaDemanda11 - values['ProduccionLima11'] - Binventariofinal10, 0)
+        rojoventasperdidas11 = max(Constants.rojoLimaDemanda11 - values['RojoProduccionLima11'] - Brojoinventariofinal10, 0)
 
         if values["ProduccionLima11"] > 0:
-            setup11 = Constants.SETUP
+            setup11 = Constants.CostoProducto1*values['ProduccionLima11']
         else:
             setup11 = 0
 
         if values["RojoProduccionLima11"] > 0:
-            rojosetup11 = Constants.SETUP
+            rojosetup11 = Constants.CostoProducto1*values['RojoProduccionLima11']
         else:
             rojosetup11 = 0
 
@@ -1179,26 +1204,26 @@ class Lima11(Page):
             'TotalesAzul': inventariofinal11 * Constants.CostoInventario1 + ventasperdidas11 * Constants.CostoBackorder1 + setup11,
             'TotalesRojo': rojoinventariofinal11 * Constants.CostoInventario1 + rojoventasperdidas11 * Constants.CostoBackorder1 + rojosetup11,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,           
-            'inventario11': inventariofinal10,                      
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
-            'Rojoinventario11': rojoinventariofinal10,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'inventario11': Binventariofinal10,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
+            'Rojoinventario11': Brojoinventariofinal10,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -1325,21 +1350,23 @@ class Lima12(Page):
 
     def error_message(self, values):
 
-        global inventariofinal12, rojoinventariofinal12, ventasperdidas12, rojoventasperdidas12, setup12, rojosetup12
+        global inventariofinal12, rojoinventariofinal12, ventasperdidas12, rojoventasperdidas12, setup12, rojosetup12,Binventariofinal12,Brojoinventariofinal12
         global TotalinventarioLima, TotalsetupLima, TotalventasLima, TotalTotalesLima
 
-        inventariofinal12 = max(values['ProduccionLima12'] + inventariofinal11 - Constants.LimaDemanda12, 0)
-        rojoinventariofinal12 = max(values['RojoProduccionLima12'] + rojoinventariofinal11 - Constants.rojoLimaDemanda12, 0)
-        ventasperdidas12 = max(Constants.LimaDemanda12 - values['ProduccionLima12'] - inventariofinal11, 0)
-        rojoventasperdidas12 = max(Constants.rojoLimaDemanda12 - values['RojoProduccionLima12'] - rojoinventariofinal11, 0)
+        Binventariofinal12 = values['ProduccionLima12'] + Binventariofinal11 - Constants.LimaDemanda12
+        Brojoinventariofinal12 = values['RojoProduccionLima12'] + Brojoinventariofinal11 - Constants.rojoLimaDemanda12
+        inventariofinal12 = max(values['ProduccionLima12'] + Binventariofinal11 - Constants.LimaDemanda12, 0)
+        rojoinventariofinal12 = max(values['RojoProduccionLima12'] + Brojoinventariofinal11 - Constants.rojoLimaDemanda12, 0)
+        ventasperdidas12 = max(Constants.LimaDemanda12 - values['ProduccionLima12'] - Binventariofinal11, 0)
+        rojoventasperdidas12 = max(Constants.rojoLimaDemanda12 - values['RojoProduccionLima12'] - Brojoinventariofinal11, 0)
 
         if values["ProduccionLima12"] > 0:
-            setup12 = Constants.SETUP
+            setup12 = Constants.CostoProducto1*values['ProduccionLima12']
         else:
             setup12 = 0
 
         if values["RojoProduccionLima12"] > 0:
-            rojosetup12 = Constants.SETUP
+            rojosetup12 = Constants.CostoProducto1*values['RojoProduccionLima12']
         else:
             rojosetup12 = 0
 
@@ -1368,28 +1395,28 @@ class Lima12(Page):
             'TotalesAzul': inventariofinal12 * Constants.CostoInventario1 + ventasperdidas12 * Constants.CostoBackorder1 + setup12,
             'TotalesRojo': rojoinventariofinal12 * Constants.CostoInventario1 + rojoventasperdidas12 * Constants.CostoBackorder1 + rojosetup12,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,           
-            'inventario11': inventariofinal10,
-            'inventario12': inventariofinal11,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
-            'Rojoinventario11': rojoinventariofinal10,
-            'Rojoinventario12': rojoinventariofinal11,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'inventario11': Binventariofinal10,
+            'inventario12': Binventariofinal11,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
+            'Rojoinventario11': Brojoinventariofinal10,
+            'Rojoinventario12': Brojoinventariofinal11,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -1520,30 +1547,30 @@ class ResumenLima(Page):
         return{
             'TotalTotales': TotalTotalesLima,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,           
-            'inventario11': inventariofinal10,
-            'inventario12': inventariofinal11,
-            'inventario12final': inventariofinal12,            
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
-            'Rojoinventario11': rojoinventariofinal10,
-            'Rojoinventario12': rojoinventariofinal11,
-            'Rojoinventario12final': rojoinventariofinal12,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'inventario11': Binventariofinal10,
+            'inventario12': Binventariofinal11,
+            'inventario12final': Binventariofinal12,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
+            'Rojoinventario11': Brojoinventariofinal10,
+            'Rojoinventario12': Brojoinventariofinal11,
+            'Rojoinventario12final': Brojoinventariofinal12,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -1697,20 +1724,23 @@ class Japon1(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1
+        global inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1,Binventariofinal1,Brojoinventariofinal1
 
+        Binventariofinal1 = values['ProduccionJapon1']+Constants.inventario_inicial2-Constants.JaponDemanda1
+        Brojoinventariofinal1 = values['RojoProduccionJapon1']+Constants.inventario_inicialR2-Constants.rojoJaponDemanda1
         inventariofinal1 = max(values['ProduccionJapon1']+Constants.inventario_inicial2-Constants.JaponDemanda1, 0)
         rojoinventariofinal1 = max(values['RojoProduccionJapon1']+Constants.inventario_inicialR2-Constants.rojoJaponDemanda1, 0)
         ventasperdidas1 = max(Constants.JaponDemanda1-values['ProduccionJapon1']-Constants.inventario_inicial2, 0)
         rojoventasperdidas1 = max(Constants.rojoJaponDemanda1-values['RojoProduccionJapon1']-Constants.inventario_inicialR2, 0)
 
         if values["ProduccionJapon1"]>0:
-            setup1=Constants.SETUP2
+            pass
         else:
+            setup1=Constants.CostoProducto2*values['ProduccionJapon1']
             setup1=0
 
         if values["RojoProduccionJapon1"]>0:
-            rojosetup1=Constants.SETUP2
+            rojosetup1=Constants.CostoProducto2*values['RojoProduccionJapon1']
         else:
             rojosetup1=0
 
@@ -1748,20 +1778,22 @@ class Japon2(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal2,rojoinventariofinal2,ventasperdidas2,rojoventasperdidas2,setup2,rojosetup2
+        global inventariofinal2,rojoinventariofinal2,ventasperdidas2,rojoventasperdidas2,setup2,rojosetup2,Binventariofinal2,Brojoinventariofinal2
 
-        inventariofinal2 = max(values['ProduccionJapon2'] + inventariofinal1 - Constants.JaponDemanda2, 0)
-        rojoinventariofinal2 = max(values['RojoProduccionJapon2'] + rojoinventariofinal1 - Constants.rojoJaponDemanda2, 0)
-        ventasperdidas2 = max(Constants.JaponDemanda2 - values['ProduccionJapon2'] - inventariofinal1, 0)
-        rojoventasperdidas2 = max(Constants.rojoJaponDemanda2 - values['RojoProduccionJapon2'] - rojoinventariofinal1, 0)
+        Binventariofinal2 = values['ProduccionJapon2'] + Binventariofinal1 - Constants.JaponDemanda2
+        Brojoinventariofinal2 = values['RojoProduccionJapon2'] + Brojoinventariofinal1 - Constants.rojoJaponDemanda2
+        inventariofinal2 = max(values['ProduccionJapon2'] + Binventariofinal1 - Constants.JaponDemanda2, 0)
+        rojoinventariofinal2 = max(values['RojoProduccionJapon2'] + Brojoinventariofinal1 - Constants.rojoJaponDemanda2, 0)
+        ventasperdidas2 = max(Constants.JaponDemanda2 - values['ProduccionJapon2'] - Binventariofinal1, 0)
+        rojoventasperdidas2 = max(Constants.rojoJaponDemanda2 - values['RojoProduccionJapon2'] - Brojoinventariofinal1, 0)
 
         if values["ProduccionJapon2"] > 0:
-            setup2 = Constants.SETUP2
+            setup2 = Constants.CostoProducto2*values['ProduccionJapon2']
         else:
             setup2 = 0
 
         if values["RojoProduccionJapon2"] > 0:
-            rojosetup2 = Constants.SETUP2
+            rojosetup2 = Constants.CostoProducto2*values['RojoProduccionJapon2']
         else:
             rojosetup2 = 0
 
@@ -1783,8 +1815,8 @@ class Japon2(Page):
             'TotalesAzul': inventariofinal2 * Constants.CostoInventario2 + ventasperdidas2 * Constants.CostoBackorder2 + setup2,
             'TotalesRojo': rojoinventariofinal2 * Constants.CostoInventario2 + rojoventasperdidas2 * Constants.CostoBackorder2 + rojosetup2,
 
-            'inventario2': inventariofinal1,
-            'Rojoinventario2': rojoinventariofinal1,
+            'inventario2': Binventariofinal1,
+            'Rojoinventario2': Brojoinventariofinal1,
             
             'ventasperdidas1':ventasperdidas1,
             'rojoventasperdidas1':rojoventasperdidas1,
@@ -1813,20 +1845,22 @@ class Japon3(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3,setup3,rojosetup3
+        global inventariofinal3, rojoinventariofinal3, ventasperdidas3, rojoventasperdidas3,setup3,rojosetup3,Binventariofinal3, Brojoinventariofinal3
 
-        inventariofinal3 = max(values['ProduccionJapon3'] + inventariofinal2 - Constants.JaponDemanda3, 0)
-        rojoinventariofinal3 = max(values['RojoProduccionJapon3'] + rojoinventariofinal2 - Constants.rojoJaponDemanda3, 0)
-        ventasperdidas3 = max(Constants.JaponDemanda3 - values['ProduccionJapon3'] - inventariofinal2, 0)
-        rojoventasperdidas3 = max(Constants.rojoJaponDemanda3 - values['RojoProduccionJapon3'] - rojoinventariofinal2, 0)
+        Binventariofinal3 = values['ProduccionJapon3'] + Binventariofinal2 - Constants.JaponDemanda3
+        Brojoinventariofinal3 = values['RojoProduccionJapon3'] + Brojoinventariofinal2 - Constants.rojoJaponDemanda3
+        inventariofinal3 = max(values['ProduccionJapon3'] + Binventariofinal2 - Constants.JaponDemanda3, 0)
+        rojoinventariofinal3 = max(values['RojoProduccionJapon3'] + Brojoinventariofinal2 - Constants.rojoJaponDemanda3, 0)
+        ventasperdidas3 = max(Constants.JaponDemanda3 - values['ProduccionJapon3'] - Binventariofinal2, 0)
+        rojoventasperdidas3 = max(Constants.rojoJaponDemanda3 - values['RojoProduccionJapon3'] - Brojoinventariofinal2, 0)
 
         if values["ProduccionJapon3"] > 0:
-            setup3 = Constants.SETUP2
+            setup3 = Constants.CostoProducto2*values['ProduccionJapon3']
         else:
             setup3 = 0
 
         if values["RojoProduccionJapon3"] > 0:
-            rojosetup3 = Constants.SETUP2
+            rojosetup3 = Constants.CostoProducto2*values['RojoProduccionJapon3']
         else:
             rojosetup3 = 0
 
@@ -1849,10 +1883,10 @@ class Japon3(Page):
             'TotalesAzul': inventariofinal3 * Constants.CostoInventario2 + ventasperdidas3 * Constants.CostoBackorder2 + setup3,
             'TotalesRojo': rojoinventariofinal3 * Constants.CostoInventario2 + rojoventasperdidas3 * Constants.CostoBackorder2 + rojosetup3,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -1893,20 +1927,22 @@ class Japon4(Page):
 
 
     def error_message(self, values):
-        global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4,setup4,rojosetup4
+        global inventariofinal4, rojoinventariofinal4, ventasperdidas4, rojoventasperdidas4,setup4,rojosetup4,Binventariofinal4,Brojoinventariofinal4
 
-        inventariofinal4 = max(values['ProduccionJapon4'] + inventariofinal3 - Constants.JaponDemanda4, 0)
-        rojoinventariofinal4 = max(values['RojoProduccionJapon4'] + rojoinventariofinal3 - Constants.rojoJaponDemanda4, 0)
-        ventasperdidas4 = max(Constants.JaponDemanda4 - values['ProduccionJapon4'] - inventariofinal3, 0)
-        rojoventasperdidas4 = max(Constants.rojoJaponDemanda4 - values['RojoProduccionJapon4'] - rojoinventariofinal3, 0)
+        Binventariofinal4 = values['ProduccionJapon4'] + Binventariofinal3 - Constants.JaponDemanda4
+        Brojoinventariofinal4 = values['RojoProduccionJapon4'] + Brojoinventariofinal3 - Constants.rojoJaponDemanda4
+        inventariofinal4 = max(values['ProduccionJapon4'] + Binventariofinal3 - Constants.JaponDemanda4, 0)
+        rojoinventariofinal4 = max(values['RojoProduccionJapon4'] + Brojoinventariofinal3 - Constants.rojoJaponDemanda4, 0)
+        ventasperdidas4 = max(Constants.JaponDemanda4 - values['ProduccionJapon4'] - Binventariofinal3, 0)
+        rojoventasperdidas4 = max(Constants.rojoJaponDemanda4 - values['RojoProduccionJapon4'] - Brojoinventariofinal3, 0)
 
         if values["ProduccionJapon4"] > 0:
-            setup4 = Constants.SETUP2
+            setup4 = Constants.CostoProducto2*values['ProduccionJapon4']
         else:
             setup4 = 0
 
         if values["RojoProduccionJapon4"] > 0:
-            rojosetup4 = Constants.SETUP2
+            rojosetup4 = Constants.CostoProducto2*values['RojoProduccionJapon4']
         else:
             rojosetup4 = 0
 
@@ -1928,12 +1964,12 @@ class Japon4(Page):
             'TotalesAzul': inventariofinal4 * Constants.CostoInventario2 + ventasperdidas4 * Constants.CostoBackorder2 + setup4,
             'TotalesRojo': rojoinventariofinal4 * Constants.CostoInventario2 + rojoventasperdidas4 * Constants.CostoBackorder2 + rojosetup4,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -1983,20 +2019,22 @@ class Japon5(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5,setup5,rojosetup5
+        global inventariofinal5, rojoinventariofinal5, ventasperdidas5, rojoventasperdidas5,setup5,rojosetup5,Binventariofinal5,Brojoinventariofinal5
 
-        inventariofinal5 = max(values['ProduccionJapon5'] + inventariofinal4 - Constants.JaponDemanda5, 0)
-        rojoinventariofinal5 = max(values['RojoProduccionJapon5'] + rojoinventariofinal4 - Constants.rojoJaponDemanda5, 0)
-        ventasperdidas5 = max(Constants.JaponDemanda5 - values['ProduccionJapon5'] - inventariofinal4, 0)
-        rojoventasperdidas5 = max(Constants.rojoJaponDemanda5 - values['RojoProduccionJapon5'] - rojoinventariofinal4, 0)
+        Binventariofinal5 = values['ProduccionJapon5'] + Binventariofinal4 - Constants.JaponDemanda5
+        Brojoinventariofinal5 = values['RojoProduccionJapon5'] + Brojoinventariofinal4 - Constants.rojoJaponDemanda5
+        inventariofinal5 = max(values['ProduccionJapon5'] + Binventariofinal4 - Constants.JaponDemanda5, 0)
+        rojoinventariofinal5 = max(values['RojoProduccionJapon5'] + Brojoinventariofinal4 - Constants.rojoJaponDemanda5, 0)
+        ventasperdidas5 = max(Constants.JaponDemanda5 - values['ProduccionJapon5'] - Binventariofinal4, 0)
+        rojoventasperdidas5 = max(Constants.rojoJaponDemanda5 - values['RojoProduccionJapon5'] - Brojoinventariofinal4, 0)
 
         if values["ProduccionJapon5"] > 0:
-            setup5 = Constants.SETUP2
+            setup5 = Constants.CostoProducto2*values['ProduccionJapon5']
         else:
             setup5 = 0
 
         if values["RojoProduccionJapon5"] > 0:
-            rojosetup5 = Constants.SETUP2
+            rojosetup5 = Constants.CostoProducto2*values['RojoProduccionJapon5']
         else:
             rojosetup5 = 0
 
@@ -2019,14 +2057,14 @@ class Japon5(Page):
             'TotalesAzul': inventariofinal5 * Constants.CostoInventario2 + ventasperdidas5 * Constants.CostoBackorder2 + setup5,
             'TotalesRojo': rojoinventariofinal5 * Constants.CostoInventario2 + rojoventasperdidas5 * Constants.CostoBackorder2 + rojosetup5,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -2087,23 +2125,25 @@ class Japon6(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6,setup6,rojosetup6
+        global inventariofinal6, rojoinventariofinal6, ventasperdidas6, rojoventasperdidas6,setup6,rojosetup6, Binventariofinal6, Brojoinventariofinal6
 
         if values["ProduccionJapon6"] + values["RojoProduccionJapon6"] > Constants.Capacidad2:
             return ' La produccion no debe pasar de la capacidad'
 
-        inventariofinal6 = max(values['ProduccionJapon6'] + inventariofinal5 - Constants.JaponDemanda6, 0)
-        rojoinventariofinal6 = max(values['RojoProduccionJapon6'] + rojoinventariofinal5 - Constants.rojoJaponDemanda6, 0)
-        ventasperdidas6 = max(Constants.JaponDemanda6 - values['ProduccionJapon6'] - inventariofinal5, 0)
-        rojoventasperdidas6 = max(Constants.rojoJaponDemanda6 - values['RojoProduccionJapon6'] - rojoinventariofinal5, 0)
+        Binventariofinal6 = values['ProduccionJapon6'] + Binventariofinal5 - Constants.JaponDemanda6
+        Brojoinventariofinal6 = values['RojoProduccionJapon6'] + Brojoinventariofinal5 - Constants.rojoJaponDemanda6
+        inventariofinal6 = max(values['ProduccionJapon6'] + Binventariofinal5 - Constants.JaponDemanda6, 0)
+        rojoinventariofinal6 = max(values['RojoProduccionJapon6'] + Brojoinventariofinal5 - Constants.rojoJaponDemanda6, 0)
+        ventasperdidas6 = max(Constants.JaponDemanda6 - values['ProduccionJapon6'] - Binventariofinal5, 0)
+        rojoventasperdidas6 = max(Constants.rojoJaponDemanda6 - values['RojoProduccionJapon6'] - Brojoinventariofinal5, 0)
 
         if values["ProduccionJapon6"] > 0:
-            setup6 = Constants.SETUP2
+            setup6 = Constants.CostoProducto2*values['ProduccionJapon6']
         else:
             setup6 = 0
 
         if values["RojoProduccionJapon6"] > 0:
-            rojosetup6 = Constants.SETUP2
+            rojosetup6 = Constants.CostoProducto2*values['RojoProduccionJapon6']
         else:
             rojosetup6= 0
 
@@ -2136,16 +2176,16 @@ class Japon6(Page):
             'TotalesRojo': rojoinventariofinal6 * Constants.CostoInventario2 + rojoventasperdidas6 * Constants.CostoBackorder2 + rojosetup6,
 
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -2217,20 +2257,22 @@ class Japon7(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal7, rojoinventariofinal7, ventasperdidas7, rojoventasperdidas7, setup7, rojosetup7
+        global inventariofinal7, rojoinventariofinal7, ventasperdidas7, rojoventasperdidas7, setup7, rojosetup7, Binventariofinal7, Brojoinventariofinal7
 
-        inventariofinal7 = max(values['ProduccionJapon7'] + inventariofinal6 - Constants.JaponDemanda7, 0)
-        rojoinventariofinal7 = max(values['RojoProduccionJapon7'] + rojoinventariofinal6 - Constants.rojoJaponDemanda7, 0)
-        ventasperdidas7 = max(Constants.JaponDemanda7 - values['ProduccionJapon7'] - inventariofinal6, 0)
-        rojoventasperdidas7 = max(Constants.rojoJaponDemanda7 - values['RojoProduccionJapon7'] - rojoinventariofinal6, 0)
+        Binventariofinal7 = values['ProduccionJapon7'] + Binventariofinal6 - Constants.JaponDemanda7
+        Brojoinventariofinal7 = values['RojoProduccionJapon7'] + Brojoinventariofinal6 - Constants.rojoJaponDemanda7
+        inventariofinal7 = max(values['ProduccionJapon7'] + Binventariofinal6 - Constants.JaponDemanda7, 0)
+        rojoinventariofinal7 = max(values['RojoProduccionJapon7'] + Brojoinventariofinal6 - Constants.rojoJaponDemanda7, 0)
+        ventasperdidas7 = max(Constants.JaponDemanda7 - values['ProduccionJapon7'] - Binventariofinal6, 0)
+        rojoventasperdidas7 = max(Constants.rojoJaponDemanda7 - values['RojoProduccionJapon7'] - Brojoinventariofinal6, 0)
 
         if values["ProduccionJapon7"] > 0:
-            setup7 = Constants.SETUP2
+            setup7 = Constants.CostoProducto2*values['ProduccionJapon7']
         else:
             setup7 = 0
 
         if values["RojoProduccionJapon7"] > 0:
-            rojosetup7 = Constants.SETUP2
+            rojosetup7 = Constants.CostoProducto2*values['RojoProduccionJapon7']
         else:
             rojosetup7 = 0
 
@@ -2252,18 +2294,18 @@ class Japon7(Page):
             'TotalesAzul': inventariofinal7 * Constants.CostoInventario2 + ventasperdidas7 * Constants.CostoBackorder2 + setup7,
             'TotalesRojo': rojoinventariofinal7 * Constants.CostoInventario2 + rojoventasperdidas7 * Constants.CostoBackorder2 + rojosetup7,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -2347,20 +2389,22 @@ class Japon8(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal8, rojoinventariofinal8, ventasperdidas8, rojoventasperdidas8, setup8, rojosetup8
+        global inventariofinal8, rojoinventariofinal8, ventasperdidas8, rojoventasperdidas8, setup8, rojosetup8,Binventariofinal8,Brojoinventariofinal8
 
-        inventariofinal8 = max(values['ProduccionJapon8'] + inventariofinal7 - Constants.JaponDemanda8, 0)
-        rojoinventariofinal8 = max(values['RojoProduccionJapon8'] + rojoinventariofinal7 - Constants.rojoJaponDemanda8, 0)
-        ventasperdidas8 = max(Constants.JaponDemanda8 - values['ProduccionJapon8'] - inventariofinal7, 0)
-        rojoventasperdidas8 = max(Constants.rojoJaponDemanda8 - values['RojoProduccionJapon8'] - rojoinventariofinal7, 0)
+        Binventariofinal8 = values['ProduccionJapon8'] + Binventariofinal7 - Constants.JaponDemanda8
+        Brojoinventariofinal8 = values['RojoProduccionJapon8'] + Brojoinventariofinal7 - Constants.rojoJaponDemanda8
+        inventariofinal8 = max(values['ProduccionJapon8'] + Binventariofinal7 - Constants.JaponDemanda8, 0)
+        rojoinventariofinal8 = max(values['RojoProduccionJapon8'] + Brojoinventariofinal7 - Constants.rojoJaponDemanda8, 0)
+        ventasperdidas8 = max(Constants.JaponDemanda8 - values['ProduccionJapon8'] - Binventariofinal7, 0)
+        rojoventasperdidas8 = max(Constants.rojoJaponDemanda8 - values['RojoProduccionJapon8'] - Brojoinventariofinal7, 0)
 
         if values["ProduccionJapon8"] > 0:
-            setup8 = Constants.SETUP2
+            setup8 = Constants.CostoProducto2*values['ProduccionJapon8']
         else:
             setup8 = 0
 
         if values["RojoProduccionJapon8"] > 0:
-            rojosetup8 = Constants.SETUP2
+            rojosetup8 = Constants.CostoProducto2*values['RojoProduccionJapon8']
         else:
             rojosetup8 = 0
 
@@ -2383,20 +2427,20 @@ class Japon8(Page):
             'TotalesAzul': inventariofinal8 * Constants.CostoInventario2 + ventasperdidas8 * Constants.CostoBackorder2 + setup8,
             'TotalesRojo': rojoinventariofinal8 * Constants.CostoInventario2 + rojoventasperdidas8 * Constants.CostoBackorder2 + rojosetup8,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,            
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -2490,20 +2534,22 @@ class Japon9(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal9, rojoinventariofinal9, ventasperdidas9, rojoventasperdidas9, setup9, rojosetup9
+        global inventariofinal9, rojoinventariofinal9, ventasperdidas9, rojoventasperdidas9, setup9, rojosetup9,Binventariofinal9,Brojoinventariofinal9
 
-        inventariofinal9 = max(values['ProduccionJapon9'] + inventariofinal8 - Constants.JaponDemanda9, 0)
-        rojoinventariofinal9 = max(values['RojoProduccionJapon9'] + rojoinventariofinal8 - Constants.rojoJaponDemanda9, 0)
-        ventasperdidas9 = max(Constants.JaponDemanda9 - values['ProduccionJapon9'] - inventariofinal8, 0)
-        rojoventasperdidas9 = max(Constants.rojoJaponDemanda9 - values['RojoProduccionJapon9'] - rojoinventariofinal8, 0)
+        Binventariofinal9 = values['ProduccionJapon9'] + Binventariofinal8 - Constants.JaponDemanda9
+        Brojoinventariofinal9 = values['RojoProduccionJapon9'] + Brojoinventariofinal8 - Constants.rojoJaponDemanda9
+        inventariofinal9 = max(values['ProduccionJapon9'] + Binventariofinal8 - Constants.JaponDemanda9, 0)
+        rojoinventariofinal9 = max(values['RojoProduccionJapon9'] + Brojoinventariofinal8 - Constants.rojoJaponDemanda9, 0)
+        ventasperdidas9 = max(Constants.JaponDemanda9 - values['ProduccionJapon9'] - Binventariofinal8, 0)
+        rojoventasperdidas9 = max(Constants.rojoJaponDemanda9 - values['RojoProduccionJapon9'] - Brojoinventariofinal8, 0)
 
         if values["ProduccionJapon9"] > 0:
-            setup9 = Constants.SETUP2
+            setup9 = Constants.CostoProducto2*values['ProduccionJapon9']
         else:
             setup9 = 0
 
         if values["RojoProduccionJapon9"] > 0:
-            rojosetup9 = Constants.SETUP2
+            rojosetup9 = Constants.CostoProducto2*values['RojoProduccionJapon9']
         else:
             rojosetup9 = 0
 
@@ -2526,22 +2572,22 @@ class Japon9(Page):
             'TotalesAzul': inventariofinal9 * Constants.CostoInventario2 + ventasperdidas9 * Constants.CostoBackorder2 + setup9,
             'TotalesRojo': rojoinventariofinal9 * Constants.CostoInventario2 + rojoventasperdidas9 * Constants.CostoBackorder2 + rojosetup9,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,            
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -2659,20 +2705,22 @@ class Japon10(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal10, rojoinventariofinal10, ventasperdidas10, rojoventasperdidas10, setup10, rojosetup10
-      
-        inventariofinal10 = max(values['ProduccionJapon10'] + inventariofinal9 - Constants.JaponDemanda10, 0)
-        rojoinventariofinal10 = max(values['RojoProduccionJapon10'] + rojoinventariofinal9 - Constants.rojoJaponDemanda10, 0)
-        ventasperdidas10 = max(Constants.JaponDemanda10 - values['ProduccionJapon10'] - inventariofinal9, 0)
-        rojoventasperdidas10 = max(Constants.rojoJaponDemanda10 - values['RojoProduccionJapon10'] - rojoinventariofinal9, 0)
+        global inventariofinal10, rojoinventariofinal10, ventasperdidas10, rojoventasperdidas10, setup10, rojosetup10,Binventariofinal10,Brojoinventariofinal10
+
+        Binventariofinal10 = values['ProduccionJapon10'] + Binventariofinal9 - Constants.JaponDemanda10
+        Brojoinventariofinal10 = values['RojoProduccionJapon10'] + Brojoinventariofinal9 - Constants.rojoJaponDemanda10
+        inventariofinal10 = max(values['ProduccionJapon10'] + Binventariofinal9 - Constants.JaponDemanda10, 0)
+        rojoinventariofinal10 = max(values['RojoProduccionJapon10'] + Brojoinventariofinal9 - Constants.rojoJaponDemanda10, 0)
+        ventasperdidas10 = max(Constants.JaponDemanda10 - values['ProduccionJapon10'] - Binventariofinal9, 0)
+        rojoventasperdidas10 = max(Constants.rojoJaponDemanda10 - values['RojoProduccionJapon10'] - Brojoinventariofinal9, 0)
 
         if values["ProduccionJapon10"] > 0:
-            setup10 = Constants.SETUP2
+            setup10 = Constants.CostoProducto2*values['ProduccionJapon10']
         else:
             setup10 = 0
 
         if values["RojoProduccionJapon10"] > 0:
-            rojosetup10 = Constants.SETUP2
+            rojosetup10 = Constants.CostoProducto2*values['RojoProduccionJapon10']
         else:
             rojosetup10 = 0
 
@@ -2694,24 +2742,24 @@ class Japon10(Page):
             'TotalesAzul': inventariofinal10 * Constants.CostoInventario2 + ventasperdidas10 * Constants.CostoBackorder2 + setup10,
             'TotalesRojo': rojoinventariofinal10 * Constants.CostoInventario2 + rojoventasperdidas10 * Constants.CostoBackorder2 + rojosetup10,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,                      
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
             
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -2839,20 +2887,22 @@ class Japon11(Page):
     pass
 
     def error_message(self, values):
-        global inventariofinal11, rojoinventariofinal11, ventasperdidas11, rojoventasperdidas11, setup11, rojosetup11
-    
-        inventariofinal11 = max(values['ProduccionJapon11'] + inventariofinal10 - Constants.JaponDemanda11, 0)
-        rojoinventariofinal11 = max(values['RojoProduccionJapon11'] + rojoinventariofinal10 - Constants.rojoJaponDemanda11, 0)
-        ventasperdidas11 = max(Constants.JaponDemanda11 - values['ProduccionJapon11'] - inventariofinal10, 0)
-        rojoventasperdidas11 = max(Constants.rojoJaponDemanda11 - values['RojoProduccionJapon11'] - rojoinventariofinal10, 0)
+        global inventariofinal11, rojoinventariofinal11, ventasperdidas11, rojoventasperdidas11, setup11, rojosetup11,Binventariofinal11,Brojoinventariofinal11
+
+        Binventariofinal11 = values['ProduccionJapon11'] + Binventariofinal10 - Constants.JaponDemanda11
+        Brojoinventariofinal11 = values['RojoProduccionJapon11'] + Brojoinventariofinal10 - Constants.rojoJaponDemanda11
+        inventariofinal11 = max(values['ProduccionJapon11'] + Binventariofinal10 - Constants.JaponDemanda11, 0)
+        rojoinventariofinal11 = max(values['RojoProduccionJapon11'] + Brojoinventariofinal10 - Constants.rojoJaponDemanda11, 0)
+        ventasperdidas11 = max(Constants.JaponDemanda11 - values['ProduccionJapon11'] - Binventariofinal10, 0)
+        rojoventasperdidas11 = max(Constants.rojoJaponDemanda11 - values['RojoProduccionJapon11'] - Brojoinventariofinal10, 0)
 
         if values["ProduccionJapon11"] > 0:
-            setup11 = Constants.SETUP2
+            setup11 = Constants.CostoProducto2*values['ProduccionJapon11']
         else:
             setup11 = 0
 
         if values["RojoProduccionJapon11"] > 0:
-            rojosetup11 = Constants.SETUP2
+            rojosetup11 = Constants.CostoProducto2*values['RojoProduccionJapon11']
         else:
             rojosetup11 = 0
 
@@ -2875,26 +2925,26 @@ class Japon11(Page):
             'TotalesAzul': inventariofinal11 * Constants.CostoInventario2 + ventasperdidas11 * Constants.CostoBackorder2 + setup11,
             'TotalesRojo': rojoinventariofinal11 * Constants.CostoInventario2 + rojoventasperdidas11 * Constants.CostoBackorder2 + rojosetup11,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,           
-            'inventario11': inventariofinal10,                      
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
-            'Rojoinventario11': rojoinventariofinal10,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'inventario11': Binventariofinal10,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
+            'Rojoinventario11': Brojoinventariofinal10,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -3034,21 +3084,23 @@ class Japon12(Page):
 
     def error_message(self, values):
 
-        global inventariofinal12, rojoinventariofinal12, ventasperdidas12, rojoventasperdidas12, setup12, rojosetup12
+        global inventariofinal12, rojoinventariofinal12, ventasperdidas12, rojoventasperdidas12, setup12, rojosetup12,Binventariofinal12,Brojoinventariofina12
         global TotalinventarioJapon, TotalsetupJapon, TotalventasJapon, TotalTotalesJapon
 
-        inventariofinal12 = max(values['ProduccionJapon12'] + inventariofinal11 - Constants.JaponDemanda12, 0)
-        rojoinventariofinal12 = max(values['RojoProduccionJapon12'] + rojoinventariofinal11 - Constants.rojoJaponDemanda12, 0)
-        ventasperdidas12 = max(Constants.JaponDemanda12 - values['ProduccionJapon12'] - inventariofinal11, 0)
-        rojoventasperdidas12 = max(Constants.rojoJaponDemanda12 - values['RojoProduccionJapon12'] - rojoinventariofinal11, 0)
+        Binventariofinal12 = values['ProduccionJapon12'] + Binventariofinal11 - Constants.JaponDemanda12
+        Brojoinventariofinal12 = values['RojoProduccionJapon12'] + Brojoinventariofinal11 - Constants.rojoJaponDemanda12
+        inventariofinal12 = max(values['ProduccionJapon12'] + Binventariofinal11 - Constants.JaponDemanda12, 0)
+        rojoinventariofinal12 = max(values['RojoProduccionJapon12'] + Brojoinventariofinal11 - Constants.rojoJaponDemanda12, 0)
+        ventasperdidas12 = max(Constants.JaponDemanda12 - values['ProduccionJapon12'] - Binventariofinal11, 0)
+        rojoventasperdidas12 = max(Constants.rojoJaponDemanda12 - values['RojoProduccionJapon12'] - Brojoinventariofinal11, 0)
 
         if values["ProduccionJapon12"] > 0:
-            setup12 = Constants.SETUP2
+            setup12 = Constants.CostoProducto2*values['ProduccionJapon12']
         else:
             setup12 = 0
 
         if values["RojoProduccionJapon12"] > 0:
-            rojosetup12 = Constants.SETUP2
+            rojosetup12 = Constants.CostoProducto2*values['RojoProduccionJapon12']
         else:
             rojosetup12 = 0
 
@@ -3077,28 +3129,28 @@ class Japon12(Page):
             'TotalesAzul': inventariofinal12 * Constants.CostoInventario2 + ventasperdidas12 * Constants.CostoBackorder2 + setup12,
             'TotalesRojo': rojoinventariofinal12 * Constants.CostoInventario2 + rojoventasperdidas12 * Constants.CostoBackorder2 + rojosetup12,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,           
-            'inventario11': inventariofinal10,
-            'inventario12': inventariofinal11,
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
-            'Rojoinventario11': rojoinventariofinal10,
-            'Rojoinventario12': rojoinventariofinal11,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'inventario11': Binventariofinal10,
+            'inventario12': Binventariofinal11,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
+            'Rojoinventario11': Brojoinventariofinal10,
+            'Rojoinventario12': Brojoinventariofinal11,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,
@@ -3238,30 +3290,30 @@ class ResumenJapon(Page):
         return{
             'TotalTotales': TotalTotalesJapon,
 
-            'inventario2': inventariofinal1,
-            'inventario3': inventariofinal2,
-            'inventario4': inventariofinal3,
-            'inventario5': inventariofinal4,
-            'inventario6': inventariofinal5,
-            'inventario7': inventariofinal6,
-            'inventario8': inventariofinal7,
-            'inventario9': inventariofinal8,
-            'inventario10': inventariofinal9,           
-            'inventario11': inventariofinal10,
-            'inventario12': inventariofinal11,
-            'inventario12final': inventariofinal12,            
-            'Rojoinventario2': rojoinventariofinal1,
-            'Rojoinventario3': rojoinventariofinal2,
-            'Rojoinventario4': rojoinventariofinal3,
-            'Rojoinventario5': rojoinventariofinal4,
-            'Rojoinventario6': rojoinventariofinal5,
-            'Rojoinventario7': rojoinventariofinal6,
-            'Rojoinventario8': rojoinventariofinal7,
-            'Rojoinventario9': rojoinventariofinal8,
-            'Rojoinventario10': rojoinventariofinal9,
-            'Rojoinventario11': rojoinventariofinal10,
-            'Rojoinventario12': rojoinventariofinal11,
-            'Rojoinventario12final': rojoinventariofinal12,
+            'inventario2': Binventariofinal1,
+            'inventario3': Binventariofinal2,
+            'inventario4': Binventariofinal3,
+            'inventario5': Binventariofinal4,
+            'inventario6': Binventariofinal5,
+            'inventario7': Binventariofinal6,
+            'inventario8': Binventariofinal7,
+            'inventario9': Binventariofinal8,
+            'inventario10': Binventariofinal9,
+            'inventario11': Binventariofinal10,
+            'inventario12': Binventariofinal11,
+            'inventario12final': Binventariofinal12,
+            'Rojoinventario2': Brojoinventariofinal1,
+            'Rojoinventario3': Brojoinventariofinal2,
+            'Rojoinventario4': Brojoinventariofinal3,
+            'Rojoinventario5': Brojoinventariofinal4,
+            'Rojoinventario6': Brojoinventariofinal5,
+            'Rojoinventario7': Brojoinventariofinal6,
+            'Rojoinventario8': Brojoinventariofinal7,
+            'Rojoinventario9': Brojoinventariofinal8,
+            'Rojoinventario10': Brojoinventariofinal9,
+            'Rojoinventario11': Brojoinventariofinal10,
+            'Rojoinventario12': Brojoinventariofinal11,
+            'Rojoinventario12final': Brojoinventariofinal12,
 
             'ventasperdidas1': ventasperdidas1,
             'rojoventasperdidas1': rojoventasperdidas1,

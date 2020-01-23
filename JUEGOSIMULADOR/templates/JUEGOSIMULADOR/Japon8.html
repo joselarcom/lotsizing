@@ -220,24 +220,25 @@
         </div>
 
         <div style="margin-top: 80px;  display: flex; align-items: center; font-size: 14px; width: 100%; justify-content: space-around; padding: 20px 30px">
+
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
-                <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px"> Costo unitario de inventario</div>
-                <div style="text-align:center; font-size: 18px; font-weight:700">S/. 5.00</div>
+                <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px"> Costo unitario de inventario mensual</div>
+                <div style="text-align:center; font-size: 18px; font-weight:700">S/. {{Constants.CostoInventario2}} /unidad</div>
             </div>
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
-                <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px">Costo de Set-up</div>
-                <div style="text-align:center; font-size: 18px; font-weight:700">S/.1500.00</div>
+                <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px">Costo de Producto</div>
+                <div style="text-align:center; font-size: 18px; font-weight:700">S/. {{Constants.CostoProducto2}} /unidad</div>
             </div>
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
-                <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px">Costo venta perdida </div>
-                <div style="text-align:center; font-size: 18px; font-weight:700">S/.10.00</div>
+                <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px">Costo Backorder mensual </div>
+                <div style="text-align:center; font-size: 18px; font-weight:700">S/. {{ Constants.CostoBackorder2 }} /unidad</div>
             </div>
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
                 <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px">Capacidad máxima entre las dos producciones</div>
-                <div style="text-align:center; font-size: 18px; font-weight:700">1500 unidades</div>
+                <div style="text-align:center; font-size: 18px; font-weight:700">{{Constants.Capacidad2}} unidades</div>
             </div>
 
         </div>
@@ -343,15 +344,6 @@
             </table>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 20px">
-        <button><div style="padding: 7px 20px;">CALCULAR Y PASAR AL PERIODO 2-9   <span style="padding-left: 15px"> &#8594;</span></div></button>
-    </div>
-
-    <div style="display: flex; justify-content: flex-start; align-items:flex-start;  flex-direction: column; padding-top: 10px">
-        <div style="margin-left: 0px">
-
-        </div>
-    </div>
 
     <div style="width: 100%; padding-top: 40px; display: flex; justify-content: space-between">
         <div style="width: 48%;">
@@ -420,7 +412,7 @@
                 <td class="right" style="border-right: 0px;"> </td>
             </tr>
             <tr>
-                <th scope="row" class="head-text" style="border-left: 0px;">Ventas perdidas</th>
+                <th scope="row" class="head-text" style="border-left: 0px;">Backorder</th>
                 <td class="right">{{ventasperdidas7}} </td>
                 <td class="right">{{rojoventasperdidas7}} </td>
                 <td class="right"> </td>
@@ -450,7 +442,7 @@
                 <td class="right" style="border-right: 0px;"> </td>
             </tr>
             <tr>
-                <th scope="row" class="head-text" style="border-left: 0px;">Costo de ventas perdidas (S/.)</th>
+                <th scope="row" class="head-text" style="border-left: 0px;">Costo de Backorder (S/.)</th>
                 <td class="right">{{costoventasperdidas7}} </td>
                 <td class="right">{{rojocostoventasperdidas7}} </td>
                 <td class="right"> </td>
@@ -465,7 +457,7 @@
                 <td class="right" style="border-right: 0px;"> </td>
             </tr>
             <tr>
-                <th scope="row" class="head-text" style="border-left: 0px;">Costo de set-up (S/.)</th>
+                <th scope="row" class="head-text" style="border-left: 0px;">Costo de Producto (S/.)</th>
                 <td class="right">{{setup7}} </td>
                 <td class="right">{{rojosetup7}} </td>
                 <td class="right"> </td>
@@ -563,4 +555,15 @@
         }
     });
 </script>
-{% endblock %} {% endblock %}
+{% endblock %}
+
+<div style="text-align: center; margin-top: 20px">
+        <button><div style="padding: 7px 20px;">CALCULAR Y PASAR AL PERIODO 2-9   <span style="padding-left: 15px"> &#8594;</span></div></button>
+    </div>
+
+    <div style="display: flex; justify-content: flex-start; align-items:flex-start;  flex-direction: column; padding-top: 10px">
+        <div style="margin-left: 0px">
+
+        </div>
+    </div>
+{% endblock %}
