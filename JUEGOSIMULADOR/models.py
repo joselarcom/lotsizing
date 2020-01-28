@@ -158,6 +158,8 @@ class Group(BaseGroup):
     pass
 
 
+
+
 class Player(BasePlayer):
 
     ProduccionLima1 = models.IntegerField(initial=0, min=0, max=1500, label="")
@@ -261,4 +263,10 @@ class Player(BasePlayer):
     RojoProduccionMexico10 = models.IntegerField(initial=0, min=0, max=1500)
     RojoProduccionMexico11 = models.IntegerField(initial=0, min=0, max=1500)
     RojoProduccionMexico12 = models.IntegerField(initial=0, min=0, max=1500)
+
+    Pregunta1 = models.FloatField(initial=0)
+    Pregunta2 = models.IntegerField(initial=0)
+    Pregunta3 = models.IntegerField(initial=0)
+    Pregunta4 = models.IntegerField(initial=0)
+
 
