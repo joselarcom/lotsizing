@@ -46,7 +46,6 @@ class Lima1(Page):
 
         global ContadorStock,RojoContadorStock,PromedioAzul,PromedioRupturaStock,PromedioRojo,RojoPromedioRupturaStock, inventariofinal1, rojoinventariofinal1, ventasperdidas1, rojoventasperdidas1, setup1, rojosetup1,Binventariofinal1,Brojoinventariofinal1
 
-
         Binventariofinal1 = values['ProduccionLima1']+Constants.inventario_inicial-Constants.LimaDemanda1
         Brojoinventariofinal1 = values['RojoProduccionLima1']+Constants.inventario_inicialR-Constants.rojoLimaDemanda1
         inventariofinal1 = max(values['ProduccionLima1']+Constants.inventario_inicial-Constants.LimaDemanda1,0)
@@ -110,11 +109,11 @@ class Lima2(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima2']
 
         if inventariofinal1==0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima2']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima2']-ventasperdidas2
             ContadorStock = ContadorStock+1
 
         if rojoinventariofinal1 ==0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima2']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima2']-rojoventasperdidas2
             RojoContadorStock = RojoContadorStock+1
 
         if values["ProduccionLima2"] > 0:
@@ -186,10 +185,10 @@ class Lima3(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima3']
 
         if inventariofinal2 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima3']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima3']-ventasperdidas3
             ContadorStock = ContadorStock+1
         if rojoinventariofinal2 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima3']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima3']-rojoventasperdidas3
             RojoContadorStock = RojoContadorStock+1
 
         if values["ProduccionLima3"] > 0:
@@ -275,10 +274,10 @@ class Lima4(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima4']
 
         if inventariofinal3 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima4']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima4']-ventasperdidas4
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal3 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima4']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima4']-rojoventasperdidas4
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima4"] > 0:
@@ -376,10 +375,10 @@ class Lima5(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima5']
 
         if inventariofinal4 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima5']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima5']-ventasperdidas5
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal4 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima5']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima5']-rojoventasperdidas5
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima5"] > 0:
@@ -492,10 +491,10 @@ class Lima6(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima6']
 
         if inventariofinal5 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima6']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima6']-ventasperdidas6
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal5 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima6']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima6']-rojoventasperdidas6
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima6"] > 0:
@@ -629,10 +628,10 @@ class Lima7(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima7']
 
         if inventariofinal6 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima7']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima7']-ventasperdidas7
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal6 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima7']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima7']-rojoventasperdidas7
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima7"] > 0:
@@ -769,10 +768,10 @@ class Lima8(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima8']
 
         if inventariofinal7 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima8']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima8']-ventasperdidas8
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal7 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima8']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima8']-rojoventasperdidas8
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima8"] > 0:
@@ -921,10 +920,10 @@ class Lima9(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima9']
 
         if inventariofinal8 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima9']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima9']-ventasperdidas9
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal8 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima9']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima9']-rojoventasperdidas9
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima9"] > 0:
@@ -1099,10 +1098,10 @@ class Lima10(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima10']
 
         if inventariofinal9 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima10']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima10']-ventasperdidas10
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal9 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima10']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima10']-rojoventasperdidas10
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima10"] > 0:
@@ -1278,10 +1277,10 @@ class Lima11(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima11']
 
         if inventariofinal10 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima11']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima11']-ventasperdidas11
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal10 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima11']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima11']-rojoventasperdidas11
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima11"] > 0:
@@ -1460,7 +1459,7 @@ class Lima12(Page):
     def error_message(self, values):
 
         global ContadorStock,RojoContadorStock,PromedioAzul,PromedioRupturaStock,PromedioRojo,RojoPromedioRupturaStock,inventariofinal12, rojoinventariofinal12, ventasperdidas12, rojoventasperdidas12, setup12, rojosetup12,Binventariofinal12,Brojoinventariofinal12
-        global TotalinventarioLima, TotalsetupLima, TotalventasLima, TotalTotalesLima
+        global TotalinventarioLima, TotalsetupLima, TotalventasLima, TotalTotalesLima,CostoProduccionAzul,CostoProduccionRojo,CostoAlmacenamientoAzul,CostoAlmacenamientoRojo,CostoBackorderAzul,CostoBackorderRojo
 
         Binventariofinal12 = values['ProduccionLima12'] + Binventariofinal11 - Constants.LimaDemanda12
         Brojoinventariofinal12 = values['RojoProduccionLima12'] + Brojoinventariofinal11 - Constants.rojoLimaDemanda12
@@ -1473,10 +1472,10 @@ class Lima12(Page):
         PromedioRojo = PromedioRojo + values['RojoProduccionLima12']
 
         if inventariofinal11 == 0:
-            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima12']
+            PromedioRupturaStock = PromedioRupturaStock + values['ProduccionLima12']-ventasperdidas12
             ContadorStock = ContadorStock + 1
         if rojoinventariofinal11 == 0:
-            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima12']
+            RojoPromedioRupturaStock = RojoPromedioRupturaStock + values['RojoProduccionLima12']-rojoventasperdidas12
             RojoContadorStock = RojoContadorStock + 1
 
         if values["ProduccionLima12"] > 0:
@@ -1489,11 +1488,19 @@ class Lima12(Page):
         else:
             rojosetup12 = 0
 
+        CostoAlmacenamientoAzul = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * Constants.CostoInventario1
+        CostoAlmacenamientoRojo = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario1
+        CostoBackorderAzul = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * Constants.CostoBackorder1
+        CostoBackorderRojo = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder1
+        CostoProduccionAzul = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + setup7 + setup8 + setup9 + setup10 + setup11 + setup12
+        CostoProduccionRojo = rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6 + rojosetup7 + rojosetup8 + rojosetup9 + rojosetup10 + rojosetup11 + rojosetup12
+
+
         TotalinventarioLima = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * Constants.CostoInventario1
-        TotalinventarioLima = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario1
+        TotalinventarioLima = TotalinventarioLima +(rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario1
         TotalsetupLima = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + setup7 + setup8 + setup9 + setup10 + setup11 + setup12 + rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6 + rojosetup7 + rojosetup8 + rojosetup9 + rojosetup10 + rojosetup11 + rojosetup12
         TotalventasLima = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * Constants.CostoBackorder1
-        TotalventasLima = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder1
+        TotalventasLima = TotalventasLima + (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder1
         TotalTotalesLima = TotalinventarioLima + TotalventasLima + TotalsetupLima
 
         if values["ProduccionLima12"] + values["RojoProduccionLima12"] > Constants.Capacidad:
@@ -1822,7 +1829,16 @@ class ResumenLima(Page):
             'rojosetup12': rojosetup12,
             'totales12': inventariofinal12 * Constants.CostoInventario1 + ventasperdidas12 * Constants.CostoBackorder1 + setup12,
             'rojototales12': rojoinventariofinal12 * Constants.CostoInventario1 + rojoventasperdidas12 * Constants.CostoBackorder1 + rojosetup12,
+
+            'CostoProduccion': CostoProduccionAzul,
+            'TotalventasLima':  CostoBackorderAzul,
+            'CostoinventarioLima':  CostoAlmacenamientoAzul,
+
+            'RojoCostoProduccion': CostoProduccionRojo,
+            'RojoTotalventasLima': CostoBackorderRojo,
+            'RojoCostoinventarioLima': CostoAlmacenamientoRojo
         }
+
 
 
 class InicioJapon (Page):
@@ -1918,10 +1934,10 @@ class Japon2(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon2']
 
         if inventariofinal1 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon2']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon2']-ventasperdidas2
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal1 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon2']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon2']-rojoventasperdidas2
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon2"] > 0:
@@ -1995,10 +2011,10 @@ class Japon3(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon3']
 
         if inventariofinal2 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon3']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon3']-ventasperdidas3
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal2 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon3']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon3']-rojoventasperdidas3
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon3"] > 0:
@@ -2087,10 +2103,10 @@ class Japon4(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon4']
 
         if inventariofinal3 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon4']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon4']-ventasperdidas4
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal3 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon4']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon4']-rojoventasperdidas4
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon4"] > 0:
@@ -2189,10 +2205,10 @@ class Japon5(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon5']
 
         if inventariofinal4 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon5']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon5']-ventasperdidas5
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal4 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon5']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon5']-rojoventasperdidas5
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon5"] > 0:
@@ -2308,10 +2324,10 @@ class Japon6(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon6']
 
         if inventariofinal5 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon6']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon6']-ventasperdidas6
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal5 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon6']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon6']-rojoventasperdidas6
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon6"] > 0:
@@ -2447,10 +2463,10 @@ class Japon7(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon7']
 
         if inventariofinal6 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon7']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon7']-ventasperdidas7
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal6 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon7']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon7']-rojoventasperdidas7
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon7"] > 0:
@@ -2589,10 +2605,10 @@ class Japon8(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon8']
 
         if inventariofinal7 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon8']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon8']-ventasperdidas8
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal7 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon8']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon8']-rojoventasperdidas8
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon8"] > 0:
@@ -2744,10 +2760,10 @@ class Japon9(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon9']
 
         if inventariofinal8 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon9']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon9']-ventasperdidas9
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal8 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon9']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon9']-rojoventasperdidas9
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon9"] > 0:
@@ -2925,10 +2941,10 @@ class Japon10(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon10']
 
         if inventariofinal9 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon10']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon10']-ventasperdidas10
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal9 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon10']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon10']-rojoventasperdidas10
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon10"] > 0:
@@ -3117,10 +3133,10 @@ class Japon11(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon11']
 
         if inventariofinal10 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon11']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon11']-ventasperdidas11
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal10 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon11']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon11']-rojoventasperdidas11
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon11"] > 0:
@@ -3325,10 +3341,10 @@ class Japon12(Page):
         PromedioRojo2 = PromedioRojo2 + values['RojoProduccionJapon12']
 
         if inventariofinal11 == 0:
-            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon12']
+            PromedioRupturaStock2 = PromedioRupturaStock2 + values['ProduccionJapon12']-ventasperdidas12
             ContadorStock2 = ContadorStock2 + 1
         if rojoinventariofinal11 == 0:
-            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon12']
+            RojoPromedioRupturaStock2 = RojoPromedioRupturaStock2 + values['RojoProduccionJapon12']-rojoventasperdidas12
             RojoContadorStock2 = RojoContadorStock2 + 1
 
         if values["ProduccionJapon12"] > 0:

@@ -15,8 +15,8 @@ class Constants(BaseConstants):
     name_in_url = 'JUEGOSIMULADOR'
     players_per_group = None
 
-    Capacidad = 1500
-    Capacidad2 = 1500
+    Capacidad = 2000
+    Capacidad2 = 2000
 
     SETUP = 0
     SETUP2 = 0

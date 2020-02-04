@@ -238,16 +238,22 @@
 
     </div>
     <div style="width: 100%; padding-top: 30px; display: flex; justify-content: space-between">
-        <div style="width: 48%;">
+        <div style="width: 30%;">
             <div style=" margin-top: 40px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px;">Inventario</div>
             <div id="container" style="width: 100%;">
                 <canvas id="inventario"></canvas>
             </div>
         </div>
-        <div style="width: 48%;">
+        <div style="width: 30%;">
             <div style=" margin-top: 40px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px;">Demanda</div>
             <div id="container" style="width: 100%;">
                 <canvas id="demanda"></canvas>
+            </div>
+        </div>
+        <div style="width: 30%;">
+            <div style=" margin-top: 40px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 10px;">Costos</div>
+            <div id="container" style="width: 100%;">
+                <canvas id="costos"></canvas>
             </div>
         </div>
     </div>
@@ -413,6 +419,7 @@
         }
     });
 </script>
+
 <script>
     var ctx = document.getElementById('demanda').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -444,6 +451,47 @@
         }
     });
 </script>
+
+<script>
+    var ctx = document.getElementById('costos').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Azul', 'Rojo'],
+            datasets: [{
+                label: 'Costo Produccion',
+                data: [`{{CostoProduccion}}`, `{{RojoCostoProduccion}}`],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Costo Backorder',
+                data: [`{{TotalventasLima}}`, `{{RojoTotalventasLima}}`],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Costo Almacenamiento',
+                data: [`{{CostoinventarioLima}}`, `{{RojoCostoinventarioLima}}`],
+                backgroundColor: 'rgba(15, 99, 132, 0.2)',
+                borderColor: 'rgba(10, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+</script>
+
+
 <script>
     function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
         try {
