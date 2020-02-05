@@ -3328,7 +3328,7 @@ class Japon12(Page):
     def error_message(self, values):
 
         global PromedioAzul2,PromedioRojo2,PromedioRupturaStock2,RojoPromedioRupturaStock2,ContadorStock2,RojoContadorStock2,inventariofinal12, rojoinventariofinal12, ventasperdidas12, rojoventasperdidas12, setup12, rojosetup12,Binventariofinal12,Brojoinventariofina12
-        global TotalinventarioJapon, TotalsetupJapon, TotalventasJapon, TotalTotalesJapon
+        global TotalinventarioJapon, TotalsetupJapon, TotalventasJapon, TotalTotalesJapon,CostoAlmacenamientoAzul,CostoAlmacenamientoRojo,CostoBackorderAzul,CostoBackorderRojo,CostoProduccionAzul,CostoProduccionRojo
 
         Binventariofinal12 = values['ProduccionJapon12'] + Binventariofinal11 - Constants.JaponDemanda12
         Brojoinventariofinal12 = values['RojoProduccionJapon12'] + Brojoinventariofinal11 - Constants.rojoJaponDemanda12
@@ -3357,11 +3357,18 @@ class Japon12(Page):
         else:
             rojosetup12 = 0
 
+        CostoAlmacenamientoAzul = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * Constants.CostoInventario1
+        CostoAlmacenamientoRojo = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario1
+        CostoBackorderAzul = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * Constants.CostoBackorder1
+        CostoBackorderRojo = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder1
+        CostoProduccionAzul = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + setup7 + setup8 + setup9 + setup10 + setup11 + setup12
+        CostoProduccionRojo = rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6 + rojosetup7 + rojosetup8 + rojosetup9 + rojosetup10 + rojosetup11 + rojosetup12
+
         TotalinventarioJapon = (inventariofinal1 + inventariofinal2 + inventariofinal3 + inventariofinal4 + inventariofinal5 + inventariofinal6 + inventariofinal7 + inventariofinal8 + inventariofinal9 + inventariofinal10 + inventariofinal11 + inventariofinal12) * Constants.CostoInventario2
-        TotalinventarioJapon = (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario2
+        TotalinventarioJapon = TotalinventarioJapon + (rojoinventariofinal1 + rojoinventariofinal2 + rojoinventariofinal3 + rojoinventariofinal4 + rojoinventariofinal5 + rojoinventariofinal6 + rojoinventariofinal7 + rojoinventariofinal8 + rojoinventariofinal9 + rojoinventariofinal10 + rojoinventariofinal11 + rojoinventariofinal12) * Constants.CostoInventario2
         TotalsetupJapon = setup1 + setup2 + setup3 + setup4 + setup5 + setup6 + setup7 + setup8 + setup9 + setup10 + setup11 + setup12 + rojosetup1 + rojosetup2 + rojosetup3 + rojosetup4 + rojosetup5 + rojosetup6 + rojosetup7 + rojosetup8 + rojosetup9 + rojosetup10 + rojosetup11 + rojosetup12
         TotalventasJapon = (ventasperdidas1 + ventasperdidas2 + ventasperdidas3 + ventasperdidas4 + ventasperdidas5 + ventasperdidas6 + ventasperdidas7 + ventasperdidas8 + ventasperdidas9 + ventasperdidas10 + ventasperdidas11 + ventasperdidas12) * Constants.CostoBackorder2
-        TotalventasJapon = (rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder2
+        TotalventasJapon = TotalventasJapon+(rojoventasperdidas1 + rojoventasperdidas2 + rojoventasperdidas3 + rojoventasperdidas4 + rojoventasperdidas5 + rojoventasperdidas6 + rojoventasperdidas7 + rojoventasperdidas8 + rojoventasperdidas9 + rojoventasperdidas10 + rojoventasperdidas11 + rojoventasperdidas12) * Constants.CostoBackorder2
         TotalTotalesJapon = TotalinventarioJapon + TotalventasJapon + TotalsetupJapon
 
         if values["ProduccionJapon12"] + values["RojoProduccionJapon12"] > Constants.Capacidad2:
@@ -3699,6 +3706,14 @@ class ResumenJapon(Page):
             'rojosetup12': rojosetup12,
             'totales12': inventariofinal12 * Constants.CostoInventario2 + ventasperdidas12 * Constants.CostoBackorder2 + setup12,
             'rojototales12': rojoinventariofinal12 * Constants.CostoInventario2 + rojoventasperdidas12 * Constants.CostoBackorder2 + rojosetup12,
+
+            'CostoProduccion': CostoProduccionAzul,
+            'TotalventasJapon': CostoBackorderAzul,
+            'CostoinventarioJapon': CostoAlmacenamientoAzul,
+
+            'RojoCostoProduccion': CostoProduccionRojo,
+            'RojoTotalventasJapon': CostoBackorderRojo,
+            'RojoCostoinventarioJapon': CostoAlmacenamientoRojo
         }
 
 
