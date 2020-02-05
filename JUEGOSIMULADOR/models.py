@@ -15,59 +15,59 @@ class Constants(BaseConstants):
     name_in_url = 'JUEGOSIMULADOR'
     players_per_group = None
 
-    Capacidad = 2000
-    Capacidad2 = 2000
+    Capacidad = 3000
+    Capacidad2 = 3000
 
     SETUP = 0
     SETUP2 = 0
 
-    CostoProducto1 = 5.03
-    CostoProducto2 = 5.03
+    CostoProducto1 = 4
+    CostoProducto2 = 4
 
     CostoInventario1 = 3
     CostoInventario2 = 3
 
-    CostoBackorder1 = 14
-    CostoBackorder2 = 14
+    CostoBackorder1 = 18
+    CostoBackorder2 = 18
 
     num_rounds = 1
     inventario_inicial = 1000
     inventario_inicialR = 1000
 
     inventario_inicial2 = 1000
-    inventario_inicialR2 = 500
+    inventario_inicialR2 = 1000
 
     inventario_inicial3 = 1000
     inventario_inicialR3 = 1000
 
     inventario_inicial4 = 1000
-    inventario_inicialR4 = 500
+    inventario_inicialR4 = 1000
 
-    LimaDemanda1 = 1700
-    LimaDemanda2 = 1400
-    LimaDemanda3 = 1400
+    LimaDemanda1 = 500
+    LimaDemanda2 = 1600
+    LimaDemanda3 = 1600
     LimaDemanda4 = 1700
-    LimaDemanda5 = 300
-    LimaDemanda6 = 1100
-    rojoLimaDemanda1 = 300
-    rojoLimaDemanda2 = 600
-    rojoLimaDemanda3 = 500
-    rojoLimaDemanda4 = 1000
-    rojoLimaDemanda5 = 700
-    rojoLimaDemanda6 = 800
+    LimaDemanda5 = 1800
+    LimaDemanda6 = 600
+    rojoLimaDemanda1 = 1400
+    rojoLimaDemanda2 = 1100
+    rojoLimaDemanda3 = 1200
+    rojoLimaDemanda4 = 1400
+    rojoLimaDemanda5 = 1100
+    rojoLimaDemanda6 = 1400
 
-    LimaDemanda7 = 900
-    LimaDemanda8 = 300
-    LimaDemanda9 = 1200
-    LimaDemanda10 = 400
-    LimaDemanda11 = 1700
-    LimaDemanda12 = 800
-    rojoLimaDemanda7 = 400
-    rojoLimaDemanda8 = 1400
-    rojoLimaDemanda9 = 100
+    LimaDemanda7 = 1200
+    LimaDemanda8 = 1100
+    LimaDemanda9 = 1700
+    LimaDemanda10 = 1200
+    LimaDemanda11 = 1300
+    LimaDemanda12 = 1400
+    rojoLimaDemanda7 = 1000
+    rojoLimaDemanda8 = 1100
+    rojoLimaDemanda9 = 1100
     rojoLimaDemanda10 = 1100
-    rojoLimaDemanda11 = 1400
-    rojoLimaDemanda12 = 800
+    rojoLimaDemanda11 = 900
+    rojoLimaDemanda12 = 700
 
     JaponDemanda1 = 800
     JaponDemanda2 = 3000
@@ -162,57 +162,57 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    ProduccionLima1 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima2 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima3 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima4 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima5 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima6 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima7 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima8 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima9 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima10 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima11 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionLima12 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima1 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima2 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima3 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima4 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima5 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima6 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima7 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima8 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima9 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima10 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima11 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionLima12 = models.IntegerField(initial=0, min=0, max=1500, label="")
+    ProduccionLima1 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima2 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima3 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima4 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima5 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima6 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima7 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima8 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima9 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima10 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima11 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionLima12 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima1 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima2 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima3 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima4 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima5 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima6 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima7 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima8 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima9 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima10 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima11 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionLima12 = models.IntegerField(initial=0, min=0, max=5500, label="")
 
     tabla1 = models.BooleanField(label="¿Deseas calcular tus costos antes de pasar de periodo? - Si elige SI y apreta next se actualizaran los costos con la produccion que propuso")
 
-    ProduccionJapon1 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon2 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon3 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon4 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon5 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon6 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon7 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon8 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon9 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon10 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon11 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    ProduccionJapon12 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon1 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon2 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon3 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon4 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon5 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon6 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon7 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon8 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon9 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon10 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon11 = models.IntegerField(initial=0, min=0, max=1500, label="")
-    RojoProduccionJapon12 = models.IntegerField(initial=0, min=0, max=1500, label="")
+    ProduccionJapon1 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon2 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon3 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon4 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon5 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon6 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon7 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon8 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon9 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon10 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon11 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    ProduccionJapon12 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon1 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon2 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon3 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon4 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon5 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon6 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon7 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon8 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon9 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon10 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon11 = models.IntegerField(initial=0, min=0, max=5500, label="")
+    RojoProduccionJapon12 = models.IntegerField(initial=0, min=0, max=5500, label="")
 
     ProduccionHanoi1 = models.IntegerField(initial=0, min=0, max=1500)
     ProduccionHanoi2 = models.IntegerField(initial=0, min=0, max=1500)
