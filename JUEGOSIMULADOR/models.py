@@ -269,4 +269,10 @@ class Player(BasePlayer):
     Pregunta3 = models.IntegerField(initial=0)
     Pregunta4 = models.IntegerField(initial=0)
 
+    Manipulation1 = models.StringField()
+    Manipulation2 = models.StringField()
+    Manipulation3 = models.StringField()
+    Manipulation4 = models.StringField()
+    Manipulation5 = models.StringField()
+
 

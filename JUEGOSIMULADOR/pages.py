@@ -5973,6 +5973,10 @@ class Respuestas1(Page):
             'correctas': correctas,
         }
 
+class ManipulationCheck(Page):
+    form_model = 'player'
+    form_fields = ['Manipulation1', 'Manipulation2', 'Manipulation3', 'Manipulation4','Manipulation5']
+
 
 class Results(Page):
     pass
@@ -5984,6 +5988,7 @@ page_sequence = [
 #     Inicio3,
 #     Inicio6,
 #     Inicio4,
+
 Inicio7LIMA,
     Lima1,
     Lima2,
@@ -5998,7 +6003,6 @@ Inicio7LIMA,
     Lima11,
     Lima12,
     ResumenLima,
-    Resumendereaccion,
 
 InicioJapon,
     Japon1,
@@ -6014,9 +6018,12 @@ InicioJapon,
     Japon11,
     Japon12,
     ResumenJapon,
-    ResumendereaccionJapon,
+ManipulationCheck,
     Preguntas1,
     Respuestas1
+
+#resumendereaccion
+#resumendereaccionjapon
 
 # InicioHanoi,
 #     Hanoi1,
