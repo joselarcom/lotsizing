@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %} {% load otree %}
+
+{% block title %}
+<p><th>
+
+    Preguntas de Reflexión Cognitiva
+
+</th></p>
+{% endblock %}
+
+{% block content %}
+<p><th>
+    (1) Un bate y una pelota $1.10 en total. El bate cuesta $1.00 más que la pelota.
+    ¿Cuánto cuesta la pelota?: {% formfield player.Pregunta1 %} centavos.
+</th></p>
+<p><th>
+    (2) Si 5 máquinas tardan 5 minutos para hacer 5 sillas, ¿cuánto tiempo tardaría 100 máquinas en hacer 100 sillas? {% formfield player.Pregunta2 %} minutos.
+</th></p>
+
+<p><th>
+    (3) En un lago, hay un parche de lirios. Cada día, el parche se duplica en tamaño. Si tarda 48 días en que el parche cubra todo el lago,
+    ¿Cuánto tardaría el parche en cubrir la mitad del lago? {% formfield player.Pregunta3 %} días.
+</th></p>
+
+<p><th>
+    (4) Si toma un minuto para hacer un corte, ¿cuánto tiempo tomará cortar un cilindro de madera de 30 pies en 30 piezas iguales sin poder mover las piezas cortadas? {% formfield player.Pregunta4 %} minutos.
+</th>
+</p>
+{% next_button %}
+{% endblock %}

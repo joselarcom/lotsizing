@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %} {% load otree %}
+{% block title %}
+
+<p><th>
+    Resumen de Reacción a la producción
+</th></p>
+{% endblock %}
+
+{% block content %}
+
+<p><th>
+    El promedio de producción del color azul, luego de una ruptura de stock, del mismo color fue de {{PromedioRupturaStock}}
+</th></p>
+<p><th>
+    El promedio de producción general del color AZUL fue de {{PromedioAzul}}
+</th></p>
+
+<p><th>
+    El promedio de producción del color rojo, luego de una ruptura de stock, del mismo color fue de {{RojoPromedioRupturaStock}}
+</th></p>
+<p><th>
+    El promedio de producción general del color ROJO fue de {{PromedioRojo}}
+</th>
+</p>
+
+{% next_button %}
+{% endblock %}
+
+

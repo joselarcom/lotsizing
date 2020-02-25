@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %} {% load otree %}
+
+{% block title %}
+<p><th>
+
+    Manipulation Check Questions
+
+</th></p>
+{% endblock %}
+
+{% block content %}
+<p><th>
+Please answer the questions with a YES or NO
+</th></p>
+
+<p><th>
+    (1) Was there a product (blue or red) that had more demand than the other in any of the situations? {% formfield player.Manipulation1 %}
+</th></p>
+
+<p><th>
+    (2) Was there a difference in demand between locations (Lima – Japan)?{% formfield player.Manipulation2 %}
+</th></p>
+
+<p><th>
+    (3) Was there a difference between capacities from different locations (Lima – Japan)? {% formfield player.Manipulation3 %}
+</th></p>
+
+<p><th>
+    (4) Was the capacity enough in the first scenario? {% formfield player.Manipulation4 %}
+</th>
+</p>
+
+<p><th>
+    (5) Was the capacity enough in the second scenario? {% formfield player.Manipulation5 %}
+</th>
+</p>
+{% next_button %}
+{% endblock %}

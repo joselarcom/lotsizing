@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    OBJETIVO
+{% endblock %}
+
+{% block content %}
+    <p>
+        El objetivo de la decisión en producción es la minimización de la suma de los costos de mantenimiento de inventario, costos de set-up y costos de ventas perdidas en cada periodo.
+    </p>
+
+    <p>
+        Los costos de producción son considerados irrelevantes para los calculos y el tiempo para colocar un kilogramo de Hilo en el mercado (lead time) es asumido igual a cero.
+    </p>
+
+    <p>
+        Su desempeño será evaluado por la suma de costos en cada uno de los microperiodos de los semestres.
+    </p>
+
+    <h4>
+        1. Costo de Mantenimiento de inventario
+    </h4>
+    <p>
+        Este costo es aquel en que se incurre debido al almacenamiento de productos que no son vendidos en un microperiodo. Al iniciar el juego y en cada pantalla se le recordará este costo por cada kg de hilo almacenado o en stock.
+    </p>
+
+    <h3>
+        2. Costos de Instalación (Set-Up)
+    </h3>
+    <p>
+        Cada vez que usted decida producir en un periodo, la linea de montaje tiene que estar preparada para la producción.
+        Esta preparación significa un costo para la empresa independiente de la cantidad a producir. Por otro lado,
+        si usted decide no producir en un periodo, el costo de Set-Up sera igual a 0. Este costo sera especificado cuando
+        inicie el experimento y recordado en cada periodo.
+    </p>
+
+    <h3>
+        3. Costos de la pérdida de ventas:
+    </h3>
+
+    <p>
+        Este costo refiere a aquel que afecta a la empresa por la demanda de kg de hilo que no llega a cumplir, es decir, cuando el stock
+        para un periodo agregado con la producción del mismo no abastece la demanda. Como en el anterior caso, este
+        costo será mostrado en cada período de decisión (por cada kg de hilo).
+    </p>
+
+    {% next_button %}
+{% endblock %}
+

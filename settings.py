@@ -14,15 +14,27 @@ SESSION_CONFIG_DEFAULTS = dict(
 SESSION_CONFIGS = [
     dict(
         name='JuegoDeProduccionBase',
-        display_name="Juego Base",
+        display_name="Juego Base 1",
         num_demo_participants=1,
         app_sequence=['JUEGOSIMULADOR']
     ),
     dict(
         name='JuegoDeProduccionMejorVista',
-        display_name="Juego de Producción",
+        display_name="Juego Base 2",
         num_demo_participants=1,
-        app_sequence=['JUEGOSIMULADOR2']
+        app_sequence=['JUEGOSIMULADOR_High_Different']
+    ),
+    dict(
+        name='JuegoDeProduccion3',
+        display_name="Juego Base 3",
+        num_demo_participants=1,
+        app_sequence=['JUEGOSIMULADOR_High_Equal']
+    ),
+    dict(
+        name='JuegoDeProduccion4',
+        display_name="Juego Base 4",
+        num_demo_participants=1,
+        app_sequence=['JUEGOSIMULADOR_Low_Equal']
     )
     # other session configs go here ...
 ]

@@ -1,0 +1,241 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+
+<p><th> Costo unitario de inventario = S/. 5</th></p>
+<p><th> Costo de Set-up = S/.1500</th></p>
+<p><th> Costo venta perdida = S/. 10</th></p>
+<p><th> Capacidad maxima entre las dos producciones = 1500 unidades </th></p>
+
+{% endblock %}
+
+{% block content %}
+
+    <table class=table>
+        <thead>
+        <tr>
+            <th>DATOS</th>
+            <th>HILO AZUL</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <th>HILO ROJO</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Periodos</th>
+            <td> Periodo 1-1 </td>
+            <td> Periodo 1-2 </td>
+            <td> Periodo 1-3 </td>
+            <td> Periodo 1-4 </td>
+            <td> Periodo 1-5 </td>
+            <td> Periodo 1-6 </td>
+            <td> Periodo 1-1 </td>
+            <td> Periodo 1-2 </td>
+            <td> Periodo 1-3 </td>
+            <td> Periodo 1-4 </td>
+            <td> Periodo 1-5 </td>
+            <td> Periodo 1-6 </td>
+        </tr>
+        <tr>
+            <th>Inventario Final</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Ventas Perdidas</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Costo de Almacenamiento [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Costo de Ventas Perdidas [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Costo de Set - Up [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>COSTOS TOTALES [S/.]</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <table class=table>
+        <thead>
+        <tr>
+            <th>DATOS</th>
+            <th>HILO AZUL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Periodos</th>
+            <td> Periodo 1-1 </td>
+            <td> Periodo 1-2 </td>
+            <td> Periodo 1-3 </td>
+            <td> Periodo 1-4 </td>
+            <td> Periodo 1-5 </td>
+            <td> Periodo 1-6 </td>
+        </tr>
+        <tr>
+            <th>Inventario Inicial</th>
+            <td> {{ Constants.inventario_inicial3 }} </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Demanda</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Cantidad a producir</th>
+            <td>{% formfield player.ProduccionHanoi1 %}</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class=table>
+        <thead>
+        <tr>
+            <th>DATOS</th>
+            <th>HILO ROJO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Periodos</th>
+            <td> Periodo 1-1 </td>
+            <td> Periodo 1-2 </td>
+            <td> Periodo 1-3 </td>
+            <td> Periodo 1-4 </td>
+            <td> Periodo 1-5 </td>
+            <td> Periodo 1-6 </td>
+        </tr>
+        <tr>
+            <th>Inventario Inicial</th>
+            <td> {{ Constants.inventario_inicialR3}} </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Demanda</th>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <th>Cantidad a producir</th>
+            <td>{% formfield player.RojoProduccionHanoi1 %}</td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+{% formfield player.tabla1 %}
+
+{% next_button %}
+
+{% endblock %}

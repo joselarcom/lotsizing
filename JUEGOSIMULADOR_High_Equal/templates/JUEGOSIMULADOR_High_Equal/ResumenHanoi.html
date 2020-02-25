@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block content %}
+    <h2>
+        Culmino su periodo en Hanoi,Vietnam:
+    </h2>
+
+    <p>
+        Su solucion le produjo un costo total de: {{TotalTotales}}
+    </p>
+
+    <p>
+        Pulse NEXT para continuar
+    </p>
+
+
+    {% next_button %}
+{% endblock %}

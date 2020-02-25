@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    OBSERVACIONES FINALES
+{% endblock %}
+
+{% block content %}
+    <h2>
+        Recuerde lo siguiente:
+    </h2>
+
+    <p>
+        1. Usted es el programador y usted debe decidir si se debe producir o no y cuánto producir.
+    </p>
+    <p>
+        2. Su Objetivo es minimizar la suma de costos de almacenamiento, ventas perdidas y setup.
+    </p>
+    <p>
+        3. El horizonte de planificacion está dividido en 4 sedes, cada uno con 2 semestres y 6 periodos en cada semestre.
+    </p>
+    <p>
+        4. A medida de que el tiempo pasa, la demanda se irá mostrando.
+    </p>
+
+    <p>
+        5. Puedes decidir no producir en un periodo para no tener costos de setup.
+    </p>
+
+    {% next_button %}
+{% endblock %}

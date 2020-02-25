@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    SU MISION
+{% endblock %}
+
+{% block content %}
+    <p>
+        Usted, como programador, es responsable de la programación maestra de producción de los Hilos de Poliestireno
+        (ROJO Y AZUL). Por lo tanto, su rendimiento es vital para el éxito económico de la empresa.
+    </p>
+
+    <h4>
+        DECISIONES
+    </h4>
+
+    <p>
+        Su tarea es decidir la cantidad de hilo (en kg), por cada color, que será producida en cada periodo secuencialmente.
+    </p>
+    <p>
+        Tenga en cuenta, en que en algunos períodos se puede considerar no producir si usted piensa que es conveniente.
+    </p>
+
+    <p>
+        Asimismo, los productos que sobren luego de cada periodo, se sumaran como inventarios y tendran su costo de inventario.
+    </p>
+    {% next_button %}
+{% endblock %}
+

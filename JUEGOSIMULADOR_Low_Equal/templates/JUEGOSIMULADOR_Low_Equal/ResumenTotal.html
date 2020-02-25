@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block content %}
+    <h2>
+        Culmino su periodo en en todos los paises:
+    </h2>
+
+    <p>
+        Su solucion le produjo un costo total de: {{TotalTotales1}} en Perú.
+    </p>
+
+    <p>
+        Su solucion le produjo un costo total de: {{TotalTotales2}} en Japón.
+    </p>
+
+    <p>
+        Su solucion le produjo un costo total de: {{TotalTotales3}} en Vietnam.
+    </p>
+
+    <p>
+        Su solucion le produjo un costo total de: {{TotalTotales4}} en Mexico.
+    </p>
+
+     <p>
+        Su solucion le produjo un costo total de: {{TotalTotales5}} en Total.
+    </p>
+
+
+
+    <p>
+        Pulse NEXT para continuar
+    </p>
+
+
+    {% next_button %}
+{% endblock %}
