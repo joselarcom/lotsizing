@@ -15,8 +15,8 @@ class Constants(BaseConstants):
     name_in_url = 'JUEGOSIMULADOR2'
     players_per_group = None
 
-    Capacidad = 2500
-    Capacidad2 = 2500
+    Capacidad = 3000
+    Capacidad2 = 3000
 
     SETUP = 0
     SETUP2 = 0
@@ -69,31 +69,30 @@ class Constants(BaseConstants):
     rojoLimaDemanda11 = 900
     rojoLimaDemanda12 = 700
 
-    JaponDemanda1 = 800
-    JaponDemanda2 = 3000
-    JaponDemanda3 = 1800
-    JaponDemanda4 = 1500
-    JaponDemanda5 = 1000
-    JaponDemanda6 = 2000
-    rojoJaponDemanda1 = 1300
-    rojoJaponDemanda2 = 200
-    rojoJaponDemanda3 = 600
-    rojoJaponDemanda4 = 600
+    JaponDemanda1 = 1000
+    JaponDemanda2 = 1600
+    JaponDemanda3 = 1400
+    JaponDemanda4 = 1200
+    JaponDemanda5 = 1800
+    JaponDemanda6 = 1500
+    rojoJaponDemanda1 = 1000
+    rojoJaponDemanda2 = 1100
+    rojoJaponDemanda3 = 1200
+    rojoJaponDemanda4 = 1400
     rojoJaponDemanda5 = 1100
-    rojoJaponDemanda6 = 200
+    rojoJaponDemanda6 = 800
 
-
-    JaponDemanda7 = 1300
+    JaponDemanda7 = 1200
     JaponDemanda8 = 1100
-    JaponDemanda9 = 100
-    JaponDemanda10 = 1700
-    JaponDemanda11 = 1500
-    JaponDemanda12 = 900
-    rojoJaponDemanda7 = 100
-    rojoJaponDemanda8 = 600
-    rojoJaponDemanda9 = 500
-    rojoJaponDemanda10 = 600
-    rojoJaponDemanda11 = 800
+    JaponDemanda9 = 2000
+    JaponDemanda10 = 1600
+    JaponDemanda11 = 1700
+    JaponDemanda12 = 1400
+    rojoJaponDemanda7 = 1000
+    rojoJaponDemanda8 = 1100
+    rojoJaponDemanda9 = 1100
+    rojoJaponDemanda10 = 1100
+    rojoJaponDemanda11 = 900
     rojoJaponDemanda12 = 700
 
     HanoiDemanda1 = 1300
