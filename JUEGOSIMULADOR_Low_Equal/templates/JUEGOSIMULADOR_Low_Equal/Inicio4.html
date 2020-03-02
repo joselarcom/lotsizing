@@ -2,44 +2,40 @@
 {% load otree %}
 
 {% block title %}
-    OBJETIVO
+    OBJECTIVE
 {% endblock %}
 
 {% block content %}
     <p>
-        El objetivo de la decisión en producción es la minimización de la suma de los costos de mantenimiento de inventario, costos de producción y costos de backorder en cada periodo.
+        The objective of the decision in production is to minimize the total cost.
+        The costs can come from inventory holding, production and backorder in each period.
     </p>
 
     <p>
-        Los costos de setup son considerados irrelevantes para los calculos y el tiempo para colocar un kilogramo de Hilo en el mercado (lead time) es asumido igual a cero.
+        There are no setup costs and the time to produce a Kg is 0 (no Lead time).
     </p>
-
-    <p>
-        Su desempeño será evaluado por la suma de costos en cada uno de los microperiodos de los semestres.
-    </p>
-
     <h4>
-        1. Costo de Mantenimiento de inventario
+        1. Inventory Holding Costs
     </h4>
     <p>
-        Este costo es aquel en que se incurre debido al almacenamiento de productos que no son vendidos en un microperiodo. Al iniciar el juego y en cada pantalla se le recordará este costo por cada kg de hilo almacenado o en stock.
+        This cost is the one paid in order to storage the products that were not sold in each period.
+        In each period you will be reminded of the holding cost.
     </p>
 
     <h3>
-        2. Costos de Producción
+        2. Production Costs
     </h3>
     <p>
-        Por cada kg de producción, debera asumir un costo que sera indicado en la pantalla donde se toma la decisión.
+        For each kilogram of product produced, there is a cost attached, this cost will be shown in each decision page.
     </p>
 
     <h3>
-        3. Costos de backorder:
+        3. Backorder Cost
     </h3>
 
     <p>
-        Este costo refiere a aquel que afecta a la empresa por la demanda de kg de hilo que no llega a cumplir, es decir, cuando el stock
-        para un periodo agregado con la producción del mismo no abastece la demanda, sin embargo, esta venta no alcanzada se mantiene hasta lograr producir una cantidad suficiente para abastecerla.
-        Este costo será mostrado en cada período de decisión (por cada kg de hilo).
+        This cost refers to the cost of not being able to supply the demand.
+        And so the ammount of demand not supplied is stacked as negative inventory and has a cost for each period not supplied.
     </p>
 
     {% next_button %}

@@ -12,11 +12,11 @@ Simulador de planeamiento
 
 
 class Constants(BaseConstants):
-    name_in_url = 'JUEGOSIMULADOR2'
+    name_in_url = 'JUEGOSIMULADOR_High_Different'
     players_per_group = None
 
-    Capacidad = 3000
-    Capacidad2 = 3000
+    Capacidad = 2200
+    Capacidad2 = 2200
 
     SETUP = 0
     SETUP2 = 0
@@ -43,57 +43,58 @@ class Constants(BaseConstants):
     inventario_inicial4 = 1000
     inventario_inicialR4 = 1000
 
-    LimaDemanda1 = 500
-    LimaDemanda2 = 1600
-    LimaDemanda3 = 1600
-    LimaDemanda4 = 1700
-    LimaDemanda5 = 1800
-    LimaDemanda6 = 600
-    rojoLimaDemanda1 = 1400
-    rojoLimaDemanda2 = 1100
-    rojoLimaDemanda3 = 1200
-    rojoLimaDemanda4 = 1400
-    rojoLimaDemanda5 = 1100
-    rojoLimaDemanda6 = 1400
+    LimaDemanda1 = 1100
+    LimaDemanda2 = 1500
+    LimaDemanda3 = 1800
+    LimaDemanda4 = 1800
+    LimaDemanda5 = 1500
+    LimaDemanda6 = 1600
+    rojoLimaDemanda1 = 500
+    rojoLimaDemanda2 = 700
+    rojoLimaDemanda3 = 800
+    rojoLimaDemanda4 = 400
+    rojoLimaDemanda5 = 500
+    rojoLimaDemanda6 = 500
 
-    LimaDemanda7 = 1200
-    LimaDemanda8 = 1100
-    LimaDemanda9 = 1700
-    LimaDemanda10 = 1200
-    LimaDemanda11 = 1300
-    LimaDemanda12 = 1400
-    rojoLimaDemanda7 = 1000
-    rojoLimaDemanda8 = 1100
-    rojoLimaDemanda9 = 1100
-    rojoLimaDemanda10 = 1100
-    rojoLimaDemanda11 = 900
-    rojoLimaDemanda12 = 700
+    LimaDemanda7 = 1300
+    LimaDemanda8 = 1200
+    LimaDemanda9 = 1800
+    LimaDemanda10 = 1500
+    LimaDemanda11 = 1400
+    LimaDemanda12 = 1600
+    rojoLimaDemanda7 = 300
+    rojoLimaDemanda8 = 500
+    rojoLimaDemanda9 = 400
+    rojoLimaDemanda10 = 700
+    rojoLimaDemanda11 = 500
+    rojoLimaDemanda12 = 300
 
-    JaponDemanda1 = 1000
+    JaponDemanda1 = 1300
     JaponDemanda2 = 1600
-    JaponDemanda3 = 1400
-    JaponDemanda4 = 1200
+    JaponDemanda3 = 1600
+    JaponDemanda4 = 1700
     JaponDemanda5 = 1800
     JaponDemanda6 = 1500
-    rojoJaponDemanda1 = 1000
-    rojoJaponDemanda2 = 1100
-    rojoJaponDemanda3 = 1200
-    rojoJaponDemanda4 = 1400
-    rojoJaponDemanda5 = 1100
-    rojoJaponDemanda6 = 800
+    rojoJaponDemanda1 = 800
+    rojoJaponDemanda2 = 500
+    rojoJaponDemanda3 = 500
+    rojoJaponDemanda4 = 600
+    rojoJaponDemanda5 = 400
+    rojoJaponDemanda6 = 600
 
     JaponDemanda7 = 1200
     JaponDemanda8 = 1100
-    JaponDemanda9 = 2000
-    JaponDemanda10 = 1600
-    JaponDemanda11 = 1700
-    JaponDemanda12 = 1400
-    rojoJaponDemanda7 = 1000
-    rojoJaponDemanda8 = 1100
-    rojoJaponDemanda9 = 1100
-    rojoJaponDemanda10 = 1100
-    rojoJaponDemanda11 = 900
-    rojoJaponDemanda12 = 700
+    JaponDemanda9 = 1900
+    JaponDemanda10 = 1700
+    JaponDemanda11 = 1500
+    JaponDemanda12 = 1500
+    rojoJaponDemanda7 = 200
+    rojoJaponDemanda8 = 600
+    rojoJaponDemanda9 = 500
+    rojoJaponDemanda10 = 400
+    rojoJaponDemanda11 = 700
+    rojoJaponDemanda12 = 400
+
 
     HanoiDemanda1 = 1300
     HanoiDemanda2 = 800
