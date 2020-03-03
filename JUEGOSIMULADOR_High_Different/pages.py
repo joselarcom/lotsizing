@@ -5981,6 +5981,8 @@ class ManipulationCheck(Page):
 class Results(Page):
     pass
 
+class Codigo(Page):
+    pass
 
 page_sequence = [
  ##Inicio1,
@@ -6020,7 +6022,8 @@ InicioJapon,
     ResumenJapon,
 ManipulationCheck,
     Preguntas1,
-    Respuestas1
+    Respuestas1,
+    Codigo
 
 #resumendereaccion
 #resumendereaccionjapon
