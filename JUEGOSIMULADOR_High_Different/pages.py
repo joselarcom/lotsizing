@@ -67,7 +67,7 @@ class Lima1(Page):
             rojosetup1=0
 
         if values["ProduccionLima1"] + values["RojoProduccionLima1"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return ' The production must not pass the capacity'
 
     def vars_for_template(self):
         return{
@@ -127,7 +127,7 @@ class Lima2(Page):
             rojosetup2 = 0
 
         if values["ProduccionLima2"] + values["RojoProduccionLima2"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return ' The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -202,7 +202,7 @@ class Lima3(Page):
             rojosetup3 = 0
         
         if values["ProduccionLima3"] + values["RojoProduccionLima3"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return ' The production must not pass the capacity'
 
     def vars_for_template(self):
         return{
@@ -291,7 +291,7 @@ class Lima4(Page):
             rojosetup4 = 0
 
         if values["ProduccionLima4"] + values["RojoProduccionLima4"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return ' The production must not pass the capacity'
 
 
     def vars_for_template(self):
@@ -392,7 +392,7 @@ class Lima5(Page):
             rojosetup5 = 0
 
         if values["ProduccionLima5"] + values["RojoProduccionLima5"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
 
     def vars_for_template(self):
@@ -517,7 +517,7 @@ class Lima6(Page):
         TotalTotalesLima = TotalinventarioLima + TotalventasLima + TotalsetupLima
 
         if values["ProduccionLima6"] + values["RojoProduccionLima6"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
 
@@ -645,7 +645,7 @@ class Lima7(Page):
             rojosetup7 = 0
 
         if values["ProduccionLima7"] + values["RojoProduccionLima7"] > Constants.Capacidad:
-            return 'La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return{
@@ -785,7 +785,7 @@ class Lima8(Page):
             rojosetup8 = 0
 
         if values["ProduccionLima8"] + values["RojoProduccionLima8"] > Constants.Capacidad:
-            return 'La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -937,7 +937,7 @@ class Lima9(Page):
             rojosetup9 = 0
 
         if values["ProduccionLima9"] + values["RojoProduccionLima9"] > Constants.Capacidad:
-            return 'La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -1115,7 +1115,7 @@ class Lima10(Page):
             rojosetup10 = 0
 
         if values["ProduccionLima10"] + values["RojoProduccionLima10"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -1294,7 +1294,7 @@ class Lima11(Page):
             rojosetup11 = 0
 
         if values["ProduccionLima11"] + values["RojoProduccionLima11"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
 
@@ -1504,7 +1504,7 @@ class Lima12(Page):
         TotalTotalesLima = TotalinventarioLima + TotalventasLima + TotalsetupLima
 
         if values["ProduccionLima12"] + values["RojoProduccionLima12"] > Constants.Capacidad:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -1888,7 +1888,7 @@ class Japon1(Page):
             rojosetup1=0
 
         if values["ProduccionJapon1"] + values["RojoProduccionJapon1"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return{
@@ -1951,7 +1951,7 @@ class Japon2(Page):
             rojosetup2 = 0
 
         if values["ProduccionJapon2"] + values["RojoProduccionJapon2"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -2028,7 +2028,7 @@ class Japon3(Page):
             rojosetup3 = 0
 
         if values["ProduccionJapon3"] + values["RojoProduccionJapon3"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
 
     def vars_for_template(self):
@@ -2120,7 +2120,7 @@ class Japon4(Page):
             rojosetup4 = 0
 
         if values["ProduccionJapon4"] + values["RojoProduccionJapon4"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return{
@@ -2222,7 +2222,7 @@ class Japon5(Page):
             rojosetup5 = 0
 
         if values["ProduccionJapon5"] + values["RojoProduccionJapon5"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return ' The production must not pass the capacity'
 
     def vars_for_template(self):
 
@@ -2350,7 +2350,7 @@ class Japon6(Page):
         TotalTotalesJapon = TotalinventarioJapon + TotalventasJapon + TotalsetupJapon
 
         if values["ProduccionJapon6"] + values["RojoProduccionJapon6"] > Constants.Capacidad2:
-            return 'La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
 
@@ -2480,7 +2480,7 @@ class Japon7(Page):
             rojosetup7 = 0
 
         if values["ProduccionJapon7"] + values["RojoProduccionJapon7"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return{
@@ -2622,7 +2622,7 @@ class Japon8(Page):
             rojosetup8 = 0
 
         if values["ProduccionJapon8"] + values["RojoProduccionJapon8"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
 
     def vars_for_template(self):
@@ -2777,7 +2777,7 @@ class Japon9(Page):
             rojosetup9 = 0
 
         if values["ProduccionJapon9"] + values["RojoProduccionJapon9"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
 
     def vars_for_template(self):
@@ -2958,7 +2958,7 @@ class Japon10(Page):
             rojosetup10 = 0
 
         if values["ProduccionJapon10"] + values["RojoProduccionJapon10"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -3150,7 +3150,7 @@ class Japon11(Page):
             rojosetup11 = 0
 
         if values["ProduccionJapon11"] + values["RojoProduccionJapon11"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
 
@@ -3372,7 +3372,7 @@ class Japon12(Page):
         TotalTotalesJapon = TotalinventarioJapon + TotalventasJapon + TotalsetupJapon
 
         if values["ProduccionJapon12"] + values["RojoProduccionJapon12"] > Constants.Capacidad2:
-            return ' La produccion no debe pasar de la capacidad'
+            return 'The production must not pass the capacity'
 
     def vars_for_template(self):
         return {
@@ -5975,7 +5975,7 @@ class Respuestas1(Page):
 
 class ManipulationCheck(Page):
     form_model = 'player'
-    form_fields = ['Manipulation1', 'Manipulation2', 'Manipulation3', 'Manipulation4','Manipulation5']
+    form_fields = ['Question1', 'Question2', 'Question3', 'Question4','Question5','Question6']
 
 
 class Results(Page):

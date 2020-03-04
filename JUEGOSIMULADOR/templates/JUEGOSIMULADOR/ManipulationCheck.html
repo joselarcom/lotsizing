@@ -3,35 +3,45 @@
 {% block title %}
 <p><th>
 
-    Manipulation Check Questions
+    Please answer the following Questions
 
 </th></p>
 {% endblock %}
 
 {% block content %}
 <p><th>
-Please answer the questions with a YES or NO
+        Rate the following questions from 1 to 7.
 </th></p>
-
-<p><th>
-    (1) Was there a product (blue or red) that had more demand than the other in any of the situations? {% formfield player.Manipulation1 %}
-</th></p>
-
-<p><th>
-    (2) Was there a difference in demand between locations (Lima – Japan)?{% formfield player.Manipulation2 %}
-</th></p>
-
-<p><th>
-    (3) Was there a difference between capacities from different locations (Lima – Japan)? {% formfield player.Manipulation3 %}
-</th></p>
-
-<p><th>
-    (4) Was the capacity enough in the first scenario? {% formfield player.Manipulation4 %}
+<p>
+    <th>
+    1 means totally UNTRUE and 7 being totally TRUE.
 </th>
 </p>
 
 <p><th>
-    (5) Was the capacity enough in the second scenario? {% formfield player.Manipulation5 %}
+    (1) On average, both products had the same demand. {% formfield player.Question1 %}
+</th></p>
+
+<p><th>
+    (2) Clearly, one product had in general more demand than the other.{% formfield player.Question2 %}
+</th></p>
+
+<p><th>
+    (3) In general, the products had different demand. {% formfield player.Question3 %}
+</th></p>
+
+<p><th>
+    (4) The capacity was enough to supply all demand. {% formfield player.Question4 %}
+</th>
+</p>
+
+<p><th>
+    (5) The capacity was a strong constraint. {% formfield player.Question5 %}
+</th>
+</p>
+
+<p><th>
+    (6) I felt like we need more capacity to supply the demand.. {% formfield player.Question6 %}
 </th>
 </p>
 {% next_button %}

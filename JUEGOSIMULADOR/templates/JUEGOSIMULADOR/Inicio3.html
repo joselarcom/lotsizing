@@ -7,9 +7,14 @@
 
 {% block content %}
     <p>
-        You, as a programmer, are responsible of the master production programming of the polyestiren (RED and BLUE).
-        And so, your performance is vital for the economic success of the enterprise.
+        You, as a planner, are responsible of the master production programming of the polyestiren (RED and BLUE).
     </p>
+    <p>
+        This means that you will  decide on how much to produce for 2 products.
+    </p>
+    <p>
+        Your performance is vital for the economic success of the enterprise.
+</p>
 
     <h4>
         DECISION
@@ -18,6 +23,30 @@
     <p>
         Your task is to decide the ammount of thread (kg), of each color, to be produced in each period.
     </p>
+
+    <h4>
+        Sequence of Events
+    </h4>
+
+    <p>
+        (1) The initial Inventories are observred for a period.
+    </p>
+
+    <p>
+        (2) You then DECIDE on the production lotsize of the period.
+    </p>
+
+    <p>
+        (3) Demand of the period is revealed
+    </p>
+
+    <p>
+        (4) Demand will be covered by the current stock plus the production lotsize just produced.
+    </p>
+<p>
+        (5) If all the stock plus the production lotsize is not enough to cover the current demand, then the uncovered demand is considered to be back-ordered.
+    </p>
+
 
     {% next_button %}
 {% endblock %}

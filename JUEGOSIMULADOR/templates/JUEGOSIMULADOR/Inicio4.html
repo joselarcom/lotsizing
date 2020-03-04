@@ -18,7 +18,8 @@
         1. Inventory Holding Costs
     </h4>
     <p>
-        This cost is the one paid in order to storage the products that were not sold in each period.
+        When items are stored across periods, a unit inventory cost is incurred per item.
+        This cost is associated to financial cost and inventory management.
         In each period you will be reminded of the holding cost.
     </p>
 
@@ -26,7 +27,7 @@
         2. Production Costs
     </h3>
     <p>
-        For each kilogram of product produced, there is a cost attached, this cost will be shown in each decision page.
+        For each kilogram of product produced, there is a unit cost attached, this cost will be shown in each decision page.
     </p>
 
     <h3>
@@ -35,8 +36,15 @@
 
     <p>
         This cost refers to the cost of not being able to supply the demand.
-        And so the ammount of demand not supplied is stacked as negative inventory and has a cost for each period not supplied.
+        All backordered demand is considered as negative inventory and has priority to be covered in the next period.
+        This is in effect a penalty cost for not being able to supply on time.
     </p>
+
+    <p>
+        The costs appear in the top corner of the screen.
+    </p>
+
+        <img src="{% static 'CostosoTree.jpg' %}"/>
 
     {% next_button %}
 {% endblock %}
