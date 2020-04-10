@@ -7,18 +7,18 @@
 
 {% block content %}
     <p>
-        The objective of the decision in production is to minimize the total cost.
+        The objective of your decision in production is to  <span style="font-weight:bold">minimize</span> the  <span style="font-weight:bold">total cost.</span>
         The costs can come from inventory holding, production and backorder in each period.
     </p>
 
     <p>
         There are no setup costs and the time to produce a Kg is 0 (no Lead time).
     </p>
-    <h4>
+    <h3>
         1. Inventory Holding Costs
-    </h4>
+    </h3>
     <p>
-        When items are stored across periods, a unit inventory cost is incurred per item.
+        When items are stored across periods, a  <span style="font-weight:bold">unit inventory cost is incurred per item</span>.
         This cost is associated to financial cost and inventory management.
         In each period you will be reminded of the holding cost.
     </p>
@@ -27,7 +27,7 @@
         2. Production Costs
     </h3>
     <p>
-        For each kilogram of product produced, there is a unit cost attached, this cost will be shown in each decision page.
+       For producing the product, a <span style="font-weight:bold">production unit cost per kilogram</span> is incurred.
     </p>
 
     <h3>
@@ -37,14 +37,14 @@
     <p>
         This cost refers to the cost of not being able to supply the demand.
         All backordered demand is considered as negative inventory and has priority to be covered in the next period.
-        This is in effect a penalty cost for not being able to supply on time.
+        For <span style="font-weight:bold">each kilogram</span> of <span style="font-weight:bold">product backordered</span> (negative inventory)
+        a <span style="font-weight:bold">penalty</span> cost is incurred.
     </p>
 
     <p>
-        The costs appear in the top corner of the screen.
+         All this costs will appear at the top corner of the screen.
     </p>
 
-        <img src="{% static 'CostosoTree.jpg' %}"/>
 
     {% next_button %}
 {% endblock %}
