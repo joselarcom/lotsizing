@@ -1,32 +1,81 @@
-{% extends "global/Page.html" %}
-{% load otree %}
+{% extends "global/Page.html" %} {% load otree %} {% block app_styles %}
+<style>
+    body {
+        max-width: 100vw;
+        background-color: #f9f9fa;
+        color: #0a0a0a;
+        font-size: 16px;
+    }
+    
+    b {
+        font-weight: 500;
+    }
+    
+    li {
+        list-style-type: decimal-leading-zero;
+        font-size: 15px;
+        font-weight: 300;
+    }
+    
+    button {
+        font-size: 14px;
+        /* background: #66e2d5; */
+        background: #cfd7ff;
+        transition: 0.3s;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 2px solid #0a0a0a;
+        cursor: pointer;
+        color: #0a0a0a;
+    }
+    
+    button:hover {
+        background: #4e57ef80;
+        /* background: #66e2d599; */
+        cursor: pointer
+    }
+</style>
+{% endblock %} {% block title %} Final observations {% endblock %} {% block content %}
 
-{% block title %}
-    Final Observations
-{% endblock %}
+<h4 style="padding-top: 20px; padding-bottom: 20px;">
+    Remember the following
+</h4>
 
-{% block content %}
-    <h2>
-        Remember the following
-    </h2>
+<ul>
+    <li>
+        <p>
+            You are the production planner and have to <b>decide</b> whether <b>to produce or not</b>.
+        </p>
+    </li>
+    <li>
+        <p>
+            Your <b>objective</b> is to <b>minimize</b> the sum of storage, backorder and production costs.
+        </p>
+    </li>
+    <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3e766097-c031-405f-951b-3191cc0e4902/finalobs.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200428%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200428T123452Z&X-Amz-Expires=86400&X-Amz-Signature=63abe6bf270a43c899d98af86ef56aa0f4a3615ad23210c04949fba3150c1dcc&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22finalobs.png%22"
+    />
+    <br/>
+    <br/>
+    <li>
+        <p>
+            From period to period, the <b>demand will be progressively shown</b>.
+        </p>
+    </li>
+    <li>
+        <p>
+            All the <b>cost information</b> will be available in the <b>upper part</b> of the decision pages.
+        </p>
+    </li>
+    <li>
+        <p>
+            You will have first a <b>12 period</b> practice session so you can understand how the game works.
+        </p>
+    </li>
 
-    <p>
-        1. You are the production planner and have to decide whether to produce or not.
-    </p>
-    <p>
-        2. Your objective is to minimize the sum of storage, backorder and production costs.
-    </p>
-    <p>
-        3. From period to period, the demand will be progressively shown.
-    </p>
-    <p>
-        4. All the cost information will be available in the upper part of the decision pages.
-    </p>
-    <p>
-        5. You will have first a 12 period practice session so you can understand how the game works.
-    </p>
+</ul>
 
 
-
-    {% next_button %}
-{% endblock %}
+<div style="text-align: center; margin-top: 40px">
+    <button><div style="padding: 7px 20px;">START THE GAME<span style="padding-left: 15px"> &#8594;</span></div></button>
+</div> {% endblock %}

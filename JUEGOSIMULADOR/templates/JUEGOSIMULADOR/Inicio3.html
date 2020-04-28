@@ -1,57 +1,115 @@
-{% extends "global/Page.html" %}
-{% load otree %}
-
-{% block title %}
-    Thank you for being part of this study
-{% endblock %}
-
-{% block content %}
+{% extends "global/Page.html" %} {% load otree %} {% block app_styles %}
+<style>
+    body {
+        max-width: 100vw;
+        background-color: #f9f9fa;
+        color: #0a0a0a;
+        font-size: 16px;
+    }
+    
+    .text {
+        font-size: 15px;
+        font-weight: 300;
+    }
+    
+    .text b {
+        font-weight: 500;
+    }
+    
+    .text li {
+        list-style-type: decimal-leading-zero;
+    }
+    
+    .textDecision {
+        font-size: 15px;
+        font-weight: 300;
+    }
+    
+    button {
+        font-size: 14px;
+        /* background: #66e2d5; */
+        background: #cfd7ff;
+        transition: 0.3s;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 2px solid #0a0a0a;
+        cursor: pointer;
+        color: #0a0a0a;
+    }
+    
+    button:hover {
+        background: #4e57ef80;
+        /* background: #66e2d599; */
+        cursor: pointer
+    }
+</style>
+{% endblock %} {% block title %} Thank you for being part of this study {% endblock %} {% block content %}
+<div class="text">
     <p>
-        You, as a planner, are responsible of the master product programming of the polyestiren (RED and BLUE).
+        You, as a planner, are responsible of the master product programming of the <b> polyestiren (RED and BLUE) </b>.
     </p>
     <p>
-        This means that you will  decide on how much to produce for 2 products.
+        This means that you will decide on <b>how much to produce for 2 products</b>.
     </p>
-    <p>
+    <p style="color:#4e57ef; font-weight: 500;">
         Your performance is vital for the economic success of the enterprise.
+    </p>
+</div>
+<h4 style="padding-top: 20px;">
+    Decision
+</h4>
+
+<p class="text" style="padding-left: 12px; padding-top: 10px;">
+    Your task is to <b>decide the ammount of thread (kg)</b>, of each color, to be produced in each period.
 </p>
 
-    <h4>
-        DECISION
-    </h4>
+<h4 style="padding-top: 15px; padding-bottom: 15px;">
+    Sequence of Events
+</h4>
 
-    <p>
-        Your task is to decide the ammount of thread (kg), of each color, to be produced in each period.
-    </p>
+<div class="text">
+    <ul>
+        <li>
+            <p>
+                The initial Inventories are observed for a period.
+            </p>
+        </li>
+        <li>
+            <p>
+                You then <b>decide</b> on the <b>production lotsize</b> of the period.
+            </p>
+        </li>
+        <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8d9c140b-d86d-4d64-a406-edca62e4ec08/sequence1and2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200428%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200428T122402Z&X-Amz-Expires=86400&X-Amz-Signature=c2e6216e812eb291c7f79d7ccd58802088e5a12cf965d331c194266c3ae572bb&X-Amz-SignedHeaders=host"
+        />
+        <br/>
+        <br/>
+        <li>
+            <p>
+                Demand of the period is revealed
+            </p>
+        </li>
+        <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7d3f56cd-c62b-41e2-bab9-efe4bfee4353/sequence3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200428%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200428T122326Z&X-Amz-Expires=86400&X-Amz-Signature=554b309340e714e90ee26a6f7070e21d7f339403f7b6401a5f704ca07a3caef9&X-Amz-SignedHeaders=host"
+        />
+        <br/>
+        <br/>
+        <li>
+            <p>
+                Demand will be covered by the current stock plus the production lotsize just produced.
+            </p>
+        </li>
+        <li>
+            <p>
+                If all the stock plus the production lotsize is not enough to cover the current demand, then the <b>uncovered demand</b> is considered to be <b>back-ordered</b>, meaning that you still
+                <b>need to fulfill the demand at a later stage.</b>
+            </p>
+        </li>
+    </ul>
+</div>
 
-    <h4>
-        Sequence of Events
-    </h4>
 
-    <p>
-        (1) The initial Inventories are observred for a period.
-    </p>
+<div style="text-align: center; margin-top: 40px">
+    <button><div style="padding: 7px 20px;">SEE THE OBJECTIVE<span style="padding-left: 15px"> &#8594;</span></div></button>
+</div>
 
-    <p>
-        (2) You then DECIDE on the <span style="font-weight:bold">production lotsize</span> of the period.
-
-
-
-    </p>
-
-    <p>
-        (3) Demand of the period is revealed
-    </p>
-
-    <p>
-        (4) Demand will be covered by the current stock plus the production lotsize just produced.
-    </p>
-<p>
-        (5) If all the stock plus the production lotsize is not enough to cover the current demand, then the  <span style="font-weight:bold">uncovered demand</span>  is considered to be  <span style="font-weight:bold">back-ordered</span>,
-    meaning that you still <span style="font-weight:bold">need to fulfill the demand at a later stage.</span>
-    </p>
-
-
-    {% next_button %}
 {% endblock %}
-
