@@ -31,17 +31,17 @@ class Constants(BaseConstants):
     CostoBackorder2 = 18
 
     num_rounds = 1
-    inventario_inicial = 1000
-    inventario_inicialR = 1000
+    inventario_inicial = 100
+    inventario_inicialR = 100
 
-    inventario_inicial2 = 1000
-    inventario_inicialR2 = 1000
+    inventario_inicial2 = 100
+    inventario_inicialR2 = 100
 
-    inventario_inicial3 = 1000
-    inventario_inicialR3 = 1000
+    inventario_inicial3 = 100
+    inventario_inicialR3 = 100
 
-    inventario_inicial4 = 1000
-    inventario_inicialR4 = 1000
+    inventario_inicial4 = 100
+    inventario_inicialR4 = 100
 
     LimaDemanda1 = 1100
     LimaDemanda2 = 1500
@@ -269,10 +269,10 @@ class Player(BasePlayer):
     Pregunta3 = models.IntegerField(initial=0)
     Pregunta4 = models.IntegerField(initial=0)
 
-    Question1 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question2 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question3 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question4 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question5 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question6 = models.IntegerField(initial=0, min = 1, max = 7)
+    Question1 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question2 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question3 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question4 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question5 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question6 = models.IntegerField(initial=0, min = 1, max = 5)
 

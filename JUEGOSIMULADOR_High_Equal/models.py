@@ -31,17 +31,17 @@ class Constants(BaseConstants):
     CostoBackorder2 = 18
 
     num_rounds = 1
-    inventario_inicial = 1000
-    inventario_inicialR = 1000
+    inventario_inicial = 100
+    inventario_inicialR = 100
 
-    inventario_inicial2 = 1000
-    inventario_inicialR2 = 1000
+    inventario_inicial2 = 100
+    inventario_inicialR2 = 100
 
-    inventario_inicial3 = 1000
-    inventario_inicialR3 = 1000
+    inventario_inicial3 = 100
+    inventario_inicialR3 = 100
 
-    inventario_inicial4 = 1000
-    inventario_inicialR4 = 1000
+    inventario_inicial4 = 100
+    inventario_inicialR4 = 100
 
     LimaDemanda1 = 1100
     LimaDemanda2 = 1500
@@ -69,32 +69,31 @@ class Constants(BaseConstants):
     rojoLimaDemanda11 = 500
     rojoLimaDemanda12 = 300
 
-    JaponDemanda1 = 1300
-    JaponDemanda2 = 1600
-    JaponDemanda3 = 1600
-    JaponDemanda4 = 1700
-    JaponDemanda5 = 1800
-    JaponDemanda6 = 1500
-    rojoJaponDemanda1 = 800
-    rojoJaponDemanda2 = 500
-    rojoJaponDemanda3 = 500
-    rojoJaponDemanda4 = 600
-    rojoJaponDemanda5 = 400
-    rojoJaponDemanda6 = 600
+    JaponDemanda1 = 1200
+    JaponDemanda2 = 800
+    JaponDemanda3 = 1100
+    JaponDemanda4 = 1000
+    JaponDemanda5 = 1000
+    JaponDemanda6 = 800
+    rojoJaponDemanda1 = 900
+    rojoJaponDemanda2 = 1300
+    rojoJaponDemanda3 = 600
+    rojoJaponDemanda4 = 1100
+    rojoJaponDemanda5 = 1200
+    rojoJaponDemanda6 = 1000
 
-
-    JaponDemanda7 = 1200
-    JaponDemanda8 = 1100
-    JaponDemanda9 = 1900
-    JaponDemanda10 = 1700
-    JaponDemanda11 = 1500
-    JaponDemanda12 = 1500
-    rojoJaponDemanda7 = 200
-    rojoJaponDemanda8 = 600
-    rojoJaponDemanda9 = 500
-    rojoJaponDemanda10 = 400
-    rojoJaponDemanda11 = 700
-    rojoJaponDemanda12 = 400
+    JaponDemanda7 = 900
+    JaponDemanda8 = 1000
+    JaponDemanda9 = 1200
+    JaponDemanda10 = 1000
+    JaponDemanda11 = 1300
+    JaponDemanda12 = 1200
+    rojoJaponDemanda7 = 1200
+    rojoJaponDemanda8 = 1400
+    rojoJaponDemanda9 = 1000
+    rojoJaponDemanda10 = 1000
+    rojoJaponDemanda11 = 900
+    rojoJaponDemanda12 = 900
 
     HanoiDemanda1 = 1300
     HanoiDemanda2 = 800
@@ -269,10 +268,10 @@ class Player(BasePlayer):
     Pregunta3 = models.IntegerField(initial=0)
     Pregunta4 = models.IntegerField(initial=0)
 
-    Question1 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question2 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question3 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question4 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question5 = models.IntegerField(initial=0, min = 1, max = 7)
-    Question6 = models.IntegerField(initial=0, min = 1, max = 7)
+    Question1 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question2 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question3 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question4 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question5 = models.IntegerField(initial=0, min = 1, max = 5)
+    Question6 = models.IntegerField(initial=0, min = 1, max = 5)
 

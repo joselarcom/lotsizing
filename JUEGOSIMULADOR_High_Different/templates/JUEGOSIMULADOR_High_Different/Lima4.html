@@ -219,21 +219,25 @@
             </div>
         </div>
 
-        <div style="margin-top: 80px;  display: flex; align-items: center; font-size: 14px; width: 100%; justify-content: space-around; padding: 20px 30px">
+        <div class="top-data" style="margin-top: 60px;  display: flex; align-items: center; font-size: 30px; width: 100%; justify-content: space-around; padding: 10px 10px">
+            Cost Parameters
+        </div>
+
+        <div style="margin-top: 10px;  display: flex; align-items: center; font-size: 14px; width: 100%; justify-content: space-around; padding: 20px 30px">
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
                 <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px"> Inventory Holding Cost per month/per unit</div>
-                <div style="text-align:center; font-size: 18px; font-weight:700">S/. {{ Constants.CostoInventario1 }} /unit</div>
+                <div style="text-align:center; font-size: 18px; font-weight:700">$ {{ Constants.CostoInventario1 }} /unit</div>
             </div>
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
                 <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px">Product Cost</div>
-                <div style="text-align:center; font-size: 18px; font-weight:700">S/ {{ Constants.CostoProducto1 }} /unit</div>
+                <div style="text-align:center; font-size: 18px; font-weight:700">$ {{ Constants.CostoProducto1 }} /unit</div>
             </div>
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
                 <div style="text-align:center; font-weight:600; font-size: 10px; text-transform: uppercase; padding-bottom: 10px">Backorder Cost /per month</div>
-                <div style="text-align:center; font-size: 18px; font-weight:700">S/ {{ Constants.CostoBackorder1 }} /unit</div>
+                <div style="text-align:center; font-size: 18px; font-weight:700">$ {{ Constants.CostoBackorder1 }} /unit</div>
             </div>
 
             <div class="top-data" style=" padding: 10px 30px; display: flex; align-items: center; flex-direction: column; justify-content: center">
@@ -243,7 +247,7 @@
 
         </div>
     </div>
-    <div style=" margin-top: 0px; text-align:left; font-weight:700; font-size: 24px; padding-bottom: 30px; opacity: 0;">Production</div>
+    <div style=" margin-top: 10px; text-align:left; font-weight:700; font-size: 28px; padding-bottom: 30px">Decisions</div>
 
     <div class="card">
         <div class="inside">
@@ -444,7 +448,7 @@
                 <td class="right" style="border-right: 0px;"> </td>
             </tr>
             <tr>
-                <th scope="row" class="head-text" style="border-left: 0px;">Inventory Holding Cost (S/.)</th>
+                <th scope="row" class="head-text" style="border-left: 0px;">Inventory Holding Cost ($)</th>
                 <td class="right">{{costoalmacenamiento1}} </td>
                 <td class="right">{{rojocostoalmacenamiento1}} </td>
                 <td class="right">{{costoalmacenamiento2}} </td>
@@ -459,7 +463,7 @@
                 <td class="right" style="border-right: 0px;"> </td>
             </tr>
             <tr>
-                <th scope="row" class="head-text" style="border-left: 0px;">Backorder Cost (S/.)</th>
+                <th scope="row" class="head-text" style="border-left: 0px;">Backorder Cost ($)</th>
                 <td class="right">{{costoventasperdidas1}} </td>
                 <td class="right">{{rojocostoventasperdidas1}} </td>
                 <td class="right">{{costoventasperdidas2}} </td>
@@ -474,7 +478,7 @@
                 <td class="right" style="border-right: 0px;"> </td>
             </tr>
             <tr>
-                <th scope="row" class="head-text" style="border-left: 0px;">Product Cost (S/.)</th>
+                <th scope="row" class="head-text" style="border-left: 0px;">Product Cost ($)</th>
                 <td class="right">{{setup1}} </td>
                 <td class="right">{{rojosetup1}} </td>
                 <td class="right">{{setup2}} </td>
@@ -489,7 +493,7 @@
                 <td class="right" style="border-right: 0px;"> </td>
             </tr>
             <tr>
-                <th scope="row" class="head-text" style="border-left: 0px; border-bottom: 0px">Total Costs (S/.)</th>
+                <th scope="row" class="head-text" style="border-left: 0px; border-bottom: 0px">Total Costs ($)</th>
                 <td class="right" style="border-bottom: 0px">{{totales1}} </td>
                 <td class="right" style="border-bottom: 0px">{{rojototales1}} </td>
                 <td class="right" style="border-bottom: 0px">{{totales2}} </td>

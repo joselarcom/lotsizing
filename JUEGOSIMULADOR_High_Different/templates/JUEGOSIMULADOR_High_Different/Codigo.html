@@ -6,15 +6,18 @@
     ¡Thank you for being part of this study! Now its time to give you your Completion Code
 {% endblock %}
 
-
 {% block content %}
 
 <p>Your Completion Code is within the link above, appearing in your screen.</p>
 
-<p> For example ->  http://157.245.6.72:8000/p/p2lb5plv/JUEGOSIMULADOR/Inicio3/1/ </p>
+<p> For example ->  http://157.245.6.72:8000/p/<span style="font-weight:bold">p2lb5plv</span>/JUEGOSIMULADOR/Inicio3/1/ </p>
 
-<p> The code is before JUEGOSIMULADOR, so it would be 'p2lb5plv'</p>
+<p> The code is before JUEGOSIMULADOR/Inicio3/1/</p>
 
-    {% next_button %}
+<p> The code is after http://157.245.6.72:8000/p/</p>
+
+<p> So it would be '<span style="font-weight:bold">p2lb5plv</span>' </p>
+
+{% next_button %}
 
 {% endblock %}
