@@ -1,7 +1,7 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
-)
+    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
+
+
 
 
 author = 'Alex Dyer'
@@ -275,4 +275,19 @@ class Player(BasePlayer):
     Question4 = models.IntegerField(initial=0, min = 1, max = 5)
     Question5 = models.IntegerField(initial=0, min = 1, max = 5)
     Question6 = models.IntegerField(initial=0, min = 1, max = 5)
+
+    Age = models.IntegerField(label="What age are you?", min=0, max = 120)
+    Sex = models.StringField(label="What is your gender?", choices=["Male", "Female", "Other"])
+    Nationality = models.StringField(label="What is your nationality",
+    choices=["american","argentinean","australian","belgian","brazilian","british","canadian","chilean","chinese",
+             "colombian","cuban","croatian","danish","dominican","dutch","ecuadorean","finnish","french","german",
+             "hungarian","icelander","indian","italian","japanese","mexican","peruvian","russian","scottish","spanish","swedish",
+             "swiss","turkish","venezuelan"])
+    Profession = models.StringField(label="What is your profession?", choices =["Engineering related", "Life Sciences related",
+                                                                                "Business related", "Planning  related","Other"])
+    Instruction = models.StringField(label="What is the highest degree or level of school you have completed?",
+    choices=["Currently Undergraduate","Graduated", "Master", "Doctor", ])
+    Experience = models.StringField(label="Do You have any experience in production or supply chain planning?", choices=["Yes","No"])
+
+
 

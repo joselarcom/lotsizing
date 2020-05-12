@@ -5984,9 +5984,15 @@ class Results(Page):
 class Codigo(Page):
     pass
 
+class PreguntasDemograficas(Page):
+    form_model = 'player'
+    form_fields = ['Age', 'Sex', 'Nationality', 'Profession', 'Instruction','Experience']
+
+
 page_sequence = [
  ##Inicio1,
   ##   Inicio2,
+    PreguntasDemograficas,
      Inicio3,
     Inicio4,
      Inicio6,
