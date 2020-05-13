@@ -284,9 +284,9 @@ class Player(BasePlayer):
              "hungarian","icelander","indian","italian","japanese","mexican","peruvian","russian","scottish","spanish","swedish",
              "swiss","turkish","venezuelan"])
     Profession = models.StringField(label="What is your profession?", choices =["Engineering related", "Life Sciences related",
-                                                                                "Business related", "Planning  related","Other"])
+                                                                                "Business related","Other"])
     Instruction = models.StringField(label="What is the highest degree or level of school you have completed?",
-    choices=["Currently Undergraduate","Graduated", "Master", "Doctor", ])
+    choices=["High School Graduate", "Currently Undergraduate", "Bachelor Graduate", "Master", "Doctor", ])
     Experience = models.StringField(label="Do You have any experience in production or supply chain planning?", choices=["Yes","No"])
 
 
