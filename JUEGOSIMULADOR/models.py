@@ -294,8 +294,7 @@ class Player(BasePlayer):
     AttentionQuestion1 = models.StringField(label="Which of the following is what you need to decide?",choices=["Profit of the company",
                         "Cost of production","Production lot size of two products","Production Capacity","Level of sales"])
     AttentionQuestion2 = models.StringField(label=" Which cost needs to be minized?     a)Cost of backorders  b)Marketing  c)Purchasing costs  d)Inventory costs  e)set-up costs",
-    choices=["A","B","C","D","E","A,B","A,C","A,D", "A,E","A,B,C","A,C,D"
-             ,"A,C,E","C,D,E","D,E"])
+    choices=["A,B,C","A,B,D","A,B,E","A,C,D","A,C,E","A,D,E","B,C,D","B,C,E","B,D,E","C,D,E"])
     AttentionQuestion3 = models.StringField(label=" Which of the following is True ",
     choices=["The lot sizes need to be decided before the demand of the period is revealed",
                         "The lot sizes need to be decided after the demand of the period is revealed",
