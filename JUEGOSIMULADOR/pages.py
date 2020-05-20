@@ -1,6 +1,7 @@
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
+import random
 import decimal
 
 
@@ -5973,6 +5974,8 @@ class Respuestas1(Page):
             'correctas': correctas,
         }
 
+
+
 class ManipulationCheck(Page):
     form_model = 'player'
     form_fields = ['Question1', 'Question2', 'Question3', 'Question4','Question5','Question6']
@@ -5982,20 +5985,48 @@ class Results(Page):
     pass
 
 class Codigo(Page):
+    form_model ='player'
+    form_fields =['Code']
+    def vars_for_template(self):
+        return{
+            'RandomNumber': random.randint(1000,9999)
+        }
     pass
+
+class PreguntasParar(Page):
+    form_model='player'
+    form_fields=['AttentionQuestion1','AttentionQuestion2','AttentionQuestion3']
+    def error_message(self, values):
+        Pregunta1 = values["AttentionQuestion1"]
+        Pregunta2 = values["AttentionQuestion2"]
+        Pregunta3 = values["AttentionQuestion3"]
+
+        if Pregunta1 != "Production lot size of two products":
+            return ' There is a wrong answer, you need all answers right in order to continue '
+
+        if Pregunta2 != "A,C,D":
+            return ' There is a wrong answer, you need all answers right in order to continue '
+
+        if Pregunta3 != "The lot sizes need to be decided before the demand of the period is revealed":
+            return ' There is a wrong answer, you need all answers right in order to continue '
+
 
 class PreguntasDemograficas(Page):
     form_model = 'player'
     form_fields = ['Age', 'Sex', 'Nationality', 'Profession', 'Instruction','Experience']
 
 
+
+
 page_sequence = [
  ##Inicio1,
   ##   Inicio2,
+
     PreguntasDemograficas,
      Inicio3,
     Inicio4,
      Inicio6,
+PreguntasParar,
 
 Inicio7LIMA,
     Lima1,
@@ -6029,7 +6060,8 @@ InicioJapon,
 ManipulationCheck,
     Preguntas1,
     Respuestas1,
-    Codigo
+Codigo,
+
 
 #resumendereaccion
 #resumendereaccionjapon

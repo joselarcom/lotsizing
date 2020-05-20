@@ -1,5 +1,6 @@
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
+import random
 
 
 
@@ -288,6 +289,18 @@ class Player(BasePlayer):
     Instruction = models.StringField(label="What is the highest degree or level of school you have completed?",
     choices=["High School Graduate", "Currently Undergraduate", "Bachelor Graduate", "Master", "Doctor", ])
     Experience = models.StringField(label="Do You have any experience in production or supply chain planning?", choices=["Yes","No"])
+    Code = models.IntegerField(label = "Write here the code")
+
+    AttentionQuestion1 = models.StringField(label="Which of the following is what you need to decide?",choices=["Profit of the company",
+                        "Cost of production","Production lot size of two products","Production Capacity","Level of sales"])
+    AttentionQuestion2 = models.StringField(label=" Which cost needs to be minized?     a)Cost of backorders  b)Marketing  c)Purchasing costs  d)Inventory costs  e)set-up costs",
+    choices=["A","B","C","D","E","A,B","A,C","A,D", "A,E","A,B,C","A,C,D"
+             ,"A,C,E","C,D,E","D,E"])
+    AttentionQuestion3 = models.StringField(label=" Which of the following is True ",
+    choices=["The lot sizes need to be decided before the demand of the period is revealed",
+                        "The lot sizes need to be decided after the demand of the period is revealed",
+                        "The price is decided before the demand and lot size is revealed",
+                                            "The price is decided after the demand and lot size is revealed"])
 
 
 

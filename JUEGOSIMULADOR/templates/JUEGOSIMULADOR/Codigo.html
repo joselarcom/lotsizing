@@ -8,15 +8,13 @@
 
 {% block content %}
 
-<p>Your Completion Code is within the link above, appearing in your screen.</p>
+<p>Your Completion Code is below, but for it to count, you must write it.</p>
 
-<p> For example ->  http://157.245.6.72:8000/p/<span style="font-weight:bold">p2lb5plv</span>/JUEGOSIMULADOR/Inicio3/1/ </p>
+<p> <span style="font-weight:bold">{{RandomNumber}}</span></p>
 
-<p> The code is before JUEGOSIMULADOR/Inicio3/1/</p>
-
-<p> The code is after http://157.245.6.72:8000/p/</p>
-
-<p> So it would be '<span style="font-weight:bold">p2lb5plv</span>' </p>
+<p>
+    {% formfield player.Code %}
+</p>
 
 {% next_button %}
 
