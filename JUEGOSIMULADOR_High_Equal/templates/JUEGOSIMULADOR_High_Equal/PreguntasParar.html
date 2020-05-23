@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %} {% load otree %}
+
+{% block title %}
+<p><th>
+   Before you continue, we need to reassure you understand the instructions
+
+</th></p>
+{% endblock %}
+
+{% block content %}
+<p><th>
+    {% formfield player.AttentionQuestion1 %}
+</th></p>
+<p><th>
+    {% formfield player.AttentionQuestion2 %}
+</th></p>
+
+<p><th>
+    {% formfield player.AttentionQuestion3 %}
+</th></p>
+
+
+{% next_button %}
+{% endblock %}

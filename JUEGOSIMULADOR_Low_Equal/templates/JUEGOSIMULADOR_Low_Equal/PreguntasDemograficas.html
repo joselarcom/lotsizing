@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %} {% load otree %}
+
+{% block title %}
+<p><th>
+    Thank your for helping our study
+
+</th></p>
+{% endblock %}
+
+{% block content %}
+<p><th>
+    {% formfield player.Age %}
+</th></p>
+<p><th>
+    {% formfield player.Sex %}
+</th></p>
+
+<p><th>
+    {% formfield player.Nationality %}
+</th></p>
+
+<p><th>
+    {% formfield player.Profession %}
+</th></p>
+
+<p><th>
+    {% formfield player.Instruction %}
+</th></p>
+
+<p><th>
+    {% formfield player.Experience %}
+</th></p>
+
+{% next_button %}
+{% endblock %}

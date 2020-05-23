@@ -215,6 +215,7 @@ class Player(BasePlayer):
     RojoProduccionJapon11 = models.IntegerField(initial=0, min=0, max=5500, label="")
     RojoProduccionJapon12 = models.IntegerField(initial=0, min=0, max=5500, label="")
 
+
     ProduccionHanoi1 = models.IntegerField(initial=0, min=0, max=1500)
     ProduccionHanoi2 = models.IntegerField(initial=0, min=0, max=1500)
     ProduccionHanoi3 = models.IntegerField(initial=0, min=0, max=1500)
@@ -264,6 +265,7 @@ class Player(BasePlayer):
     RojoProduccionMexico10 = models.IntegerField(initial=0, min=0, max=1500)
     RojoProduccionMexico11 = models.IntegerField(initial=0, min=0, max=1500)
     RojoProduccionMexico12 = models.IntegerField(initial=0, min=0, max=1500)
+
 
     Pregunta1 = models.FloatField(initial=0)
     Pregunta2 = models.IntegerField(initial=0)

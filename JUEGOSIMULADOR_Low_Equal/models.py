@@ -1,7 +1,8 @@
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
-    Currency as c, currency_range
-)
+    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer)
+import random
+
+
 
 
 author = 'Alex Dyer'
@@ -81,7 +82,6 @@ class Constants(BaseConstants):
     rojoJaponDemanda4 = 1100
     rojoJaponDemanda5 = 1200
     rojoJaponDemanda6 = 1000
-
 
     JaponDemanda7 = 900
     JaponDemanda8 = 1000
@@ -214,6 +214,7 @@ class Player(BasePlayer):
     RojoProduccionJapon11 = models.IntegerField(initial=0, min=0, max=5500, label="")
     RojoProduccionJapon12 = models.IntegerField(initial=0, min=0, max=5500, label="")
 
+
     ProduccionHanoi1 = models.IntegerField(initial=0, min=0, max=1500)
     ProduccionHanoi2 = models.IntegerField(initial=0, min=0, max=1500)
     ProduccionHanoi3 = models.IntegerField(initial=0, min=0, max=1500)
@@ -264,6 +265,7 @@ class Player(BasePlayer):
     RojoProduccionMexico11 = models.IntegerField(initial=0, min=0, max=1500)
     RojoProduccionMexico12 = models.IntegerField(initial=0, min=0, max=1500)
 
+
     Pregunta1 = models.FloatField(initial=0)
     Pregunta2 = models.IntegerField(initial=0)
     Pregunta3 = models.IntegerField(initial=0)
@@ -275,4 +277,30 @@ class Player(BasePlayer):
     Question4 = models.IntegerField(initial=0, min = 1, max = 5)
     Question5 = models.IntegerField(initial=0, min = 1, max = 5)
     Question6 = models.IntegerField(initial=0, min = 1, max = 5)
+
+    Age = models.IntegerField(label="What age are you?", min=0, max = 120)
+    Sex = models.StringField(label="What is your gender?", choices=["Male", "Female", "Other"])
+    Nationality = models.StringField(label="What is your nationality",
+    choices=["american","argentinean","australian","belgian","brazilian","british","canadian","chilean","chinese",
+             "colombian","cuban","croatian","danish","dominican","dutch","ecuadorean","finnish","french","german",
+             "hungarian","icelander","indian","italian","japanese","mexican","peruvian","russian","scottish","spanish","swedish",
+             "swiss","turkish","venezuelan"])
+    Profession = models.StringField(label="What is your profession?", choices =["Engineering related", "Life Sciences related",
+                                                                                "Business related","Other"])
+    Instruction = models.StringField(label="What is the highest degree or level of school you have completed?",
+    choices=["High School Graduate", "Currently Undergraduate", "Bachelor Graduate", "Master", "Doctor", ])
+    Experience = models.StringField(label="Do You have any experience in production or supply chain planning?", choices=["Yes","No"])
+    Code = models.IntegerField(label = "Write here the code")
+
+    AttentionQuestion1 = models.StringField(label="Which of the following is what you need to decide?",choices=["Profit of the company",
+                        "Cost of production","Production lot size of two products","Production Capacity","Level of sales"])
+    AttentionQuestion2 = models.StringField(label=" Which cost needs to be minized?     a)Cost of backorders  b)Marketing  c)Purchasing costs  d)Inventory costs  e)set-up costs",
+    choices=["A,B,C","A,B,D","A,B,E","A,C,D","A,C,E","A,D,E","B,C,D","B,C,E","B,D,E","C,D,E"])
+    AttentionQuestion3 = models.StringField(label=" Which of the following is True ",
+    choices=["The lot sizes need to be decided before the demand of the period is revealed",
+                        "The lot sizes need to be decided after the demand of the period is revealed",
+                        "The price is decided before the demand and lot size is revealed",
+                                            "The price is decided after the demand and lot size is revealed"])
+
+
 
