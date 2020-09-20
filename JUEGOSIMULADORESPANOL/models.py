@@ -12,11 +12,11 @@ Simulador de planeamiento
 
 
 class Constants(BaseConstants):
-    name_in_url = 'JUEGOSIMULADOR'
+    name_in_url = 'JUEGOSIMULADORESPANOL'
     players_per_group = None
 
-    Capacidad = 2000
-    Capacidad2 = 2000
+    Capacidad = 2200
+    Capacidad2 = 2200
 
     SETUP = 0
     SETUP2 = 0
@@ -31,122 +31,69 @@ class Constants(BaseConstants):
     CostoBackorder2 = 18
 
     num_rounds = 1
-    inventario_inicial = 1000
-    inventario_inicialR = 1000
+    inventario_inicial = 100
+    inventario_inicialR = 100
 
-    inventario_inicial2 = 1000
-    inventario_inicialR2 = 1000
+    inventario_inicial2 = 100
+    inventario_inicialR2 = 100
 
-    inventario_inicial3 = 1000
-    inventario_inicialR3 = 1000
+    inventario_inicial3 = 100
+    inventario_inicialR3 = 100
 
-    inventario_inicial4 = 1000
-    inventario_inicialR4 = 1000
+    inventario_inicial4 = 100
+    inventario_inicialR4 = 100
 
-    LimaDemanda1 = 500
-    LimaDemanda2 = 1600
-    LimaDemanda3 = 1600
-    LimaDemanda4 = 1700
-    LimaDemanda5 = 1800
-    LimaDemanda6 = 600
-    rojoLimaDemanda1 = 1400
-    rojoLimaDemanda2 = 1100
-    rojoLimaDemanda3 = 1200
-    rojoLimaDemanda4 = 1400
-    rojoLimaDemanda5 = 1100
-    rojoLimaDemanda6 = 1400
+    LimaDemanda1 = 1100
+    LimaDemanda2 = 1500
+    LimaDemanda3 = 1800
+    LimaDemanda4 = 1800
+    LimaDemanda5 = 1500
+    LimaDemanda6 = 1600
+    rojoLimaDemanda1 = 500
+    rojoLimaDemanda2 = 700
+    rojoLimaDemanda3 = 800
+    rojoLimaDemanda4 = 400
+    rojoLimaDemanda5 = 500
+    rojoLimaDemanda6 = 500
 
-    LimaDemanda7 = 1200
-    LimaDemanda8 = 1100
-    LimaDemanda9 = 1700
-    LimaDemanda10 = 1200
-    LimaDemanda11 = 1300
-    LimaDemanda12 = 1400
-    rojoLimaDemanda7 = 1000
-    rojoLimaDemanda8 = 1100
-    rojoLimaDemanda9 = 1100
-    rojoLimaDemanda10 = 1100
-    rojoLimaDemanda11 = 900
-    rojoLimaDemanda12 = 700
+    LimaDemanda7 = 1300
+    LimaDemanda8 = 1200
+    LimaDemanda9 = 1800
+    LimaDemanda10 = 1500
+    LimaDemanda11 = 1400
+    LimaDemanda12 = 1600
+    rojoLimaDemanda7 = 300
+    rojoLimaDemanda8 = 500
+    rojoLimaDemanda9 = 400
+    rojoLimaDemanda10 = 700
+    rojoLimaDemanda11 = 500
+    rojoLimaDemanda12 = 300
 
-    JaponDemanda1 = 1000
+    JaponDemanda1 = 1300
     JaponDemanda2 = 1600
-    JaponDemanda3 = 1400
-    JaponDemanda4 = 1200
+    JaponDemanda3 = 1600
+    JaponDemanda4 = 1700
     JaponDemanda5 = 1800
     JaponDemanda6 = 1500
-    rojoJaponDemanda1 = 1000
-    rojoJaponDemanda2 = 1100
-    rojoJaponDemanda3 = 1200
-    rojoJaponDemanda4 = 1400
-    rojoJaponDemanda5 = 1100
-    rojoJaponDemanda6 = 800
-
+    rojoJaponDemanda1 = 800
+    rojoJaponDemanda2 = 500
+    rojoJaponDemanda3 = 500
+    rojoJaponDemanda4 = 600
+    rojoJaponDemanda5 = 400
+    rojoJaponDemanda6 = 600
 
     JaponDemanda7 = 1200
     JaponDemanda8 = 1100
-    JaponDemanda9 = 2000
-    JaponDemanda10 = 1600
-    JaponDemanda11 = 1700
-    JaponDemanda12 = 1400
-    rojoJaponDemanda7 = 1000
-    rojoJaponDemanda8 = 1100
-    rojoJaponDemanda9 = 1100
-    rojoJaponDemanda10 = 1100
-    rojoJaponDemanda11 = 900
-    rojoJaponDemanda12 = 700
-
-    HanoiDemanda1 = 1300
-    HanoiDemanda2 = 800
-    HanoiDemanda3 = 800
-    HanoiDemanda4 = 800
-    HanoiDemanda5 = 700
-    HanoiDemanda6 = 1000
-    rojoHanoiDemanda1 = 900
-    rojoHanoiDemanda2 = 600
-    rojoHanoiDemanda3 = 600
-    rojoHanoiDemanda4 = 800
-    rojoHanoiDemanda5 = 800
-    rojoHanoiDemanda6 = 800
-
-    HanoiDemanda7 = 900
-    HanoiDemanda8 = 800
-    HanoiDemanda9 = 900
-    HanoiDemanda10 = 1200
-    HanoiDemanda11 = 800
-    HanoiDemanda12 = 700
-    rojoHanoiDemanda7 = 1000
-    rojoHanoiDemanda8 = 900
-    rojoHanoiDemanda9 = 800
-    rojoHanoiDemanda10 = 1000
-    rojoHanoiDemanda11 = 900
-    rojoHanoiDemanda12 = 700
-
-    MexicoDemanda1 = 1100
-    MexicoDemanda2 = 1000
-    MexicoDemanda3 = 800
-    MexicoDemanda4 = 1400
-    MexicoDemanda5 = 1300
-    MexicoDemanda6 = 1200
-    rojoMexicoDemanda1 = 500
-    rojoMexicoDemanda2 = 500
-    rojoMexicoDemanda3 = 600
-    rojoMexicoDemanda4 = 600
-    rojoMexicoDemanda5 = 500
-    rojoMexicoDemanda6 = 500
-
-    MexicoDemanda7 = 1200
-    MexicoDemanda8 = 900
-    MexicoDemanda9 = 1000
-    MexicoDemanda10 = 1200
-    MexicoDemanda11 = 1700
-    MexicoDemanda12 = 1100
-    rojoMexicoDemanda7 = 600
-    rojoMexicoDemanda8 = 400
-    rojoMexicoDemanda9 = 700
-    rojoMexicoDemanda10 = 600
-    rojoMexicoDemanda11 = 400
-    rojoMexicoDemanda12 = 700
+    JaponDemanda9 = 1900
+    JaponDemanda10 = 1700
+    JaponDemanda11 = 1500
+    JaponDemanda12 = 1500
+    rojoJaponDemanda7 = 200
+    rojoJaponDemanda8 = 600
+    rojoJaponDemanda9 = 500
+    rojoJaponDemanda10 = 400
+    rojoJaponDemanda11 = 700
+    rojoJaponDemanda12 = 400
 
 
 class Subsession(BaseSubsession):
@@ -214,55 +161,6 @@ class Player(BasePlayer):
     RojoProduccionJapon11 = models.IntegerField(initial=0, min=0, max=5500, label="")
     RojoProduccionJapon12 = models.IntegerField(initial=0, min=0, max=5500, label="")
 
-    ProduccionHanoi1 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi2 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi3 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi4 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi5 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi6 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi7 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi8 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi9 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi10 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi11 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionHanoi12 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi1 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi2 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi3 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi4 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi5 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi6 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi7 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi8 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi9 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi10 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi11 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionHanoi12 = models.IntegerField(initial=0, min=0, max=1500)
-
-    ProduccionMexico1 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico2 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico3 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico4 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico5 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico6 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico7 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico8 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico9 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico10 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico11 = models.IntegerField(initial=0, min=0, max=1500)
-    ProduccionMexico12 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico1 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico2 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico3 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico4 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico5 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico6 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico7 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico8 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico9 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico10 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico11 = models.IntegerField(initial=0, min=0, max=1500)
-    RojoProduccionMexico12 = models.IntegerField(initial=0, min=0, max=1500)
 
     Pregunta1 = models.FloatField(initial=0)
     Pregunta2 = models.IntegerField(initial=0)

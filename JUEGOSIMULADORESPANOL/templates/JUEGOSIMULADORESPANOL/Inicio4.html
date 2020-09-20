@@ -1,0 +1,112 @@
+{% extends "global/Page.html" %} {% load otree %} {% block app_styles %}
+<style>
+    body {
+        max-width: 100vw;
+        background-color: #f9f9fa;
+        color: #0a0a0a;
+        font-size: 16px;
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .text {
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    .text b {
+        font-weight: 500;
+    }
+
+    ul {
+        padding-inline-start: 28px;
+    }
+
+    li {
+        list-style-type: decimal;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .subtitle {
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    button {
+        font-size: 14px;
+        /* background: #66e2d5; */
+        background: #cfd7ff;
+        transition: 0.3s;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 2px solid #0a0a0a;
+        cursor: pointer;
+        color: #0a0a0a;
+    }
+
+    button:hover {
+        background: #4e57ef80;
+        /* background: #66e2d599; */
+        cursor: pointer
+    }
+</style>
+{% endblock %} {% block title %} Objetivo {% endblock %} {% block content %}
+<div class="text">
+    <p>
+        El objetivo de tu decisión en producción es <b>minimizar</b> el <b>costo total</b>.
+        Los costos pueden venir de 3 formas: mantenimiento de inventario, producción y backorder por cada periodo.
+    </p>
+    <div class="center">
+        <p class="text">
+            <b>Todos estos costos van a aparecer en la parte superior de la pantalla.</b>
+        </p>
+        <img src="https://i.ibb.co/SBCqcVQ/costs.png" alt="costs" />
+        <br/>
+    </div>
+    <p>
+        No hay costos de setup y el tiempo para producir un kg es 0 (no hay lead time).
+    </p>
+</div>
+
+
+
+<ul>
+    <li>
+        <h5>
+            Costo de Mantenimiento de Inventario
+        </h5>
+    </li>
+    <p class="text">
+        Cuando los productos se guardan entre periodos, un <b>costo unitario de inventario es incurrido</b>. Este costo está asociado con el manejo de inventario. En cada periodo serás recordado del costo de mantenimiento de inventario.
+    </p>
+    <li>
+        <h5>
+            Costo de Producción
+        </h5>
+        <p class="text">
+            Para producir el producto, un <b>costo de producción unitario por kilogamo</b> es incurrido.
+        </p>
+    </li>
+    <li>
+        <h5>
+            Costo de Backorder
+        </h5>
+        <p class="text">
+            Este costo se refiere al costo por no ser capaz de cumplir con la demanda. Toda demanda no cumplida se considera como inventario negativo y tiene una prioridad a ser cubierta en el siguiente periodo.
+            Por <b>cada kilogramo</b> de <b>producto en backorder</b> (inventario negativo) hay un costo incurrido.
+        </p>
+    </li>
+</ul>
+
+
+
+<div style="text-align: center; margin-top: 40px">
+    <button><div style="padding: 7px 20px;">OBSERVACIONES FINALES<span style="padding-left: 15px"> &#8594;</span></div></button>
+</div>
+{% endblock %}

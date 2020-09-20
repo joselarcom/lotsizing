@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %} {% load otree %}
+
+{% block title %}
+<p><th>
+
+   Respuestas de Reflexion Cognitiva
+
+</th></p>
+{% endblock %}
+
+
+{% block content %}
+<p><th>
+
+    Hiciste bien {{correctas}} preguntas de 4.
+
+</th>
+<p><th>
+    (1)Un bate de baseball y una bola cuestan $1.10 en total. El bate cuesta $1.00 más que la bola.
+    ¿Cuanto cuesta la bola? <b>0.05 céntimos.</b>
+</th></p>
+<p><th>
+    (2) Si 5 máquinas toman 5 minutos para hacer 5 sillas, ¿Cuanto se demorarán 100 máquinas en hacer 100 sillas? <b>5 minutos.</b>
+</th></p>
+
+<p><th>
+    (3) En un lago, hay unas bacterias. Cada día, las bacterias se duplican en tamaño. Si les toma 48 días en cubrir todo el lago,
+    ¿Cuánto les demorará cubrir la mitad del lago? <b>47 días.</b>
+</th></p>
+
+<p><th>
+    (4) Si se demora 1 minuto en hacer 1 corte, ¿Cuál es el tiempo mínimo que se puede hacer para cortar un cilindro de madera de 30 pies en 30 piezas iguales,
+    sin mover las piezas cortadas y haciendo cortes rectos? <b>7 minutos.</b>
+</th>
+</p>
+{% next_button %}
+{% endblock %}

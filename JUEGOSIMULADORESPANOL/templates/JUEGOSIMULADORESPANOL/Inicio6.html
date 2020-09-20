@@ -1,0 +1,80 @@
+{% extends "global/Page.html" %} {% load otree %} {% block app_styles %}
+<style>
+    body {
+        max-width: 100vw;
+        background-color: #f9f9fa;
+        color: #0a0a0a;
+        font-size: 16px;
+    }
+
+    b {
+        font-weight: 500;
+    }
+
+    li {
+        list-style-type: decimal-leading-zero;
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    button {
+        font-size: 14px;
+        /* background: #66e2d5; */
+        background: #cfd7ff;
+        transition: 0.3s;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 2px solid #0a0a0a;
+        cursor: pointer;
+        color: #0a0a0a;
+    }
+
+    button:hover {
+        background: #4e57ef80;
+        /* background: #66e2d599; */
+        cursor: pointer
+    }
+</style>
+{% endblock %} {% block title %} Observaciones Finales {% endblock %} {% block content %}
+
+<h4 style="padding-top: 20px; padding-bottom: 20px;">
+    Recuerda lo siguiente
+</h4>
+
+<ul>
+    <li>
+        <p>
+            Tu eres el gerente de planeamiento y tienes que <b>decidir</b> si <b>producir o no</b>.
+        </p>
+    </li>
+    <li>
+        <p>
+            Tu <b>objetivo</b> es de <b>minimizar</b> la suma de los costos de mantenimiento de inventario, producción y backorder.
+        </p>
+    </li>
+    <img src="https://i.ibb.co/mH58ccq/finalobs.png" alt="finalobs" />
+    <br/>
+    <br/>
+    <li>
+        <p>
+            Periodo a periodo, la <b>demanda sera mostrada progresivamente</b>.
+        </p>
+    </li>
+    <li>
+        <p>
+            Toda la <b>información de costos</b> será disponible en la <b>parte superior</b> en las páginas de decisión.
+        </p>
+    </li>
+    <li>
+        <p>
+            Tendras primero una <b>sesión de practica de 12 periodos</b> para poder entender como funciona el juego.
+        </p>
+    </li>
+
+</ul>
+
+
+<div style="text-align: center; margin-top: 40px">
+    <button><div style="padding: 7px 20px;">EMPEZAR EL JUEGO<span style="padding-left: 15px"> &#8594;</span></div></button>
+</div> {% endblock %}

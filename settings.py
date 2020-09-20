@@ -25,6 +25,12 @@ SESSION_CONFIGS = [
         app_sequence=['JUEGOSIMULADOR_High_Different']
     ),
     dict(
+        name='JUEGOSIMULADORESPANOL',
+        display_name="Juego Espanol",
+        num_demo_participants=1,
+        app_sequence=['JUEGOSIMULADORESPANOL']
+    ),
+    dict(
         name='JuegoDeProduccion3',
         display_name="Juego Base 3",
         num_demo_participants=1,
